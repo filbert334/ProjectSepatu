@@ -9,5 +9,6 @@ namespace ProjectSepatu.Core.ProductProperties.BrandClass
     {
         public string Nama_Brand { get; set; }
         public bool IsHide { get; set; }
+
     }
 }
