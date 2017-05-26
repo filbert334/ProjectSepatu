@@ -10,5 +10,6 @@ namespace ProjectSepatu.Core.ProductProperties.KabupatenMasterClass
         public string Nama_Kabupaten { get; set; }
 
         public long ProvinsiMasterId { get; set; }
+
     }
 }
