@@ -12,6 +12,7 @@ using Microsoft.Extensions.Options;
 using ProjectSepatu.Models;
 using ProjectSepatu.Models.AccountViewModels;
 using ProjectSepatu.Services;
+using Microsoft.AspNetCore.Http.Authentication;
 
 namespace ProjectSepatu.Controllers
 {
@@ -39,6 +40,15 @@ namespace ProjectSepatu.Controllers
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
+        }
+
+        public IActionResult FacebookLogin()
+        {
+            var authProperties = new AuthenticationProperties
+            {
+                RedirectUri = Url.Action("Index", "Home")
+            };
+            return Challenge(authProperties, "Facebook");
         }
 
         //
