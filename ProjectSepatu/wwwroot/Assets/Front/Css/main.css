@@ -3972,7 +3972,8 @@ a.btn:hover,
   left: -30px;
 }
 .slide-logo img {
-  height: 105px;
+  height:60px;
+  width:10px;
 }
 .slide-logo .owl-next {
   right: -30px;
