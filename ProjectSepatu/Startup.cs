@@ -115,6 +115,20 @@ namespace ProjectSepatu
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationScheme = "ApplicationCookie",
+                AutomaticAuthenticate = true
+            });
+
+            app.UseFacebookAuthentication(new FacebookOptions
+            {
+                AuthenticationScheme = "Facebook",
+                AppId = "809220849246090",
+                AppSecret = "e575c36f827b4196e3769160bda2711c",
+                SignInScheme = "ApplicationCookie"
+            });
+
             app.UseStaticFiles();
 
             app.UseIdentity();
