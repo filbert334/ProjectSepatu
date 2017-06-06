@@ -212,7 +212,7 @@ body .sn-site .woocommerce .product-item-wrap.width-50 {
   width: 50%;
 }
 body .sn-site .countdown-home-2 {
-  bacground-image: url(../images/demo/bg-countdown.jpg);
+  background-image: url(../images/demo/bg-countdown.jpg);
   background-size: cover;
 }
 body .sn-site .sn-newletter-style2 .newletter-content-left {
@@ -461,7 +461,7 @@ body .sn-site .bg-f5-p-20 {
   display: inline-block;
 }
 .woocommerce table.shop_table.cart.wishlist_table tbody tr:last-child td {
-  boder-bottom: none;
+  border-bottom: none;
 }
 .woocommerce table.shop_table.cart.wishlist_table td.product-add-to-cart a {
   font-size: 15px;
@@ -8319,15 +8319,15 @@ button:focus {
   outline: none;
 }
 #preloaderKDZ {
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 999999;
-  overflow: hidden;
-  background: #ffffff url(../images/load/loading.gif) center no-repeat;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999999;
+    overflow: hidden;
+    background: #ffffff url(../image/load/loading.gif) center no-repeat;
 }
 .relative-single-page .product-actions > div.compare-button {
   width: 50px;
@@ -13497,8 +13497,8 @@ header.sn-header-style-7 .header-bottom .header-right {
   color: #ffdc73;
 }
 .footer-style-3 {
-  background-image: url(../images/background/bg-footer-3.jpg);
-  background-size: cover;
+    background-image: url(../image/banner/bg-footer-3.jpg);
+    background-size: cover;
 }
 .footer-style-3 .footer-top {
   margin-top: 55px;

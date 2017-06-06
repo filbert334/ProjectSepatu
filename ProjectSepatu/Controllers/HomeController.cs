@@ -28,7 +28,18 @@ namespace ProjectSepatu.Controllers
 
             return View(productlist);
         }
-
+        public IActionResult Coba()
+        {
+            return View();
+        }
+        public IActionResult List()
+        {
+            return View();
+        }
+        public IActionResult ProductDetails()
+        {
+            return View();
+        }
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";

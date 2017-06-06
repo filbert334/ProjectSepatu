@@ -11,7 +11,23 @@
   <PropertyGroup>
     <UserSecretsId>aspnet-ProjectSepatu-6f055f49-02ff-4a16-8c73-16884d96037d</UserSecretsId>
   </PropertyGroup>
+
   <ItemGroup>
+    <Content Include="wwwroot\Assets\Front\Css\nouislider.min.css" />
+    <Content Include="wwwroot\Assets\Front\fonts\fontawesome-webfont.eot" />
+    <Content Include="wwwroot\Assets\Front\fonts\fontawesome-webfont.svg" />
+    <Content Include="wwwroot\Assets\Front\fonts\fontawesome-webfont.ttf" />
+    <Content Include="wwwroot\Assets\Front\fonts\fontawesome-webfont.woff" />
+    <Content Include="wwwroot\Assets\Front\fonts\fontawesome-webfont.woff2" />
+    <Content Include="wwwroot\Assets\Front\fonts\FontAwesome.otf" />
+    <Content Include="wwwroot\Assets\Front\image\banner\banner1.jpg" />
+    <Content Include="wwwroot\Assets\Front\image\banner\bg-footer-3.jpg" />
+    <Content Include="wwwroot\Assets\Front\image\load\loading.gif" />
+    <Content Include="wwwroot\Assets\Front\image\logo\logo-black.png" />
+    <Content Include="wwwroot\Assets\Front\Js\nouislider.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FontAwesome" Version="4.7.0" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="1.1.2" />
@@ -32,6 +48,17 @@
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.1" />
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="1.0.1" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\Assets\Front\Js\fit-columns.js" />
+    <None Include="wwwroot\Assets\Front\Js\isotope-docs.min.js" />
+    <None Include="wwwroot\Assets\Front\Js\isotope.pkgd.min.js" />
+    <None Include="wwwroot\Assets\Front\Js\jquery.hoverdir.js" />
+    <None Include="wwwroot\Assets\Front\Js\jquery.prettyPhoto.js" />
+    <None Include="wwwroot\Assets\Front\Js\main.min.js" />
+    <None Include="wwwroot\Assets\Front\Js\mansory.js" />
+    <None Include="wwwroot\Assets\Front\Js\modernizr.custom.97074.js" />
+    <None Include="wwwroot\Assets\Front\Js\slick.min.js" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ProjectSepatu.Commons\ProjectSepatu.Commons.csproj" />
