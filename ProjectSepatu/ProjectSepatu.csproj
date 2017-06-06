@@ -23,7 +23,12 @@
     <Content Include="wwwroot\Assets\Front\image\banner\banner1.jpg" />
     <Content Include="wwwroot\Assets\Front\image\banner\bg-footer-3.jpg" />
     <Content Include="wwwroot\Assets\Front\image\load\loading.gif" />
+    <Content Include="wwwroot\Assets\Front\image\logo\Adidas 2_.png" />
     <Content Include="wwwroot\Assets\Front\image\logo\logo-black.png" />
+    <Content Include="wwwroot\Assets\Front\image\logo\nike.png" />
+    <Content Include="wwwroot\Assets\Front\image\logo\puma.png" />
+    <Content Include="wwwroot\Assets\Front\image\logo\reebok.png" />
+    <Content Include="wwwroot\Assets\Front\image\logo\umbro.png" />
     <Content Include="wwwroot\Assets\Front\Js\nouislider.min.js" />
   </ItemGroup>
   <ItemGroup>
