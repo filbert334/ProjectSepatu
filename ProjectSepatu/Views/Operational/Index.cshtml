@@ -28,12 +28,12 @@
                     <li id="dataBrand">
                         <a href="#view4" data-toggle="tab">Gender</a>
                     </li>
-                    <li id="dataBrand">
+                    @*<li id="dataBrand">
                         <a href="#view5" data-toggle="tab">Color</a>
                     </li>
                     <li id="dataBrand">
                         <a href="#view6" data-toggle="tab">Size</a>
-                    </li>
+                    </li>*@
                     <li id="dataBrand">
                         <a href="#view7" data-toggle="tab">Type</a>
                     </li>
@@ -53,7 +53,7 @@
                         @await Html.PartialAsync("TabBrand")
                     </div>
                     <div class="tab-pane fade" id="view4">
-                        @await Html.PartialAsync("TabGender")
+                        @await Html.PartialAsync("TabCategory")
                     </div>
                     <div class="tab-pane fade" id="view5">
                         @await Html.PartialAsync("TabColor")

@@ -28,7 +28,7 @@ namespace ProjectSepatu.Controllers.Admin
             return View();
         }
 
-        public IActionResult TabGender()
+        public IActionResult TabCategory()
         {
             return View();
         }

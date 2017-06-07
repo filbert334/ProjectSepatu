@@ -8,67 +8,84 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 Jenis Pembayaran
-                <div class="btn-group pull-right">
-                    <a href="#">
-                        <span class="glyphicon glyphicon-search" onclick=""></span>
-                    </a>
-                    <a href="#">
-                        <span class="glyphicon glyphicon-file" onclick=""></span>
-                    </a>
-                    <a href="#">
-                        <span class="glyphicon glyphicon-floppy-disk" onclick=""></span>
-                    </a>
-                </div>
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-                <form role="form" id="filterBrandList">
-                    <div class="form-group">
-                        <label>Metode Pembayaran</label>
-                        @{
-                            var listsort = new List<SelectListItem>();
-                            listsort.Add(new SelectListItem
-                            {
-                                Value = "Produk Terpopuler",
-                                Text = "Produk Terpopuler"
-                            });
-                            listsort.Add(new SelectListItem
-                            {
-                                Value = "Harga Beli Termurah",
-                                Text = "Harga Beli Termurah"
-                            });
-                            listsort.Add(new SelectListItem
-                            {
-                                Value = "Harga Beli Termahal",
-                                Text = "Harga Beli Termahal"
-                            });
-                            listsort.Add(new SelectListItem
-                            {
-                                Value = "Harga Jual Termurah",
-                                Text = "Harga Jual Termurah"
-                            });
-                            listsort.Add(new SelectListItem
-                            {
-                                Value = "Harga Jual Termahal",
-                                Text = "Harga Jual Termahal"
-                            });
-                        }
-                        @Html.DropDownList("SortBy", listsort, new { @class = "form-control", @onchange = "CallChangefunc(this.value)", style = "width:300px" })
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Filter
+                        <div class="btn-group pull-right">
+                            <a href="#">
+                                <span class="glyphicon glyphicon-search" onclick=""></span>
+                            </a>
+                        </div>
                     </div>
-                </form>
-                <form role="form" id="filterBrandList">
-                    <div class="form-group">
-                        <label>Jenis Pembayaran</label>
-                        @Html.TextBox("JenisPembayaran", "", new { @class = "form-control", style = "width:300px" })
+                    <div class="panel-body">
+                        <form role="form" id="filterBrandList">
+                            <div class="form-group">
+                                <label>Metode Pembayaran</label>
+                                @{
+                                    var listsort = new List<SelectListItem>();
+                                    listsort.Add(new SelectListItem
+                                    {
+                                        Value = "Produk Terpopuler",
+                                        Text = "Produk Terpopuler"
+                                    });
+                                    listsort.Add(new SelectListItem
+                                    {
+                                        Value = "Harga Beli Termurah",
+                                        Text = "Harga Beli Termurah"
+                                    });
+                                    listsort.Add(new SelectListItem
+                                    {
+                                        Value = "Harga Beli Termahal",
+                                        Text = "Harga Beli Termahal"
+                                    });
+                                    listsort.Add(new SelectListItem
+                                    {
+                                        Value = "Harga Jual Termurah",
+                                        Text = "Harga Jual Termurah"
+                                    });
+                                    listsort.Add(new SelectListItem
+                                    {
+                                        Value = "Harga Jual Termahal",
+                                        Text = "Harga Jual Termahal"
+                                    });
+                                }
+                                @Html.DropDownList("SortBy", listsort, new { @class = "form-control", @onchange = "CallChangefunc(this.value)", style = "width:300px" })
+                            </div>
+                        </form>
                     </div>
-                </form>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Input
+                        <div class="btn-group pull-right">
+                            <a href="#">
+                                <span class="glyphicon glyphicon-file" onclick=""></span>
+                            </a>
+                            <a href="#">
+                                <span class="glyphicon glyphicon-floppy-disk" onclick=""></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form" id="filterBrandList">
+                            <div class="form-group">
+                                <label>Jenis Pembayaran</label>
+                                @Html.TextBox("JenisPembayaran", "", new { @class = "form-control", style = "width:300px" })
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                     <thead>
                         <tr>
                             <th style="width:50px"></th>
                             <th style="width:50px"></th>
+                            <th>Metode Pembayaran</th>
                             <th>Sarana Pembayaran</th>
-                            <th>Nama Pihak Ketiga</th>
                         </tr>
                     </thead>
                     <tbody>
