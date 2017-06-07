@@ -8,5 +8,7 @@ namespace ProjectSepatu.Core.ProductProperties.ProductTypeMasterClass
     public class ProductTypeMaster : ProductParent
     {
         public string Type { get; set; }
+        public bool IsHidden { get; set; }
+
     }
 }

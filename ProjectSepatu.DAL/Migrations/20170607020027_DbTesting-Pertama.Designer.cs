@@ -8,9 +8,10 @@ using ProjectSepatu.DAL;
 namespace ProjectSepatu.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170607020027_DbTesting-Pertama")]
+    partial class DbTestingPertama
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")

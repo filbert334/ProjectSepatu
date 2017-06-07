@@ -11,6 +11,7 @@ namespace ProjectSepatu.Core.ProductProperties.PerhitunganPengirimanClass
         public string Kecamatan_Tujuan { get; set; }
         public decimal Harga_Ongkir { get; set; }
         public string Estimasi_Pengiriman { get; set; }
+        public string Paket_Pengiriman { get; set; }
 
         public long SaranaPengirimanMasterId { get; set; }
     }

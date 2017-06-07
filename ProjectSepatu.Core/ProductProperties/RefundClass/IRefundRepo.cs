@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProjectSepatu.Core.ProductProperties.ProductClass
+namespace ProjectSepatu.Core.ProductProperties.RefundClass
 {
-    public interface IProductRepo : IRepository<Product>
+    public interface IRefundRepo : IRepository<Refund>
     {
 
     }

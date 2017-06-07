@@ -9,5 +9,8 @@ namespace ProjectSepatu.Core.ProductProperties.CabangMasterClass
     {
         public string Alamat_Cabang { get; set; }
         public string No_Telepon { get; set; }
+
+
+        public long KecamatanMasterId { get; set; }
     }
 }

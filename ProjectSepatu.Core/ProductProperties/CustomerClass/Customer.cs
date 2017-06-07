@@ -7,9 +7,9 @@ namespace ProjectSepatu.Core.ProductProperties.CustomerClass
 {
     public class Customer : ProductParent
     {
-        public string Nama { get; set; }
+        public string Username { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public bool IsHide { get; set; }
+        public bool IsHidden { get; set; }
     }
 }
