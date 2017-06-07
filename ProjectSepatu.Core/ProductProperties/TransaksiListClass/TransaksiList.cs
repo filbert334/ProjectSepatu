@@ -11,7 +11,7 @@ namespace ProjectSepatu.Core.ProductProperties.TransaksiListClass
         public decimal Harga_Jual_Per_Barang { get; set; }
         public decimal Harga_Modal_Per_Barang { get; set; }
         public decimal Harga_Diskon { get; set; }
-        public string Keterangan { get; set; }
+        public string Remarks { get; set; }
 
         public long TransaksiHeaderId { get; set; }
         public long ProductDetailsId { get; set; }

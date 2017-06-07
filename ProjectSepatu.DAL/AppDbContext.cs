@@ -8,8 +8,6 @@ using ProjectSepatu.Core.ProductProperties.KabupatenMasterClass;
 using ProjectSepatu.Core.ProductProperties.KecamatanMasterClass;
 using ProjectSepatu.Core.ProductProperties.MetodePembayaranMasterClass;
 using ProjectSepatu.Core.ProductProperties.PerhitunganPengirimanClass;
-using ProjectSepatu.Core.ProductProperties.ProductColorMasterClass;
-using ProjectSepatu.Core.ProductProperties.ProductDetailsClass;
 using ProjectSepatu.Core.ProductProperties.ProductMasterClass;
 using ProjectSepatu.Core.ProductProperties.ProductPictureClass;
 using ProjectSepatu.Core.ProductProperties.ProductTypeMasterClass;
@@ -18,7 +16,6 @@ using ProjectSepatu.Core.ProductProperties.RefundClass;
 using ProjectSepatu.Core.ProductProperties.SaranaPengirimanMasterClass;
 using ProjectSepatu.Core.ProductProperties.TransaksiHeaderClass;
 using ProjectSepatu.Core.ProductProperties.TransaksiListClass;
-using ProjectSepatu.Core.ProductProperties.UkuranMasterClass;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -39,13 +36,10 @@ namespace ProjectSepatu.DAL
         }
         
         public DbSet<ProductMaster> ProductMaster { get; set; }
-        public DbSet<ProductDetails> ProductDetails { get; set; }
         public DbSet<ProductPicture> ProductPicture { get; set; }
         public DbSet<Brand> Brand { get; set; }
-        public DbSet<ProductColorMaster> ProductColorMaster { get; set; }
         public DbSet<GenderMaster> GenderMaster { get; set; }
         public DbSet<ProductTypeMaster> TypeMaster { get; set; }
-        public DbSet<UkuranMaster> UkuranMaster { get; set; }
         public DbSet<CabangMaster> CabangMaster { get; set; }
         public DbSet<Customer> Customer { get; set; }
         public DbSet<TransaksiHeader> TransaksiHeader { get; set; }

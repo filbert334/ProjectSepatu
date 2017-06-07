@@ -13,7 +13,6 @@ namespace ProjectSepatu.Core.ProductProperties.ProductMasterClass
         public decimal Harga_Jual { get; set; }
         public decimal Diskon_Rp { get; set; }
         public decimal Diskon_Persen { get; set; }
-        public string Deskripsi { get; set; }
         public decimal Berat { get; set; }
         public long Dilihat { get; set; }
         public long Terjual { get; set; }
@@ -22,6 +21,7 @@ namespace ProjectSepatu.Core.ProductProperties.ProductMasterClass
         public long Check_Out { get; set; }
         public long Cancel_Admin { get; set; }
         public bool IsHidden { get; set; }
+        public string Remarks { get; set; }
 
 
         public long BrandId { get; set; }
