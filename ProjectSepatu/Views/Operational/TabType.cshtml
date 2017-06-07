@@ -3,5 +3,79 @@
     ViewData["Title"] = "TabType";
 }
 
-<h2>TabType</h2>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Type
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Filter
+                        <div class="btn-group pull-right">
+                            <a href="#">
+                                <span class="glyphicon glyphicon-search" onclick=""></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form" id="filterBrandList">
+                            <div class="form-group">
+                                <label>Type</label>
+                                @Html.TextBox("JenisPembayaran", "", new { @class = "form-control", style = "width:300px" })
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Input
+                        <div class="btn-group pull-right">
+                            <a href="#">
+                                <span class="glyphicon glyphicon-file" onclick=""></span>
+                            </a>
+                            <a href="#">
+                                <span class="glyphicon glyphicon-floppy-disk" onclick=""></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form" id="filterBrandList">
+                            <div class="form-group">
+                                <label>Type</label>
+                                @Html.TextBox("JenisPembayaran", "", new { @class = "form-control", style = "width:300px" })
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                    <thead>
+                        <tr>
+                            <th style="width:50px"></th>
+                            <th style="width:50px"></th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < 2; i++)
+                        {
+                            <tr class="odd gradeX">
+                                <td>
+                                    <input type="button" name="name" value="Edit" class="btn btn-primary btn-sm" onclick=")" />
+                                </td>
+                                <td>
+                                    <input type="button" name="name" value="Delete" class="btn btn-danger btn-sm" onclick=")" />
+                                </td>
+                                <td>EQT</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
