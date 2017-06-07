@@ -20,7 +20,6 @@ using ProjectSepatu.DAL.ProductProperties.JenisPembayaranMasterClass;
 using ProjectSepatu.DAL.ProductProperties.KabupatenMasterClass;
 using ProjectSepatu.DAL.ProductProperties.KecamatanMasterClass;
 using ProjectSepatu.DAL.ProductProperties.PerhitunganPengirimanClass;
-using ProjectSepatu.DAL.ProductProperties.ProductColorMasterClass;
 using ProjectSepatu.DAL.ProductProperties.ProductMasterClass;
 using ProjectSepatu.DAL.ProductProperties.ProductPictureClass;
 using ProjectSepatu.DAL.ProductProperties.ProductTypeMasterClass;
@@ -79,7 +78,6 @@ namespace ProjectSepatu
             services.AddTransient<KabupatenMasterRepo, KabupatenMasterRepo>();
             services.AddTransient<KecamatanMasterRepo, KecamatanMasterRepo>();
             services.AddTransient<PerhitunganPengirimanRepo, PerhitunganPengirimanRepo>();
-            services.AddTransient<ProductColorMasterRepo, ProductColorMasterRepo>();
             services.AddTransient<ProductMasterRepo, ProductMasterRepo>();
             services.AddTransient<ProductPictureRepo, ProductPictureRepo>();
             services.AddTransient<ProductTypeMasterRepo, ProductTypeMasterRepo>();
