@@ -7,7 +7,9 @@ namespace ProjectSepatu.Core.ProductProperties.JenisPembayaranMasterClass
 {
     public class JenisPembayaranMaster : ProductParent
     {
-        public string Sarana_Pembayaran { get; set; }
-        public string Nama_Pihak_Ketiga { get; set; }
+        public string Jenis_Pembayaran { get; set; }
+        public bool IsHidden { get; set; }
+
+        public long MetodePembayaranMasterId { get; set; }
     }
 }

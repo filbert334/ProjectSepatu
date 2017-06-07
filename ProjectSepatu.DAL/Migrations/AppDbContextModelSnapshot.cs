@@ -25,7 +25,7 @@ namespace ProjectSepatu.DAL.Migrations
 
                     b.Property<DateTime>("CreatedDate");
 
-                    b.Property<bool>("IsHide");
+                    b.Property<bool>("IsHidden");
 
                     b.Property<string>("Nama_Brand");
 
@@ -49,6 +49,8 @@ namespace ProjectSepatu.DAL.Migrations
 
                     b.Property<DateTime>("CreatedDate");
 
+                    b.Property<long>("KecamatanMasterId");
+
                     b.Property<string>("No_Telepon");
 
                     b.Property<string>("UpdatedBy");
@@ -71,9 +73,7 @@ namespace ProjectSepatu.DAL.Migrations
 
                     b.Property<string>("Email");
 
-                    b.Property<bool>("IsHide");
-
-                    b.Property<string>("Nama");
+                    b.Property<bool>("IsHidden");
 
                     b.Property<string>("Password");
 
@@ -81,9 +81,33 @@ namespace ProjectSepatu.DAL.Migrations
 
                     b.Property<DateTime>("UpdatedDate");
 
+                    b.Property<string>("Username");
+
                     b.HasKey("Id");
 
                     b.ToTable("Customer");
+                });
+
+            modelBuilder.Entity("ProjectSepatu.Core.ProductProperties.GenderMasterClass.GenderMaster", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<string>("Gender");
+
+                    b.Property<bool>("IsHidden");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GenderMaster");
                 });
 
             modelBuilder.Entity("ProjectSepatu.Core.ProductProperties.JenisPembayaranMasterClass.JenisPembayaranMaster", b =>
@@ -95,9 +119,11 @@ namespace ProjectSepatu.DAL.Migrations
 
                     b.Property<DateTime>("CreatedDate");
 
-                    b.Property<string>("Nama_Pihak_Ketiga");
+                    b.Property<bool>("IsHidden");
 
-                    b.Property<string>("Sarana_Pembayaran");
+                    b.Property<string>("Jenis_Pembayaran");
+
+                    b.Property<long>("MetodePembayaranMasterId");
 
                     b.Property<string>("UpdatedBy");
 
@@ -116,6 +142,8 @@ namespace ProjectSepatu.DAL.Migrations
                     b.Property<string>("CreatedBy");
 
                     b.Property<DateTime>("CreatedDate");
+
+                    b.Property<bool>("IsAvailable");
 
                     b.Property<string>("Nama_Kabupaten");
 
@@ -139,6 +167,8 @@ namespace ProjectSepatu.DAL.Migrations
 
                     b.Property<DateTime>("CreatedDate");
 
+                    b.Property<bool>("IsAvailable");
+
                     b.Property<long>("KabupatenMasterId");
 
                     b.Property<string>("Nama_Kecamatan");
@@ -150,6 +180,28 @@ namespace ProjectSepatu.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("KecamatanMaster");
+                });
+
+            modelBuilder.Entity("ProjectSepatu.Core.ProductProperties.MetodePembayaranMasterClass.MetodePembayaranMaster", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<bool>("IsHidden");
+
+                    b.Property<string>("Metode_Pembayaran");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MetodePembayaranMaster");
                 });
 
             modelBuilder.Entity("ProjectSepatu.Core.ProductProperties.PerhitunganPengirimanClass.PerhitunganPengiriman", b =>
@@ -169,6 +221,8 @@ namespace ProjectSepatu.DAL.Migrations
 
                     b.Property<string>("Kecamatan_Tujuan");
 
+                    b.Property<string>("Paket_Pengiriman");
+
                     b.Property<long>("SaranaPengirimanMasterId");
 
                     b.Property<string>("UpdatedBy");
@@ -180,58 +234,18 @@ namespace ProjectSepatu.DAL.Migrations
                     b.ToTable("PerhitunganPengiriman");
                 });
 
-            modelBuilder.Entity("ProjectSepatu.Core.ProductProperties.ProductClass.Product", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<DateTime>("CreatedDate");
-
-                    b.Property<string>("ProductName");
-
-                    b.Property<string>("UpdatedBy");
-
-                    b.Property<DateTime>("UpdatedDate");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Product");
-                });
-
-            modelBuilder.Entity("ProjectSepatu.Core.ProductProperties.ProductColorClass.ProductColor", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CreatedBy");
-
-                    b.Property<DateTime>("CreatedDate");
-
-                    b.Property<long>("ProductColorMasterId");
-
-                    b.Property<long>("ProductMasterId");
-
-                    b.Property<string>("UpdatedBy");
-
-                    b.Property<DateTime>("UpdatedDate");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ProductColor");
-                });
-
             modelBuilder.Entity("ProjectSepatu.Core.ProductProperties.ProductColorMasterClass.ProductColorMaster", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Color");
-
                     b.Property<string>("CreatedBy");
 
                     b.Property<DateTime>("CreatedDate");
+
+                    b.Property<bool>("IsHidden");
+
+                    b.Property<string>("Nama_Warna");
 
                     b.Property<string>("UpdatedBy");
 
@@ -242,12 +256,46 @@ namespace ProjectSepatu.DAL.Migrations
                     b.ToTable("ProductColorMaster");
                 });
 
+            modelBuilder.Entity("ProjectSepatu.Core.ProductProperties.ProductDetailsClass.ProductDetails", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<long>("ColorMasterId");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<long>("Jumlah_Stock");
+
+                    b.Property<long>("ProductMasterId");
+
+                    b.Property<long>("UkuranMasterId");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProductDetails");
+                });
+
             modelBuilder.Entity("ProjectSepatu.Core.ProductProperties.ProductMasterClass.ProductMaster", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<decimal>("Berat");
+
                     b.Property<long>("BrandId");
+
+                    b.Property<long>("Cancel_Admin");
+
+                    b.Property<long>("Cart");
+
+                    b.Property<long>("Check_Out");
 
                     b.Property<string>("CreatedBy");
 
@@ -255,25 +303,27 @@ namespace ProjectSepatu.DAL.Migrations
 
                     b.Property<string>("Deskripsi");
 
+                    b.Property<long>("Dilihat");
+
                     b.Property<decimal>("Diskon_Persen");
 
                     b.Property<decimal>("Diskon_Rp");
+
+                    b.Property<long>("GenderMasterId");
 
                     b.Property<decimal>("Harga_Jual");
 
                     b.Property<decimal>("Harga_Modal");
 
-                    b.Property<bool>("IsHide");
+                    b.Property<bool>("IsHidden");
 
-                    b.Property<long>("Jumlah_Dilihat");
-
-                    b.Property<long>("Jumlah_Terjual");
-
-                    b.Property<long>("Maximum_Size");
-
-                    b.Property<long>("Minimum_Size");
+                    b.Property<long>("Konfirmasi_Pembayaran");
 
                     b.Property<string>("Nama_Product");
+
+                    b.Property<long>("Terjual");
+
+                    b.Property<long>("TypeMasterId");
 
                     b.Property<string>("UpdatedBy");
 
@@ -293,9 +343,11 @@ namespace ProjectSepatu.DAL.Migrations
 
                     b.Property<DateTime>("CreatedDate");
 
-                    b.Property<bool>("Gambar_Utama");
+                    b.Property<bool>("IsGambarUtama");
 
-                    b.Property<byte[]>("Image");
+                    b.Property<byte[]>("Picture");
+
+                    b.Property<long>("ProductMasterId");
 
                     b.Property<string>("UpdatedBy");
 
@@ -315,6 +367,8 @@ namespace ProjectSepatu.DAL.Migrations
 
                     b.Property<DateTime>("CreatedDate");
 
+                    b.Property<bool>("IsHidden");
+
                     b.Property<string>("Type");
 
                     b.Property<string>("UpdatedBy");
@@ -323,7 +377,7 @@ namespace ProjectSepatu.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProductTypeMaster");
+                    b.ToTable("TypeMaster");
                 });
 
             modelBuilder.Entity("ProjectSepatu.Core.ProductProperties.ProvinsiMasterClass.ProvinsiMaster", b =>
@@ -334,6 +388,8 @@ namespace ProjectSepatu.DAL.Migrations
                     b.Property<string>("CreatedBy");
 
                     b.Property<DateTime>("CreatedDate");
+
+                    b.Property<bool>("IsAvailable");
 
                     b.Property<string>("Nama_Provinsi");
 
@@ -346,6 +402,34 @@ namespace ProjectSepatu.DAL.Migrations
                     b.ToTable("ProvinsiMaster");
                 });
 
+            modelBuilder.Entity("ProjectSepatu.Core.ProductProperties.RefundClass.Refund", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Atas_Nama");
+
+                    b.Property<string>("Bank");
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<string>("Nomor_Rekening");
+
+                    b.Property<string>("Remarks");
+
+                    b.Property<long>("Total_Refund");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Refund");
+                });
+
             modelBuilder.Entity("ProjectSepatu.Core.ProductProperties.SaranaPengirimanMasterClass.SaranaPengirimanMaster", b =>
                 {
                     b.Property<long>("Id")
@@ -355,7 +439,7 @@ namespace ProjectSepatu.DAL.Migrations
 
                     b.Property<DateTime>("CreatedDate");
 
-                    b.Property<bool>("IsHide");
+                    b.Property<bool>("IsHidden");
 
                     b.Property<string>("Nama_Pengiriman");
 
@@ -385,13 +469,13 @@ namespace ProjectSepatu.DAL.Migrations
 
                     b.Property<long>("CustomerId");
 
-                    b.Property<bool>("IsCancel");
-
                     b.Property<bool>("IsCart");
 
-                    b.Property<bool>("IsConfirm");
+                    b.Property<bool>("IsCheckOut");
 
                     b.Property<bool>("IsGagal");
+
+                    b.Property<bool>("IsKonfirmasiPembayaran");
 
                     b.Property<bool>("IsSuccess");
 
@@ -401,7 +485,15 @@ namespace ProjectSepatu.DAL.Migrations
 
                     b.Property<decimal>("Jumlah_Diskon");
 
+                    b.Property<decimal>("Jumlah_Diskon_Member");
+
                     b.Property<decimal>("Jumlah_Harga_Barang");
+
+                    b.Property<decimal>("Jumlah_Harga_Ongkir");
+
+                    b.Property<string>("Kode_Promo");
+
+                    b.Property<string>("Kode_Transaksi");
 
                     b.Property<string>("Nama_Penerima");
 
@@ -411,7 +503,7 @@ namespace ProjectSepatu.DAL.Migrations
 
                     b.Property<decimal>("PPN");
 
-                    b.Property<long>("PerhitunganPengirimanId");
+                    b.Property<bool>("Pembelian_Berulang");
 
                     b.Property<DateTime>("Tanggal_Transaksi");
 
@@ -437,13 +529,15 @@ namespace ProjectSepatu.DAL.Migrations
 
                     b.Property<decimal>("Harga_Diskon");
 
-                    b.Property<long>("Jumlah_Barang");
+                    b.Property<decimal>("Harga_Jual_Per_Barang");
 
-                    b.Property<decimal>("Jumlah_Harga");
+                    b.Property<decimal>("Harga_Modal_Per_Barang");
+
+                    b.Property<long>("Jumlah_Barang");
 
                     b.Property<string>("Keterangan");
 
-                    b.Property<long>("ProductMasterId");
+                    b.Property<long>("ProductDetailsId");
 
                     b.Property<long>("TransaksiHeaderId");
 
@@ -454,6 +548,26 @@ namespace ProjectSepatu.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TransaksiList");
+                });
+
+            modelBuilder.Entity("ProjectSepatu.Core.ProductProperties.UkuranMasterClass.UkuranMaster", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<string>("Ukuran");
+
+                    b.Property<string>("UpdatedBy");
+
+                    b.Property<DateTime>("UpdatedDate");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UkuranMaster");
                 });
         }
     }

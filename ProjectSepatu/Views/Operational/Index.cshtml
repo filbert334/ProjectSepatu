@@ -1,0 +1,123 @@
+
+@{
+    ViewData["Title"] = "Operational";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Operational</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs">
+                    <li class="active" id="listOperational">
+                        <a href="#view1" data-toggle="tab">Metode Pembayaran</a>
+                    </li>
+                    <li id="dataBrand">
+                        <a href="#view2" data-toggle="tab">Jenis Pembayaran</a>
+                    </li>
+                    <li id="dataBrand">
+                        <a href="#view3" data-toggle="tab">Brand</a>
+                    </li>
+                    <li id="dataBrand">
+                        <a href="#view4" data-toggle="tab">Gender</a>
+                    </li>
+                    <li id="dataBrand">
+                        <a href="#view5" data-toggle="tab">Color</a>
+                    </li>
+                    <li id="dataBrand">
+                        <a href="#view6" data-toggle="tab">Size</a>
+                    </li>
+                    <li id="dataBrand">
+                        <a href="#view7" data-toggle="tab">Type</a>
+                    </li>
+                    <li id="dataBrand">
+                        <a href="#view8" data-toggle="tab">Bank</a>
+                    </li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="view1">
+                        @await Html.PartialAsync("TabMetodePembayaran")
+                    </div>
+                    <div class="tab-pane fade" id="view2">
+                        @await Html.PartialAsync("TabJenisPembayaran")
+                    </div>
+                    <div class="tab-pane fade" id="view3">
+                        @await Html.PartialAsync("TabBrand")
+                    </div>
+                    <div class="tab-pane fade" id="view4">
+                        @await Html.PartialAsync("TabGender")
+                    </div>
+                    <div class="tab-pane fade" id="view5">
+                        @await Html.PartialAsync("TabColor")
+                    </div>
+                    <div class="tab-pane fade" id="view6">
+                        @await Html.PartialAsync("TabSize")
+                    </div>
+                    <div class="tab-pane fade" id="view7">
+                        @await Html.PartialAsync("TabType")
+                    </div>
+                    <div class="tab-pane fade" id="view8">
+                        @await Html.PartialAsync("TabBank")
+                    </div>
+                </div>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+</div>
+
+
+<script>
+    function SearchBrandList() {
+        $.get('/Admin/TabBrandList/', $("#filterBrandList").serialize(), function (data) {
+            if (data) {
+                $("#view1").html(data);
+            }
+        })
+    }
+    function DetailsBrandData(id) {
+        $.get('/Admin/TabBrandData/' + id, function (data) {
+            if (data) {
+                $("#view2").html(data);
+                $("#view1").removeClass("active in");  // this deactivates the home tab
+                $("#view2").addClass("active in"); // this activates the profile tab
+                $("#listBrand").removeClass("active");  // this deactivates the home tab
+                $("#dataBrand").addClass("active"); // this activates the profile tab
+                //alert("test");
+
+            }
+        })
+    }
+    function NewBrandData() {
+        $.get('/Admin/TabBrandData/', function (data) {
+            if (data) {
+                $("#view2").html(data);
+            }
+        })
+    }
+    function SaveBrandData() {
+        //console.log($("#formHandphoneData").serialize());
+        $.post('/Admin/SaveBrandData/', $("#formBrandData").serialize(), function (data) {
+            if (data) {
+                $('#view2').html(data);
+                $.get('/Admin/TabBrandList/', function (data) {
+                    if (data) {
+                        $("#view1").html(data);
+                        alert("test");
+                    }
+                })
+            }
+        })
+    }
+</script>
+
+

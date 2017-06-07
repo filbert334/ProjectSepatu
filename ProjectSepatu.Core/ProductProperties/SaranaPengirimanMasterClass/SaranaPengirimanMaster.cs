@@ -8,6 +8,6 @@ namespace ProjectSepatu.Core.ProductProperties.SaranaPengirimanMasterClass
     public class SaranaPengirimanMaster : ProductParent
     {
         public string Nama_Pengiriman { get; set; }
-        public bool IsHide { get; set; }
+        public bool IsHidden { get; set; }
     }
 }

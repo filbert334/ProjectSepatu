@@ -7,6 +7,7 @@ namespace ProjectSepatu.Core.ProductProperties.ProductColorMasterClass
 {
     public class ProductColorMaster : ProductParent
     {
-        public string Color { get; set; }
+        public string Nama_Warna { get; set; }
+        public bool IsHidden { get; set; }
     }
 }

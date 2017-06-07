@@ -13,8 +13,6 @@ using ProjectSepatu.Data;
 using ProjectSepatu.Models;
 using ProjectSepatu.Services;
 using ProjectSepatu.DAL;
-using ProjectSepatu.Core.ProductProperties.ProductClass;
-using ProjectSepatu.DAL.ProductProperties.ProductClass;
 using ProjectSepatu.DAL.ProductProperties.BrandClass;
 using ProjectSepatu.DAL.ProductProperties.CabangMasterClass;
 using ProjectSepatu.DAL.ProductProperties.CustomerClass;
@@ -22,7 +20,6 @@ using ProjectSepatu.DAL.ProductProperties.JenisPembayaranMasterClass;
 using ProjectSepatu.DAL.ProductProperties.KabupatenMasterClass;
 using ProjectSepatu.DAL.ProductProperties.KecamatanMasterClass;
 using ProjectSepatu.DAL.ProductProperties.PerhitunganPengirimanClass;
-using ProjectSepatu.DAL.ProductProperties.ProductColorClass;
 using ProjectSepatu.DAL.ProductProperties.ProductColorMasterClass;
 using ProjectSepatu.DAL.ProductProperties.ProductMasterClass;
 using ProjectSepatu.DAL.ProductProperties.ProductPictureClass;
@@ -73,8 +70,7 @@ namespace ProjectSepatu
 
             services.AddMvc();
 
-
-            services.AddTransient<ProductRepo, ProductRepo>(); // Tidak dipakai, Hanya Untuk Testing Homepage
+            
             // Add application services.
             services.AddTransient<BrandRepo, BrandRepo>();
             services.AddTransient<CabangMasterRepo, CabangMasterRepo>();
@@ -83,7 +79,6 @@ namespace ProjectSepatu
             services.AddTransient<KabupatenMasterRepo, KabupatenMasterRepo>();
             services.AddTransient<KecamatanMasterRepo, KecamatanMasterRepo>();
             services.AddTransient<PerhitunganPengirimanRepo, PerhitunganPengirimanRepo>();
-            services.AddTransient<ProductColorRepo, ProductColorRepo>();
             services.AddTransient<ProductColorMasterRepo, ProductColorMasterRepo>();
             services.AddTransient<ProductMasterRepo, ProductMasterRepo>();
             services.AddTransient<ProductPictureRepo, ProductPictureRepo>();

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ProjectSepatu.Core.ProductProperties.ProductPictureClass
 {
-    public interface IProductPicture : IRepository<ProductPicture>
+    public interface IProductPictureRepo : IRepository<ProductPicture>
     {
 
     }

@@ -8,7 +8,7 @@ namespace ProjectSepatu.Core.ProductProperties.BrandClass
     public class Brand : ProductParent
     {
         public string Nama_Brand { get; set; }
-        public bool IsHide { get; set; }
+        public bool IsHidden { get; set; }
 
     }
 }

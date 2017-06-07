@@ -8,6 +8,7 @@ namespace ProjectSepatu.Core.ProductProperties.KabupatenMasterClass
     public class KabupatenMaster : ProductParent
     {
         public string Nama_Kabupaten { get; set; }
+        public bool IsAvailable { get; set; }
 
         public long ProvinsiMasterId { get; set; }
     }
