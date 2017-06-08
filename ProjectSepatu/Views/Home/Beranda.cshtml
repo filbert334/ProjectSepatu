@@ -1,0 +1,302 @@
+
+@{
+    ViewData["Title"] = "Beranda";
+    Layout = "~/Views/Shared/_LayoutFront.cshtml";
+}
+
+@using ProjectSepatu.Models.HomeViewModels
+
+@model HomePageViewModel
+
+<div id="example-wrapper">
+    <div class="section">
+        <div class="slide-home slide-home-3">
+            <div data-number="1" data-margin="100" data-loop="yes" data-navcontrol="yes" class="sofani-owl-carousel">
+                <div class="slide1">
+                    <figure><img src="~/Assets/Front/image/banner/banner1.jpg" alt="banner-1-home-2" /></figure>
+                </div>
+                <div class="slide2">
+                    <figure><img src="~/Assets/Front/image/banner/banner1.jpg" alt="banner-1-home-2" /></figure>
+                </div>
+                <div class="slide3">
+                    <figure><img src="~/Assets/Front/image/banner/banner1.jpg" alt="banner-1-home-2" /></figure>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+		$(".owl-carousel").owlCarousel({
+    items: 3,
+    loop: true,
+    afterAction : afterAction
+});
+
+
+function afterAction() {
+    var elem = this.owl.owlItems;
+    var index = this.owl.visibleItems;
+
+    var height = elem.eq(index).height();
+
+    //.owl-wrapper is the element that we are high.
+    elem.parents('.owl-wrapper, .owl-carousel').css('height', height);
+}
+</script>
+<section>
+    <div class="latest-home-3">
+        <div class="container">
+            <div class="sperator text-left">
+                <p>LATEST PRODUCTS</p><span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</span>
+            </div>
+            <div data-number="4" data-margin="15" data-loop="yes" data-navcontrol="yes" class="woocommerce sofani-owl-carousel">
+                <div class="product-item-wrap button-has-tooltip product-style_2">
+                    <div class="product-item-inner">
+                        <div class="product-thumb gray">
+                            <div class="product-flash-wrap"></div>
+                            <div class="product-thumb-primary"><img src="~/Assets/Front/image/product/1.jpg" alt="27" title="27" width="300" height="400" class="attachment-shop_catalog size-shop_catalog wp-post-image" /></div>
+                            <div class="product-thumb-secondary"><img src="~/Assets/Front/image/product/1.jpg" alt="18" width="300" height="400" class="attachment-shop_catalog size-shop_catalog" /></div><a href="#" class="product-link">
+                                <div class="product-hover-sign">
+
+                                    <hr />
+                                    <hr />
+                                </div>
+                            </a>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-actions">
+                                <div class="yith-wcwl-add-to-wishlist add-to-wishlist-180">
+                                    <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i> Add to Wishlist</a></div>
+                                </div><a class="compare add_to_compare"><i class="fa fa-signal"></i>Compare</a>
+                                <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> Add to cart</a></div><a class="product-quick-view"><i class="fa fa-search"></i>Quick view</a>
+                            </div>
+                            <div class="rate"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></div><span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>255.00</span></span><a href="#" target="_blank">
+                                <h3>Tulip Arm Chair</h3>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-item-wrap button-has-tooltip product-style_2">
+                    <div class="product-item-inner">
+                        <div class="product-thumb gray">
+                            <div class="product-flash-wrap"></div>
+                            <div class="product-thumb-primary"><img src="~/Assets/Front/image/product/1.jpg" alt="27" title="27" width="300" height="400" class="attachment-shop_catalog size-shop_catalog wp-post-image" /></div>
+                            <div class="product-thumb-secondary"><img src="~/Assets/Front/image/product/1.jpg" alt="18" width="300" height="400" class="attachment-shop_catalog size-shop_catalog" /></div><a href="#" class="product-link">
+                                <div class="product-hover-sign">
+                                    <hr />
+                                    <hr />
+                                </div>
+                            </a>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-actions">
+                                <div class="yith-wcwl-add-to-wishlist add-to-wishlist-180">
+                                    <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i> Add to Wishlist</a></div>
+                                </div><a class="compare add_to_compare"><i class="fa fa-signal"></i>Compare</a>
+                                <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> Add to cart</a></div><a class="product-quick-view"><i class="fa fa-search"></i>Quick view</a>
+                            </div>
+                            <div class="rate"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></div><span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>255.00</span></span><a href="#" target="_blank">
+                                <h3>Tulip Arm Chair</h3>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-item-wrap button-has-tooltip product-style_2">
+                    <div class="product-item-inner">
+                        <div class="product-thumb gray">
+                            <div class="product-flash-wrap"></div>
+                            <div class="product-thumb-primary"><img src="~/Assets/Front/image/product/1.jpg" alt="27" title="27" width="300" height="400" class="attachment-shop_catalog size-shop_catalog wp-post-image" /></div>
+                            <div class="product-thumb-secondary"><img src="~/Assets/Front/image/product/1.jpg" alt="18" width="300" height="400" class="attachment-shop_catalog size-shop_catalog" /></div><a href="#" class="product-link">
+                                <div class="product-hover-sign">
+                                    <hr />
+                                    <hr />
+                                </div>
+                            </a>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-actions">
+                                <div class="yith-wcwl-add-to-wishlist add-to-wishlist-180">
+                                    <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i> Add to Wishlist</a></div>
+                                </div><a class="compare add_to_compare"><i class="fa fa-signal"></i>Compare</a>
+                                <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> Add to cart</a></div><a class="product-quick-view"><i class="fa fa-search"></i>Quick view</a>
+                            </div>
+                            <div class="rate"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></div><span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>255.00</span></span><a href="#" target="_blank">
+                                <h3>Tulip Arm Chair</h3>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-item-wrap button-has-tooltip product-style_2">
+                    <div class="product-item-inner">
+                        <div class="product-thumb gray">
+                            <div class="product-flash-wrap"></div>
+                            <div class="product-thumb-primary"><img src="~/Assets/Front/image/product/1.jpg" alt="27" title="27" width="300" height="400" class="attachment-shop_catalog size-shop_catalog wp-post-image" /></div>
+                            <div class="product-thumb-secondary"><img src="~/Assets/Front/image/product/1.jpg" alt="18" width="300" height="400" class="attachment-shop_catalog size-shop_catalog" /></div><a href="#" class="product-link">
+                                <div class="product-hover-sign">
+                                    <hr />
+                                    <hr />
+                                </div>
+                            </a>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-actions">
+                                <div class="yith-wcwl-add-to-wishlist add-to-wishlist-180">
+                                    <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i> Add to Wishlist</a></div>
+                                </div><a class="compare add_to_compare"><i class="fa fa-signal"></i>Compare</a>
+                                <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> Add to cart</a></div><a class="product-quick-view"><i class="fa fa-search"></i>Quick view</a>
+                            </div>
+                            <div class="rate"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></div><span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>255.00</span></span><a href="#" target="_blank">
+                                <h3>Tulip Arm Chair</h3>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-item-wrap button-has-tooltip product-style_2">
+                    <div class="product-item-inner">
+                        <div class="product-thumb gray">
+                            <div class="product-flash-wrap"></div>
+                            <div class="product-thumb-primary"><img src="~/Assets/Front/image/product/1.jpg" alt="27" title="27" width="300" height="400" class="attachment-shop_catalog size-shop_catalog wp-post-image" /></div>
+                            <div class="product-thumb-secondary"><img src="~/Assets/Front/image/product/1.jpg" alt="18" width="300" height="400" class="attachment-shop_catalog size-shop_catalog" /></div><a href="#" class="product-link">
+                                <div class="product-hover-sign">
+                                    <hr />
+                                    <hr />
+                                </div>
+                            </a>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-actions">
+                                <div class="yith-wcwl-add-to-wishlist add-to-wishlist-180">
+                                    <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i> Add to Wishlist</a></div>
+                                </div><a class="compare add_to_compare"><i class="fa fa-signal"></i>Compare</a>
+                                <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> Add to cart</a></div><a class="product-quick-view"><i class="fa fa-search"></i>Quick view</a>
+                            </div>
+                            <div class="rate"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></div><span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>255.00</span></span><a href="#" target="_blank">
+                                <h3>Tulip Arm Chair</h3>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section">
+    <div class="products-in-category-tabs-wrapper container">
+        <div class="sperator text-left">
+            <p>PRODUCTS DISPLAY</p><span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</span>
+        </div>
+        <div class="row">
+            <div class="col-md-3" style="margin-top:-10px;">
+
+                <div class="sidebar-product">
+                    <aside class="categorie">
+                        <h4>Urutkan  </h4>&nbsp;&nbsp;<button class="fa fa-caret-down fa-lg" style="background-color:white;border:none" data-toggle="collapse" data-target="#demo"></button>
+                        <div class="collapse" id="demo">
+                            <ul class="categories">
+                                <li><a href="#">Termurah</a></li>
+                                <li><a href="#">Termahal</a></li>
+                                <li><a href="#">Dilihat Terbanyak</a></li>
+                                <li><a href="#">Penjualan Terbanyak</a></li>
+                                <li><a href="#">Terbaru</a></li>
+                            </ul>
+                        </div>
+                    </aside>
+                    <aside class="categorie">
+                        <h4>Harga</h4>&nbsp;&nbsp;<button class="fa fa-caret-down fa-lg" style="background-color:white;border:none" data-toggle="collapse" data-target="#price"></button>
+                        <div class="collapse" id="price">
+                            <div class="form-group">
+                                <label for="usr">Harga Minimal (Rp.):</label>
+                                <input type="text" class="form-control" id="min" placeholder="Contoh : 500.000">
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd">Harga Maksimal (Rp.):</label>
+                                <input type="text" class="form-control" id="max" placeholder="Contoh : 1.000.000">
+                            </div>
+
+                        </div>
+
+
+                    </aside>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="products-content product-tab">
+                    <div class="woocommerce product-listing columns-3 clearfix">
+                        <br />
+                        <br />
+                        @*<ul class="products-tabs nav nav-pills">
+                                <li class="active"><a href="#1a" data-toggle="tab">All</a></li>
+                                <li><a href="#2a" data-toggle="tab">Chair</a></li>
+                                <li><a href="#3a" data-toggle="tab">Decoration</a></li>
+                                <li><a href="#4a" data-toggle="tab">Essential</a></li>
+                                <li><a href="#5a" data-toggle="tab">Sofar</a></li>
+                            </ul>*@
+                        <div class="desc-review-content tab-content clearfix">
+                            @foreach (var item in Model.listProduct)
+                            {
+
+                                <div class="product-item-wrap has-post-thumbnail">
+                                    <div class="product-item-inner">
+                                        <div class="product-thumb">
+                                            @*<div class="product-flash-wrap"><span class="on-sale product-flash"></span><span class="on-sale product-flash"></span></div>*@
+                                            <div class="product-thumb-primary"><img width="300" height="400" src="~/Assets/Front/image/product/1.jpg" alt="42" title="42" class="attachment-shop_catalog size-shop_catalog wp-post-image" /></div>
+                                            <div class="product-thumb-secondary"><img width="300" height="400" src="~/Assets/Front/image/product/3.jpg" alt="47" class="attachment-shop_catalog size-shop_catalog" onclick="ToDetailsProduct(@item.Id)" /></div>
+
+                                            @*<a href="" class="product-link">
+                                                    <div class="product-hover-sign" >
+                                                        <hr />
+                                                        <hr />
+                                                    </div>
+                                                </a>*@
+                                            <div class="product-actions">
+                                                <div class="yith-wcwl-add-to-wishlist add-to-wishlist-225">
+                                                    <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i>    Add to Wishlist</a></div>
+                                                </div>
+
+                                                <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> Add to cart</a></div><a href="#" class="product-quick-view"><i class="fa fa-search"></i>Quick view</a>
+                                            </div>
+                                        </div>
+                                        <div class="product-info">
+                                            <div class="rate" style="margin-right:-20px;"><i class="fa fa-eye" aria-hidden="true">&nbsp;@item.Dilihat</i></div><span class="price">
+                                                @if (item.Diskon_Persen == 0 && item.Diskon_Rp == 0)
+                                                        {
+
+                                                    <ins><span class="woocommerce-Price-currencySymbol" style="color:green;">Rp @item.Harga_Jual</span></ins>
+                                                        }
+                                                        else
+                                                        {
+                                                    <del><span class="woocommerce-Price-amount amount" style="color:red;"><span class="woocommerce-Price-currencySymbol">Rp</span> @item.Harga_Jual</span></del>
+                                                    <ins><span class="woocommerce-Price-currencySymbol" style="color:green;">@item.Diskon_Persen %</span></ins>
+                                                        }
+
+                                            </span><a href="#" target="_blank">
+                                                <h3>@item.Nama_Product</h3>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+                @*<script>
+                        function ToDetailsProduct(id) {
+                            alert(id)
+                            window.location.replace("http://localhost:53293/Home/ProductDetails/" + id);
+                        }
+                    </script>*@
+                <div class="pagination-product text-right">
+                    <div class="pagination-list">
+                        <div class="page active">1</div>
+                        <div class="page">2</div>
+                        <div class="page">...</div>
+                        <div class="page">9</div>
+                        <div class="page">next</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
