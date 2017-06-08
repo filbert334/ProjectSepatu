@@ -191,66 +191,175 @@ function afterAction() {
             <div class="woocommerce product-listing columns-4">
                 <div class="ul-list-shop">
                     <ul class="products-tab-shop nav nav-pills">
-                        <li class="click-toggle-sidebar-filter click-toggle-sidebar"style="font-size:20px;"><strong>Filter</strong></li>
-                        <li class="click-toggle-sidebar-search click-toggle-sidebar"style="font-size:20px;"><strong>Search</strong></li>
+                        @*<li class="click-toggle-sidebar-filter click-toggle-sidebar"style="font-size:20px;"><strong>Sort</strong></li>*@
+                        <li class="click-toggle-sidebar-search click-toggle-sidebar"style="font-size:20px;"><strong>Filter</strong></li>
+
                     </ul>
                     <ul class="sidebar-shop">
                         
                     </ul>
                 </div>
                 <div class="sidebar-shop-search toggle-sidebar-shop">
-                    <form>
-                        <input type="text" placeholder="Search product" /><a href="#"><i class="fa fa-search"></i></a>
-                    </form>
-                </div>
-                <div class="sidebar-shop-col toggle-sidebar-shop">
                     <div class="sidebar-product-style-2">
                         <div class="row">
+                            <div class="col-md-4">
+                                <aside>
+                                    <h4>Kategori</h4>
+
+                                    <select class="selectpicker form-control">
+                                        <option>asdfasdfasdfasdfasdfaf</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                    </select>
+
+                                </aside>
+                            </div>
                             <div class="col-md-3">
+                                <aside>
+                                    <h4>Tipe</h4>
+                                    <select class="selectpicker form-control">
+                                        <option>asdfasdfasdfasdfasdfaf</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                    </select>
+                                </aside>
+                            </div>
+                            <div class="col-md-3">
+                                <aside>
+                                    <h4>Brand</h4>
+                                    <select class="selectpicker form-control">
+                                        <option>asdfasdfasdfasdfasdfaf</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                    </select>
+                                </aside>
+                            </div>
+                            <div class="col-md-2">
+                                <aside style="margin-top:58px;">
+                                    
+                                   <a href="" class="load-more-shop" style="background-color:black;width:100px;">Search</a>
+                                </aside>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="sidebar-shop-col toggle-sidebar-shop">
+                    <div class="sidebar-product-style-2">
+                        <div class="row">
+                            <div class="col-md-2">
                                 <aside class="sort-by">
                                     <h4>Sort By</h4>
                                     <ul>
-                                        <li>Default</li>
-                                        <li><a href="#">Popularity</a></li>
-                                        <li><a href="#">Average rating</a></li>
-                                        <li><a href="#">Newness</a></li>
-                                        <li><a href="#">Price: Low to High</a></li>
-                                        <li><a href="#">Price: High to Low</a></li>
+                                        <li><a asp-action="Beranda" asp-route-sortOrder="@ViewData["TermurahSortParm"]">Termurah</a></li>
+                                        <li><a asp-action="Beranda" asp-route-sortOrder="@ViewData["TermahalSortParm"]">Termahal</a></li>
+                                        <li><a asp-action="Beranda" asp-route-sortOrder="@ViewData["DilihatSortParm"]">Dilihat Terbanyak</a></li>
+                                        <li><a asp-action="Beranda" asp-route-sortOrder="@ViewData["PenjualanSortParm"]">Penjualan Terbanyak</a></li>
+                                        <li><a asp-action="Beranda" asp-route-sortOrder="@ViewData["TerbaruSortParm"]">Terbaru</a></li>
                                     </ul>
                                 </aside>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <aside class="sort-by">
                                     <h4>Filter by price</h4>
-                                    <ul class="categories">
-                                        <li>All</li>
-                                        <li><a href="#">$0.00 - $50.00</a></li>
-                                        <li><a href="#">$50.00 - $100.00</a></li>
-                                        <li><a href="#">$100.00 - $150.00</a></li>
-                                        <li><a href="#">$150.00 - $200.00</a></li>
-                                        <li><a href="#">$200.00 - $250.00</a></li>
-                                        <li><a href="#">$250.00 - $300.00</a></li>
-                                        <li><a href="#">$300.00 - $350.00</a></li>
-                                        <li><a href="#">$350.00 - $400.00</a></li>
-                                        <li><a href="#">$400.00+</a></li>
-                                    </ul>
+                                    <div class="form-group">
+                                        <label for="min">Harga Terendah (Rp): </label>
+                                        <input type="text"   placeholder="Contoh :  500000" class="form-control" id="minimal">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="max">Harga Tertinggi (Rp): </label>
+                                        <input type="text" placeholder="Contoh :  1500000" class="form-control" id="maksimal">
+                                    </div>
+                                </aside>
+                            </div>
+                            <div class="col-md-2">
+                                <aside class="categorie">
+                                    <h4>Kategori</h4>
+                                    
+                                    <select class="selectpicker form-control">
+                                        <option>asdfasdfasdfasdfasdfaf</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                        <option>cow</option>
+                                    </select>
+                                   
                                 </aside>
                             </div>
                             <div class="col-md-3">
-                                <aside class="categorie">
-                                    <h4>Product Categories</h4>
-                                    <ul class="categories">
+                                <aside class="tagcloud">
+                                    <h4>Tipe</h4>
+                                    <ul class="tagcloud">
+                                        <li><a href="#">Bag</a></li>
+                                        <li><a href="#">Comb</a></li>
                                         <li><a href="#">Chair</a></li>
-                                        <li><a href="#">Decoration</a></li>
-                                        <li><a href="#">Essential</a></li>
+                                        <li><a href="#">Classic</a></li>
+                                        <li><a href="#">Desk</a></li>
+                                        <li><a href="#">Gel</a></li>
                                         <li><a href="#">Lamp</a></li>
-                                        <li><a href="#">Sofas</a></li>
+                                        <li><a href="#">Glass</a></li>
+                                        <li><a href="#">Office</a></li>
+                                        <li><a href="#">Table Tiles</a></li>
+                                        <li><a href="#">Socks</a></li>
                                     </ul>
                                 </aside>
                             </div>
                             <div class="col-md-3">
                                 <aside class="tagcloud">
-                                    <h4>tags</h4>
+                                    <h4>Brand</h4>
                                     <ul class="tagcloud">
                                         <li><a href="#">Bag</a></li>
                                         <li><a href="#">Comb</a></li>
@@ -268,7 +377,7 @@ function afterAction() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>*@
                 <div class="desc-review-content tab-content clearfix">
                     @foreach (var item in Model.listProduct)
                     {
@@ -320,3 +429,47 @@ function afterAction() {
         </div>
     </div>
 </div>
+<script>
+    // insert commas as thousands separators
+    function addCommas(n) {
+        var rx = /(\d+)(\d{3})/;
+        return String(n).replace(/^\d+/, function (w) {
+            while (rx.test(w)) {
+                w = w.replace(rx, '$1,$2');
+            }
+            return w;
+        });
+    }
+    // return integers and decimal numbers from input
+    // optionally truncates decimals- does not 'round' input
+    function validDigits(n, dec) {
+        n = n.replace(/[^\d\.]+/g, '');
+        var ax1 = n.indexOf('.'), ax2 = -1;
+        if (ax1 != -1) {
+            ++ax1;
+            ax2 = n.indexOf('.', ax1);
+            if (ax2 > ax1) n = n.substring(0, ax2);
+            if (typeof dec === 'number') n = n.substring(0, ax1 + dec);
+        }
+        return n;
+    }
+    window.onload = function () {
+        var n1 = document.getElementById('minimal'),
+            n2 = document.getElementById('maksimal');
+        n1.value = n2.value = '';
+
+        n1.onkeyup = n1.onchange = n2.onkeyup = n2.onchange = function (e) {
+            e = e || window.event;
+            var who = e.target || e.srcElement, temp;
+            if (who.id === 'maksimal') temp = validDigits(who.value, 2);
+            else temp = validDigits(who.value);
+            who.value = addCommas(temp);
+        }
+        n1.onblur = n2.onblur = function () {
+            var temp = parseFloat(validDigits(n1.value)),
+                temp2 = parseFloat(validDigits(n2.value));
+            if (temp) n1.value = addCommas(temp);
+            if (temp2) n2.value = addCommas(temp2.toFixed(2));
+        }
+    }
+</script>
