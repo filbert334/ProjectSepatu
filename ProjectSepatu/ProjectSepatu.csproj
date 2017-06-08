@@ -202,6 +202,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\Assets\Front\Js\fit-columns.js" />
+    <None Include="wwwroot\Assets\Front\Js\HomePageJS.js" />
     <None Include="wwwroot\Assets\Front\Js\isotope-docs.min.js" />
     <None Include="wwwroot\Assets\Front\Js\isotope.pkgd.min.js" />
     <None Include="wwwroot\Assets\Front\Js\jquery.hoverdir.js" />
