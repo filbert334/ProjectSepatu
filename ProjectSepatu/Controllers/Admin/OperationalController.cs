@@ -3,20 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using ProjectSepatu.DAL.ProductProperties.MetodePembayaranMasterClass;
 
 namespace ProjectSepatu.Controllers.Admin
 {
     public class OperationalController : Controller
     {
+        MetodePembayaranMasterRepo MetodePembayaran;
+
+        public OperationalController(MetodePembayaranMasterRepo _MetodePembayaran)
+        {
+            MetodePembayaran = _MetodePembayaran;
+        }
+
         public IActionResult Index()
         {
             return View();
         }
 
+        #region TabMetodePembayaran
+
         public IActionResult TabMetodePembayaran()
         {
-            return View();
+            var MetodePembayaranList = MetodePembayaran.GetAll();
+            
+            return View(MetodePembayaranList.ToList());
         }
+
+        #endregion
 
         public IActionResult TabJenisPembayaran()
         {

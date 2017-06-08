@@ -27,6 +27,7 @@ using ProjectSepatu.DAL.ProductProperties.ProvinsiMasterClass;
 using ProjectSepatu.DAL.ProductProperties.SaranaPengirimanMasterClass;
 using ProjectSepatu.DAL.ProductProperties.TransaksiHeaderClass;
 using ProjectSepatu.DAL.ProductProperties.TransaksiListClass;
+using ProjectSepatu.DAL.ProductProperties.MetodePembayaranMasterClass;
 
 namespace ProjectSepatu
 {
@@ -85,6 +86,8 @@ namespace ProjectSepatu
             services.AddTransient<SaranaPengirimanMasterRepo, SaranaPengirimanMasterRepo>();
             services.AddTransient<TransaksiHeaderRepo, TransaksiHeaderRepo>();
             services.AddTransient<TransaksiListRepo, TransaksiListRepo>();
+            services.AddTransient<MetodePembayaranMasterRepo, MetodePembayaranMasterRepo>();
+
 
 
             services.AddTransient<IEmailSender, AuthMessageSender>();
