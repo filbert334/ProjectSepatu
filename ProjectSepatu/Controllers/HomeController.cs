@@ -24,8 +24,8 @@ namespace ProjectSepatu.Controllers
 
         public IActionResult Index()
         {
-          
-            return View();
+            
+            return RedirectToAction("Beranda");
         }
         public IActionResult Beranda()
         {
