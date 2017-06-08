@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProjectSepatu.Core.ProductProperties.MetodePembayaranMasterClass;
 using ProjectSepatu.DAL.ProductProperties.MetodePembayaranMasterClass;
+using ProjectSepatu.Models.OperationalViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,17 +11,24 @@ namespace ProjectSepatu.Components
 {
     public class TabMetodePembayaranComponent : ViewComponent
     {
+
         MetodePembayaranMasterRepo MetodePembayaranMasterRepo;
 
         public TabMetodePembayaranComponent(MetodePembayaranMasterRepo _MetodePembayaranMasterRepo)
         {
             MetodePembayaranMasterRepo = _MetodePembayaranMasterRepo;
         }
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(int id)
         {
-            var metodepembayaranlist = MetodePembayaranMasterRepo.GetAll();
+            TabMetodePembayaranModel model = new TabMetodePembayaranModel();
 
-            return View("~/Views/Operational/TabMetodePembayaran.cshtml", metodepembayaranlist.ToList());
+            model.MetodePembayaranList = MetodePembayaranMasterRepo.GetAll();
+
+            var metodepembayaranitem = MetodePembayaranMasterRepo.GetById(id);
+            model.MetodePembayaran = metodepembayaranitem;
+
+
+            return View("~/Views/Operational/TabMetodePembayaran.cshtml", model);
         }
     }
 }
