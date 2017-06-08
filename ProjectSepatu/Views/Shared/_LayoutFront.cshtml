@@ -28,7 +28,7 @@
     <script src="~/Assets/Front/Js/nouislider.min.js"></script>
 </head>
 
-<body class="home-3">
+<body class="@ViewData["body"]">
     <div id="preloaderKDZ"></div>
 
     <div class="sn-site">
@@ -94,37 +94,8 @@
                         <!-- .header-logo-->
                         <nav id="primary-menu" class="main-nav">
                             <ul class="nav">
-                                <li class="active menu-item menu-home">
-                                    <a href="index.html">Home</a>
-                                    <ul class="sub-menu">
-                                        <li class="menu-item">
-                                            <a href="index.html">Home demo</a>
-                                            <ul class="sub-menu">
-                                                <li class="menu-item"><a href="index.html">Home V1</a></li>
-                                                <li class="menu-item"><a href="home-2.html">Home V2</a></li>
-                                                <li class="menu-item"><a href="home-3.html">Home V3</a></li>
-                                                <li class="menu-item"><a href="home-4.html">Home V4</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a href="home-lookbook-1.html">Home demo</a>
-                                            <ul class="sub-menu">
-                                                <li class="menu-item"><a href="home-5.html">Home V5</a></li>
-                                                <li class="menu-item"><a href="home-6.html">Home V6</a></li>
-                                                <li class="menu-item"><a href="home-lookbook-1.html">Home Lookbook V1</a></li>
-                                                <li class="menu-item"><a href="home-lookbook-2.html">Home Lookbook V2</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item">
-                                            <a href="home-blog.html">Home demo</a>
-                                            <ul class="sub-menu">
-                                                <li class="menu-item"><a href="home-blog.html">Home Blog</a></li>
-                                                <li class="menu-item"><a href="home-sidebar.html">Home Sidebar<span class="new bg-42d667">New</span></a></li>
-                                                <li class="menu-item"><a href="shop.html">Home Shop</a></li>
-                                                <li class="menu-item"><a href="home-full-sreen.html">Home Fullscreen</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
+                                <li class="mega-menu-item">
+                                    <a href="">BERANDA</a>
                                 </li>
                                 <li class="mega-menu menu-item">
                                     <a href="#">Filter</a>
@@ -340,7 +311,8 @@
             @RenderBody()
         </div>
         <div class="section-no-margin">
-            <footer class="footer footer-style-3">
+            <footer class="footer footer-style-3" style="background-color:#444649;">
+               
 
                 <div class="container">
                     <div class="footer-top">
