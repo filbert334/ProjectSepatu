@@ -3,7 +3,9 @@
     ViewData["Title"] = "ProductDetails";
     Layout = "~/Views/Shared/_LayoutFront.cshtml";
 }
+@using ProjectSepatu.Core.ProductProperties.ProductMasterClass
 
+@model ProductMaster
 <section class="product-information" style="margin-top:20px;">
     <div class="container">
         <div class="row">
@@ -39,14 +41,22 @@
             </div>
             <div class="col-md-6">
                 <div class="summary-product entry-summary">
-                    <h1 class="product_title">Baxter Cleansing Bar</h1>
-                    <div class="woocommerce-product-rating"></div>
+                    <h1 class="product_title">@Model.Nama_Product</h1>
+                    @*<div class="woocommerce-product-rating"></div>*@
                     <div class="rate-price">
-                        <div class="rate"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></div><a href="#" class="woocommerce-review-link">(1 review)</a>
-                        <p class="price"><span>$339.00</span></p>
+                        @*<div class="rate"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></div>*@
+                        <a href="#" class="woocommerce-review-link">(1 review)</a>
+                        @if (Model.Diskon_Persen == 0 && Model.Diskon_Rp == 0)
+                        {
+                            <p class="price"><span>Rp @Model.Harga_Jual</span></p>
+                        }
+                        else
+                        {
+                            <p class="price"><span>Rp @Model.Harga_Jual</span></p>
+                        }
                     </div>
                     <div class="product-single-short-description">
-                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                        <p>@Model.Remarks</p>
                     </div>
                     <form method="post" enctype="multipart/form-data" class="cart">
                         <div class="quantity">
@@ -54,7 +64,7 @@
                                 <input step="1" min="1" name="quantity" value="1" title="Qty" size="4" type="number" class="input-text qty text" />
                             </div>
                         </div>
-                       
+
                         <div class="form-group">
                             <label for="usr">Remarks: </label>
                             <input type="text" class="form-control" id="usr">
