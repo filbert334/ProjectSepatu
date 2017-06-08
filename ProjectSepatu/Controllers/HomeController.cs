@@ -27,6 +27,29 @@ namespace ProjectSepatu.Controllers
           
             return View();
         }
+        public IActionResult Beranda()
+        {
+            var ProductList = _ProductMasterRepo.GetAll().Where(i => i.IsHidden == false).ToList();
+            var viewModel = new HomePageViewModel();
+            var counter = 0;
+            if (ProductList != null)
+            {
+                foreach (var item in ProductList)
+                {
+                    if (counter < 6)
+                    {
+                        viewModel.listProduct.Add(item);
+                    }
+                    counter++;
+
+                }
+            }
+            else
+            {
+                viewModel.listProduct = new List<ProductMaster>();
+            }
+            return View(viewModel);
+        }
         public IActionResult Coba()
         {
             var ProductList = _ProductMasterRepo.GetAll().Where(i => i.IsHidden == false).ToList();
