@@ -27,156 +27,59 @@
     </div>
 </div>
 <script>
-		$(".owl-carousel").owlCarousel({
-    items: 3,
-    loop: true,
-    afterAction : afterAction
-});
+    $(".owl-carousel").owlCarousel({
+        items: 3,
+        loop: true,
+        afterAction: afterAction
+    });
 
 
-function afterAction() {
-    var elem = this.owl.owlItems;
-    var index = this.owl.visibleItems;
+    function afterAction() {
+        var elem = this.owl.owlItems;
+        var index = this.owl.visibleItems;
 
-    var height = elem.eq(index).height();
+        var height = elem.eq(index).height();
 
-    //.owl-wrapper is the element that we are high.
-    elem.parents('.owl-wrapper, .owl-carousel').css('height', height);
-}
+        //.owl-wrapper is the element that we are high.
+        elem.parents('.owl-wrapper, .owl-carousel').css('height', height);
+    }
 </script>
 <section>
-    <div class="latest-home-3"style="margin-top:30px;">
+    <div class="latest-home-3" style="margin-top:30px;">
         <div class="container">
             <div class="sperator text-left">
                 <p>LATEST PRODUCTS</p><span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</span>
             </div>
             <div data-number="4" data-margin="15" data-loop="yes" data-navcontrol="no" class="woocommerce sofani-owl-carousel">
-                <div class="product-item-wrap button-has-tooltip product-style_2">
-                    <div class="product-item-inner">
-                        <div class="product-thumb gray">
-                            <div class="product-flash-wrap"></div>
-                            <div class="product-thumb-primary"><img src="~/Assets/Front/image/product/1.jpg" alt="27" title="27" width="300" height="400" class="attachment-shop_catalog size-shop_catalog wp-post-image" /></div>
-                            <div class="product-thumb-secondary"><img src="~/Assets/Front/image/product/1.jpg" alt="18" width="300" height="400" class="attachment-shop_catalog size-shop_catalog" /></div><a href="#" class="product-link">
-                                <div class="product-hover-sign">
+                @foreach (var item in Model.listLatestProduct)
+                {
+                    <div class="product-item-wrap button-has-tooltip product-style_2">
+                        <div class="product-item-inner">
+                            <div class="product-thumb gray">
+                                <div class="product-flash-wrap"></div>
+                                <div class="product-thumb-primary"><img src="~/Assets/Front/image/product/1.jpg" alt="27" title="27" width="300" height="400" class="attachment-shop_catalog size-shop_catalog wp-post-image" /></div>
+                                <div class="product-thumb-secondary"><img src="~/Assets/Front/image/product/1.jpg" alt="18" width="300" height="400" class="attachment-shop_catalog size-shop_catalog" onclick="ToDetailsProduct(@item.Id)" /></div><a href="#" class="product-link">
+                                    <div class="product-hover-sign">
 
-                                    <hr />
-                                    <hr />
-                                </div>
-                            </a>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-actions">
-                                <div class="yith-wcwl-add-to-wishlist add-to-wishlist-180">
-                                    <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i> Add to Wishlist</a></div>
-                                </div><a class="compare add_to_compare"><i class="fa fa-signal"></i>Compare</a>
-                                <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> Add to cart</a></div><a class="product-quick-view"><i class="fa fa-search"></i>Quick view</a>
+                                        <hr />
+                                        <hr />
+                                    </div>
+                                </a>
                             </div>
-                            <div class="rate"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></div><span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>255.00</span></span><a href="#" target="_blank">
-                                <h3>Tulip Arm Chair</h3>
-                            </a>
+                            <div class="product-info">
+                                <div class="product-actions">
+                                    <div class="yith-wcwl-add-to-wishlist add-to-wishlist-180">
+                                        <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i> Add to Wishlist</a></div>
+                                    </div><a class="compare add_to_compare"><i class="fa fa-signal"></i>Compare</a>
+                                    <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> Add to cart</a></div><a class="product-quick-view"><i class="fa fa-search"></i>Quick view</a>
+                                </div>
+                                <div class="rate"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></div><span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>255.00</span></span><a href="#" target="_blank">
+                                    <h3>@item.Nama_Product</h3>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="product-item-wrap button-has-tooltip product-style_2">
-                    <div class="product-item-inner">
-                        <div class="product-thumb gray">
-                            <div class="product-flash-wrap"></div>
-                            <div class="product-thumb-primary"><img src="~/Assets/Front/image/product/1.jpg" alt="27" title="27" width="300" height="400" class="attachment-shop_catalog size-shop_catalog wp-post-image" /></div>
-                            <div class="product-thumb-secondary"><img src="~/Assets/Front/image/product/1.jpg" alt="18" width="300" height="400" class="attachment-shop_catalog size-shop_catalog" /></div><a href="#" class="product-link">
-                                <div class="product-hover-sign">
-                                    <hr />
-                                    <hr />
-                                </div>
-                            </a>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-actions">
-                                <div class="yith-wcwl-add-to-wishlist add-to-wishlist-180">
-                                    <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i> Add to Wishlist</a></div>
-                                </div><a class="compare add_to_compare"><i class="fa fa-signal"></i>Compare</a>
-                                <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> Add to cart</a></div><a class="product-quick-view"><i class="fa fa-search"></i>Quick view</a>
-                            </div>
-                            <div class="rate"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></div><span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>255.00</span></span><a href="#" target="_blank">
-                                <h3>Tulip Arm Chair</h3>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-item-wrap button-has-tooltip product-style_2">
-                    <div class="product-item-inner">
-                        <div class="product-thumb gray">
-                            <div class="product-flash-wrap"></div>
-                            <div class="product-thumb-primary"><img src="~/Assets/Front/image/product/1.jpg" alt="27" title="27" width="300" height="400" class="attachment-shop_catalog size-shop_catalog wp-post-image" /></div>
-                            <div class="product-thumb-secondary"><img src="~/Assets/Front/image/product/1.jpg" alt="18" width="300" height="400" class="attachment-shop_catalog size-shop_catalog" /></div><a href="#" class="product-link">
-                                <div class="product-hover-sign">
-                                    <hr />
-                                    <hr />
-                                </div>
-                            </a>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-actions">
-                                <div class="yith-wcwl-add-to-wishlist add-to-wishlist-180">
-                                    <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i> Add to Wishlist</a></div>
-                                </div><a class="compare add_to_compare"><i class="fa fa-signal"></i>Compare</a>
-                                <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> Add to cart</a></div><a class="product-quick-view"><i class="fa fa-search"></i>Quick view</a>
-                            </div>
-                            <div class="rate"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></div><span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>255.00</span></span><a href="#" target="_blank">
-                                <h3>Tulip Arm Chair</h3>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-item-wrap button-has-tooltip product-style_2">
-                    <div class="product-item-inner">
-                        <div class="product-thumb gray">
-                            <div class="product-flash-wrap"></div>
-                            <div class="product-thumb-primary"><img src="~/Assets/Front/image/product/1.jpg" alt="27" title="27" width="300" height="400" class="attachment-shop_catalog size-shop_catalog wp-post-image" /></div>
-                            <div class="product-thumb-secondary"><img src="~/Assets/Front/image/product/1.jpg" alt="18" width="300" height="400" class="attachment-shop_catalog size-shop_catalog" /></div><a href="#" class="product-link">
-                                <div class="product-hover-sign">
-                                    <hr />
-                                    <hr />
-                                </div>
-                            </a>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-actions">
-                                <div class="yith-wcwl-add-to-wishlist add-to-wishlist-180">
-                                    <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i> Add to Wishlist</a></div>
-                                </div><a class="compare add_to_compare"><i class="fa fa-signal"></i>Compare</a>
-                                <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> Add to cart</a></div><a class="product-quick-view"><i class="fa fa-search"></i>Quick view</a>
-                            </div>
-                            <div class="rate"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></div><span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>255.00</span></span><a href="#" target="_blank">
-                                <h3>Tulip Arm Chair</h3>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-item-wrap button-has-tooltip product-style_2">
-                    <div class="product-item-inner">
-                        <div class="product-thumb gray">
-                            <div class="product-flash-wrap"></div>
-                            <div class="product-thumb-primary"><img src="~/Assets/Front/image/product/1.jpg" alt="27" title="27" width="300" height="400" class="attachment-shop_catalog size-shop_catalog wp-post-image" /></div>
-                            <div class="product-thumb-secondary"><img src="~/Assets/Front/image/product/1.jpg" alt="18" width="300" height="400" class="attachment-shop_catalog size-shop_catalog" /></div><a href="#" class="product-link">
-                                <div class="product-hover-sign">
-                                    <hr />
-                                    <hr />
-                                </div>
-                            </a>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-actions">
-                                <div class="yith-wcwl-add-to-wishlist add-to-wishlist-180">
-                                    <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i> Add to Wishlist</a></div>
-                                </div><a class="compare add_to_compare"><i class="fa fa-signal"></i>Compare</a>
-                                <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> Add to cart</a></div><a class="product-quick-view"><i class="fa fa-search"></i>Quick view</a>
-                            </div>
-                            <div class="rate"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></div><span class="price"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>255.00</span></span><a href="#" target="_blank">
-                                <h3>Tulip Arm Chair</h3>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                }
             </div>
         </div>
     </div>
@@ -192,12 +95,10 @@ function afterAction() {
                 <div class="ul-list-shop">
                     <ul class="products-tab-shop nav nav-pills">
                         @*<li class="click-toggle-sidebar-filter click-toggle-sidebar"style="font-size:20px;"><strong>Sort</strong></li>*@
-                        <li class="click-toggle-sidebar-search click-toggle-sidebar"style="font-size:20px;"><strong>Filter</strong></li>
+                        <li class="click-toggle-sidebar-search click-toggle-sidebar" style="font-size:20px;"><strong>Filter</strong></li>
 
                     </ul>
-                    <ul class="sidebar-shop">
-                        
-                    </ul>
+                    <ul class="sidebar-shop"></ul>
                 </div>
                 <div class="sidebar-shop-search toggle-sidebar-shop">
                     <div class="sidebar-product-style-2">
@@ -232,23 +133,11 @@ function afterAction() {
                                 <aside>
                                     <h4>Tipe</h4>
                                     <select class="selectpicker form-control">
-                                        <option>asdfasdfasdfasdfasdfaf</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
+                                        <option selected>Select All</option>
+                                        @foreach (var item in Model.ProductTypeList)
+                                        {
+                                            <option value="@item.Id">@item.Type</option>
+                                        }
                                     </select>
                                 </aside>
                             </div>
@@ -256,128 +145,117 @@ function afterAction() {
                                 <aside>
                                     <h4>Brand</h4>
                                     <select class="selectpicker form-control">
-                                        <option>asdfasdfasdfasdfasdfaf</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
+                                        <option selected>Select All</option>
+                                        @foreach (var item in Model.BrandList)
+                                        {
+                                            <option value="@item.Id">@item.Nama_Brand</option>
+
+                                        }
                                     </select>
                                 </aside>
                             </div>
                             <div class="col-md-2">
                                 <aside style="margin-top:58px;">
-                                    
-                                   <a href="" class="load-more-shop" style="background-color:black;width:100px;">Search</a>
+
+                                    <a href="" class="load-more-shop" style="background-color:black;width:100px;">Search</a>
                                 </aside>
                             </div>
                         </div>
                     </div>
                 </div>
                 @*<div class="sidebar-shop-col toggle-sidebar-shop">
-                    <div class="sidebar-product-style-2">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <aside class="sort-by">
-                                    <h4>Sort By</h4>
-                                    <ul>
-                                        <li><a asp-action="Beranda" asp-route-sortOrder="@ViewData["TermurahSortParm"]">Termurah</a></li>
-                                        <li><a asp-action="Beranda" asp-route-sortOrder="@ViewData["TermahalSortParm"]">Termahal</a></li>
-                                        <li><a asp-action="Beranda" asp-route-sortOrder="@ViewData["DilihatSortParm"]">Dilihat Terbanyak</a></li>
-                                        <li><a asp-action="Beranda" asp-route-sortOrder="@ViewData["PenjualanSortParm"]">Penjualan Terbanyak</a></li>
-                                        <li><a asp-action="Beranda" asp-route-sortOrder="@ViewData["TerbaruSortParm"]">Terbaru</a></li>
-                                    </ul>
-                                </aside>
-                            </div>
-                            <div class="col-md-2">
-                                <aside class="sort-by">
-                                    <h4>Filter by price</h4>
-                                    <div class="form-group">
-                                        <label for="min">Harga Terendah (Rp): </label>
-                                        <input type="text"   placeholder="Contoh :  500000" class="form-control" id="minimal">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="max">Harga Tertinggi (Rp): </label>
-                                        <input type="text" placeholder="Contoh :  1500000" class="form-control" id="maksimal">
-                                    </div>
-                                </aside>
-                            </div>
-                            <div class="col-md-2">
-                                <aside class="categorie">
-                                    <h4>Kategori</h4>
-                                    
-                                    <select class="selectpicker form-control">
-                                        <option>asdfasdfasdfasdfasdfaf</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                    </select>
-                                   
-                                </aside>
-                            </div>
-                            <div class="col-md-3">
-                                <aside class="tagcloud">
-                                    <h4>Tipe</h4>
-                                    <ul class="tagcloud">
-                                        <li><a href="#">Bag</a></li>
-                                        <li><a href="#">Comb</a></li>
-                                        <li><a href="#">Chair</a></li>
-                                        <li><a href="#">Classic</a></li>
-                                        <li><a href="#">Desk</a></li>
-                                        <li><a href="#">Gel</a></li>
-                                        <li><a href="#">Lamp</a></li>
-                                        <li><a href="#">Glass</a></li>
-                                        <li><a href="#">Office</a></li>
-                                        <li><a href="#">Table Tiles</a></li>
-                                        <li><a href="#">Socks</a></li>
-                                    </ul>
-                                </aside>
-                            </div>
-                            <div class="col-md-3">
-                                <aside class="tagcloud">
-                                    <h4>Brand</h4>
-                                    <ul class="tagcloud">
-                                        <li><a href="#">Bag</a></li>
-                                        <li><a href="#">Comb</a></li>
-                                        <li><a href="#">Chair</a></li>
-                                        <li><a href="#">Classic</a></li>
-                                        <li><a href="#">Desk</a></li>
-                                        <li><a href="#">Gel</a></li>
-                                        <li><a href="#">Lamp</a></li>
-                                        <li><a href="#">Glass</a></li>
-                                        <li><a href="#">Office</a></li>
-                                        <li><a href="#">Table Tiles</a></li>
-                                        <li><a href="#">Socks</a></li>
-                                    </ul>
-                                </aside>
+                        <div class="sidebar-product-style-2">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <aside class="sort-by">
+                                        <h4>Sort By</h4>
+                                        <ul>
+                                            <li><a asp-action="Beranda" asp-route-sortOrder="@ViewData["TermurahSortParm"]">Termurah</a></li>
+                                            <li><a asp-action="Beranda" asp-route-sortOrder="@ViewData["TermahalSortParm"]">Termahal</a></li>
+                                            <li><a asp-action="Beranda" asp-route-sortOrder="@ViewData["DilihatSortParm"]">Dilihat Terbanyak</a></li>
+                                            <li><a asp-action="Beranda" asp-route-sortOrder="@ViewData["PenjualanSortParm"]">Penjualan Terbanyak</a></li>
+                                            <li><a asp-action="Beranda" asp-route-sortOrder="@ViewData["TerbaruSortParm"]">Terbaru</a></li>
+                                        </ul>
+                                    </aside>
+                                </div>
+                                <div class="col-md-2">
+                                    <aside class="sort-by">
+                                        <h4>Filter by price</h4>
+                                        <div class="form-group">
+                                            <label for="min">Harga Terendah (Rp): </label>
+                                            <input type="text"   placeholder="Contoh :  500000" class="form-control" id="minimal">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="max">Harga Tertinggi (Rp): </label>
+                                            <input type="text" placeholder="Contoh :  1500000" class="form-control" id="maksimal">
+                                        </div>
+                                    </aside>
+                                </div>
+                                <div class="col-md-2">
+                                    <aside class="categorie">
+                                        <h4>Kategori</h4>
+
+                                        <select class="selectpicker form-control">
+                                            <option>asdfasdfasdfasdfasdfaf</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                        </select>
+
+                                    </aside>
+                                </div>
+                                <div class="col-md-3">
+                                    <aside class="tagcloud">
+                                        <h4>Tipe</h4>
+                                        <ul class="tagcloud">
+                                            <li><a href="#">Bag</a></li>
+                                            <li><a href="#">Comb</a></li>
+                                            <li><a href="#">Chair</a></li>
+                                            <li><a href="#">Classic</a></li>
+                                            <li><a href="#">Desk</a></li>
+                                            <li><a href="#">Gel</a></li>
+                                            <li><a href="#">Lamp</a></li>
+                                            <li><a href="#">Glass</a></li>
+                                            <li><a href="#">Office</a></li>
+                                            <li><a href="#">Table Tiles</a></li>
+                                            <li><a href="#">Socks</a></li>
+                                        </ul>
+                                    </aside>
+                                </div>
+                                <div class="col-md-3">
+                                    <aside class="tagcloud">
+                                        <h4>Brand</h4>
+                                        <ul class="tagcloud">
+                                            <li><a href="#">Bag</a></li>
+                                            <li><a href="#">Comb</a></li>
+                                            <li><a href="#">Chair</a></li>
+                                            <li><a href="#">Classic</a></li>
+                                            <li><a href="#">Desk</a></li>
+                                            <li><a href="#">Gel</a></li>
+                                            <li><a href="#">Lamp</a></li>
+                                            <li><a href="#">Glass</a></li>
+                                            <li><a href="#">Office</a></li>
+                                            <li><a href="#">Table Tiles</a></li>
+                                            <li><a href="#">Socks</a></li>
+                                        </ul>
+                                    </aside>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>*@
+                    </div>*@
                 <div class="desc-review-content tab-content clearfix">
                     @foreach (var item in Model.listProduct)
                     {
@@ -390,11 +268,11 @@ function afterAction() {
                                     <div class="product-thumb-secondary"><img width="300" height="400" src="~/Assets/Front/image/product/3.jpg" alt="47" class="attachment-shop_catalog size-shop_catalog" onclick="ToDetailsProduct(@item.Id)" /></div>
 
                                     @*<a href="" class="product-link">
-                                <div class="product-hover-sign" >
-                                    <hr />
-                                    <hr />
-                                </div>
-                            </a>*@
+                                            <div class="product-hover-sign" >
+                                                <hr />
+                                                <hr />
+                                            </div>
+                                        </a>*@
                                     <div class="product-actions">
                                         <div class="yith-wcwl-add-to-wishlist add-to-wishlist-225">
                                             <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i>    Add to Wishlist</a></div>
@@ -413,7 +291,7 @@ function afterAction() {
                                         else
                                         {
                                             <del><span class="woocommerce-Price-amount amount" style="color:red;"><span class="woocommerce-Price-currencySymbol">Rp</span> @item.Harga_Jual</span></del>
-                                                    <ins><span class="woocommerce-Price-currencySymbol" style="color:green;">@item.Diskon_Persen %</span></ins>
+                                            <ins><span class="woocommerce-Price-currencySymbol" style="color:green;">@item.Diskon_Persen %</span></ins>
                                         }
 
                                     </span><a href="#" target="_blank">
