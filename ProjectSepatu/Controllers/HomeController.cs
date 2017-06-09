@@ -134,10 +134,14 @@ namespace ProjectSepatu.Controllers
            
             return View(viewModel);
         }
-        public IActionResult List()
+        public IActionResult List(int idType)
         {
-
-            return View();
+            var ProductTypeList = _ProductMasterRepo.GetAll().Where(i => i.IsHidden == false).ToList();
+            if(idType!=0)
+            {
+                ProductTypeList = ProductTypeList.Where(i => i.TypeMasterId == idType).ToList();
+            }
+            return View(ProductTypeList);
         }
         public IActionResult ProductDetails(int id = 0)
         {
