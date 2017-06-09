@@ -18,7 +18,7 @@ namespace ProjectSepatu.Components
             JenisPembayaranRepo = _JenisPembayaranRepo;
             MetodePembayaranRepo = _MetodePembayaranRepo;
         }
-        public IViewComponentResult Invoke(int id)
+        public IViewComponentResult Invoke(int id = 0)
         {
             TabJenisPembayaranModel model = new TabJenisPembayaranModel();
             model.JenisPembayaranList = JenisPembayaranRepo.GetAll();

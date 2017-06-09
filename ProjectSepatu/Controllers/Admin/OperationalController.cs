@@ -8,6 +8,8 @@ using ProjectSepatu.Core.ProductProperties.MetodePembayaranMasterClass;
 using ProjectSepatu.Models.OperationalViewModel;
 using ProjectSepatu.DAL.ProductProperties.JenisPembayaranMasterClass;
 using ProjectSepatu.Core.ProductProperties.JenisPembayaranMasterClass;
+using ProjectSepatu.DAL.ProductProperties.BrandClass;
+using ProjectSepatu.Core.ProductProperties.BrandClass;
 
 namespace ProjectSepatu.Controllers.Admin
 {
@@ -15,11 +17,13 @@ namespace ProjectSepatu.Controllers.Admin
     {
         static MetodePembayaranMasterRepo MetodePembayaran;
         static JenisPembayaranMasterRepo JenisPembayaran;
+        static BrandRepo BrandRepo;
 
-        public OperationalController(MetodePembayaranMasterRepo _MetodePembayaran, JenisPembayaranMasterRepo _JenisPembayaran)
+        public OperationalController(MetodePembayaranMasterRepo _MetodePembayaran, JenisPembayaranMasterRepo _JenisPembayaran, BrandRepo _BrandRepo)
         {
             MetodePembayaran = _MetodePembayaran;
             JenisPembayaran = _JenisPembayaran;
+            BrandRepo = _BrandRepo;
         }
 
         public IActionResult Index()
@@ -99,9 +103,18 @@ namespace ProjectSepatu.Controllers.Admin
 
         #region TabJenisPembayaran
 
-        public IActionResult TabJenisPembayaran()
+        public ActionResult TabJenisPembayaran(int id)
         {
-            return View();
+            TabJenisPembayaranModel model = new TabJenisPembayaranModel();
+
+            model.JenisPembayaranList = JenisPembayaran.GetAll();
+            model.MetodePembayaranList = MetodePembayaran.GetAll();
+
+
+            var JenisPembayarann = JenisPembayaran.GetById(id);
+            model.JenisPembayaranItem = JenisPembayarann;
+
+            return View(model);
         }
 
         [HttpPost]
@@ -141,7 +154,6 @@ namespace ProjectSepatu.Controllers.Admin
 
                 throw;
             }
-            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -158,15 +170,80 @@ namespace ProjectSepatu.Controllers.Admin
         [HttpGet]
         public ActionResult SelectJenisPembayaran(int Id)
         {
-            return ViewComponent("TabJenisPembayaranComponent", new { id = Id });
+            return RedirectToAction("TabJenisPembayaran", new { id = Id });
         }
 
         #endregion
 
-        public IActionResult TabBrand()
+        #region TabBrand
+
+        public IActionResult TabBrand(int id)
         {
-            return View();
+            TabBrandModel model = new TabBrandModel();
+
+            model.BrandList = BrandRepo.GetAll();
+
+            var metodepembayaranitem = BrandRepo.GetById(id);
+            model.BrandItem = metodepembayaranitem;
+
+            return View(model);
         }
+
+        [HttpPost]
+        public ActionResult SaveBrand(TabBrandModel model)
+        {
+            try
+            {
+                var ItemIsi = BrandRepo.GetById(model.BrandItem.Id);
+
+                if (ItemIsi != null)
+                {
+                    ItemIsi.Nama_Brand = model.BrandItem.Nama_Brand;
+                    ItemIsi.UpdatedDate = DateTime.Now;
+
+                    BrandRepo.Save(ItemIsi);
+
+                    return RedirectToAction("Index");
+                }
+
+                else
+                {
+                    var NewItem = new Brand();
+                    NewItem.Nama_Brand = model.BrandItem.Nama_Brand;
+                    NewItem.CreatedDate = DateTime.Now;
+                    NewItem.UpdatedDate = DateTime.Now;
+                    NewItem.IsHidden = false;
+
+
+                    BrandRepo.Save(NewItem);
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpGet]
+        public ActionResult DeleteBrand(int id)
+        {
+            var ItemIsi = BrandRepo.GetById(id);
+            ItemIsi.IsHidden = true;
+
+            BrandRepo.Save(ItemIsi);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult SelectBrand(int Id)
+        {
+            return RedirectToAction("TabBrand", new { id = Id });
+        }
+
+        #endregion
 
         public IActionResult TabCategory()
         {

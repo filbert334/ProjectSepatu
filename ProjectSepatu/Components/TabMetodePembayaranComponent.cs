@@ -18,7 +18,7 @@ namespace ProjectSepatu.Components
         {
             MetodePembayaranMasterRepo = _MetodePembayaranMasterRepo;
         }
-        public IViewComponentResult Invoke(int id)
+        public IViewComponentResult Invoke(int id = 0)
         {
             TabMetodePembayaranModel model = new TabMetodePembayaranModel();
 
