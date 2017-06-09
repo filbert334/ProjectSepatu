@@ -6,15 +6,20 @@ using Microsoft.AspNetCore.Mvc;
 using ProjectSepatu.DAL.ProductProperties.MetodePembayaranMasterClass;
 using ProjectSepatu.Core.ProductProperties.MetodePembayaranMasterClass;
 using ProjectSepatu.Models.OperationalViewModel;
+using ProjectSepatu.DAL.ProductProperties.JenisPembayaranMasterClass;
+using ProjectSepatu.Core.ProductProperties.JenisPembayaranMasterClass;
 
 namespace ProjectSepatu.Controllers.Admin
 {
     public class OperationalController : Controller
     {
         static MetodePembayaranMasterRepo MetodePembayaran;
-        public OperationalController(MetodePembayaranMasterRepo _MetodePembayaran)
+        static JenisPembayaranMasterRepo JenisPembayaran;
+
+        public OperationalController(MetodePembayaranMasterRepo _MetodePembayaran, JenisPembayaranMasterRepo _JenisPembayaran)
         {
             MetodePembayaran = _MetodePembayaran;
+            JenisPembayaran = _JenisPembayaran;
         }
 
         public IActionResult Index()
@@ -99,30 +104,32 @@ namespace ProjectSepatu.Controllers.Admin
         {
             try
             {
-                //var MetodePembayaranIsi = MetodePembayaran.GetById(model.MetodePembayaran.Id);
+                var JenisPembayaranIsi = JenisPembayaran.GetById(model.JenisPembayaranItem.Id);
 
-                //if (MetodePembayaranIsi != null)
-                //{
-                //    MetodePembayaranIsi.Metode_Pembayaran = model.MetodePembayaran.Metode_Pembayaran;
-                //    MetodePembayaranIsi.UpdatedDate = DateTime.Now;
+                if (JenisPembayaranIsi != null)
+                {
+                    JenisPembayaranIsi.Jenis_Pembayaran = model.JenisPembayaranItem.Jenis_Pembayaran;
+                    JenisPembayaranIsi.MetodePembayaranMasterId = model.JenisPembayaranItem.MetodePembayaranMasterId;
+                    JenisPembayaranIsi.UpdatedDate = DateTime.Now;
 
-                //    MetodePembayaran.Save(MetodePembayaranIsi);
+                    JenisPembayaran.Save(JenisPembayaranIsi);
 
-                //    return RedirectToAction("Index");
-                //}
+                    return RedirectToAction("Index");
+                }
 
-                //else
-                //{
-                //    var NewMetodePembayaran = new MetodePembayaranMaster();
-                //    NewMetodePembayaran.Metode_Pembayaran = model.MetodePembayaran.Metode_Pembayaran;
-                //    NewMetodePembayaran.CreatedDate = DateTime.Now;
-                //    NewMetodePembayaran.UpdatedDate = DateTime.Now;
-                //    NewMetodePembayaran.IsHidden = false;
+                else
+                {
+                    var NewJenisPembayaran = new JenisPembayaranMaster();
+                    NewJenisPembayaran.Jenis_Pembayaran = model.JenisPembayaranItem.Jenis_Pembayaran;
+                    NewJenisPembayaran.MetodePembayaranMasterId = model.JenisPembayaranItem.MetodePembayaranMasterId;
+                    NewJenisPembayaran.CreatedDate = DateTime.Now;
+                    NewJenisPembayaran.UpdatedDate = DateTime.Now;
+                    NewJenisPembayaran.IsHidden = false;
 
 
-                //    MetodePembayaran.Save(NewMetodePembayaran);
-                //    return RedirectToAction("Index");
-                //}
+                    JenisPembayaran.Save(NewJenisPembayaran);
+                    return RedirectToAction("Index");
+                }
             }
             catch (Exception ex)
             {
@@ -131,6 +138,24 @@ namespace ProjectSepatu.Controllers.Admin
             }
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public ActionResult DeleteJenisPembayaran(int id)
+        {
+            var JenisPembayaranisi = JenisPembayaran.GetById(id);
+            JenisPembayaranisi.IsHidden = true;
+
+            JenisPembayaran.Save(JenisPembayaranisi);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult SelectJenisPembayaran(int Id)
+        {
+            return ViewComponent("TabJenisPembayaranComponent", new { id = Id });
+        }
+
         #endregion
 
         public IActionResult TabBrand()

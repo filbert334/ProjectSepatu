@@ -64,7 +64,7 @@
                         </form>
                     </div>
                 </div>
-                @using (Html.BeginForm("SaveMetodePembayaran", "Operational", FormMethod.Post))
+                @using (Html.BeginForm("SaveJenisPembayaran", "Operational", FormMethod.Post))
                 {
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -81,7 +81,8 @@
                         <div class="panel-body">
                             <div class="form-group">
                                 <label>Jenis Pembayaran</label>
-                                @Html.TextBox("JenisPembayaran", "", new { @class = "form-control", style = "width:300px" })
+                                @Html.TextBoxFor(model => model.JenisPembayaranItem.Jenis_Pembayaran, new { @class = "form-control", style = "width:300px" })
+                                @Html.HiddenFor(model => model.JenisPembayaranItem.Id)
                             </div>
                             <div class="form-group">
                                 <label>Metode Pembayaran</label>
@@ -99,8 +100,9 @@
                                         }
                                     }
                                 }
-                                @Html.DropDownListFor(j => Model.JenisPembayaranItem.MetodePembayaranMasterId, list, new { @class = "form-control", style = "width:150px;" })
+                                @Html.DropDownListFor(j => Model.JenisPembayaranItem.MetodePembayaranMasterId, list, new { @class = "form-control", style = "width:300px;" })
                             </div>
+                            <button type="submit" class="btn btn-outline-warning">Save</button>
                         </div>
                     </div>
                 }
@@ -130,9 +132,13 @@
 
                                         @foreach (var metode in Model.MetodePembayaranList)
                                         {
-                                            if (item.MetodePembayaranMasterId == metode.Id)
+                                            if (item.MetodePembayaranMasterId == metode.Id && metode.IsHidden == false)
                                             {
                                                 <td>@metode.Metode_Pembayaran</td>
+                                            }
+                                            else if (item.MetodePembayaranMasterId == metode.Id && metode.IsHidden != false)
+                                            {
+                                                <td style="color:red;">@metode.Metode_Pembayaran</td>
                                             }
                                         }
                                         <td>@item.Jenis_Pembayaran</td>
@@ -154,9 +160,9 @@
 </div>
 <script>
     function DeleteRow(id) {
-        window.location.replace("http://localhost:53293/Operational/DeleteMetodePembayaran/" + id);
+        window.location.replace("http://localhost:53293/Operational/DeleteJenisPembayaran/" + id);
     }
     function SelectRow(id) {
-        window.location.replace("http://localhost:53293/Operational/SelectMetodePembayaran/" + id);
+        window.location.replace("http://localhost:53293/Operational/SelectJenisPembayaran/" + id);
     }
 </script>
