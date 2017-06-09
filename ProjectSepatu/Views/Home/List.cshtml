@@ -4,11 +4,13 @@
     Layout = "~/Views/Shared/_LayoutFront.cshtml";
 }
 
+@using ProjectSepatu.Core.ProductProperties.ProductMasterClass
 
+@model List<ProductMaster>
 
 <div class="section" style="margin-top:30px;">
     <div class="products-in-category-tabs-wrapper container">
-        
+
         <div class="row">
             <div class="col-md-3" style="margin-top:-10px;">
 
@@ -56,176 +58,48 @@
                                 <li><a href="#5a" data-toggle="tab">Sofar</a></li>
                             </ul>*@
                         <div class="desc-review-content tab-content clearfix">
+                            @foreach (var item in Model)
+                            {
+                                <div class="product-item-wrap has-post-thumbnail">
+                                    <div class="product-item-inner">
+                                        <div class="product-thumb">
+                                            @*<div class="product-flash-wrap"><span class="on-sale product-flash"></span><span class="on-sale product-flash"></span></div>*@
+                                            <div class="product-thumb-primary"><img width="300" height="400" src="~/Assets/Front/image/product/1.jpg" alt="42" title="42" class="attachment-shop_catalog size-shop_catalog wp-post-image" /></div>
+                                            <div class="product-thumb-secondary"><img width="300" height="400" src="~/Assets/Front/image/product/3.jpg" alt="47" class="attachment-shop_catalog size-shop_catalog" onclick="ToDetailsProduct(@item.Id)" /></div>
+                                                <div class="product-hover-sign">
+                                                    <hr />
+                                                    <hr />
+                                                </div>
+                                            
+                                            <div class="product-actions">
+                                                <div class="yith-wcwl-add-to-wishlist add-to-wishlist-225">
+                                                    <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i>    Add to Wishlist</a></div>
+                                                </div>
 
-                            <div class="product-item-wrap has-post-thumbnail">
-                                <div class="product-item-inner">
-                                    <div class="product-thumb">
-                                        @*<div class="product-flash-wrap"><span class="on-sale product-flash"></span><span class="on-sale product-flash"></span></div>*@
-                                        <div class="product-thumb-primary"><img width="300" height="400" src="~/Assets/Front/image/product/1.jpg" alt="42" title="42" class="attachment-shop_catalog size-shop_catalog wp-post-image" /></div>
-                                        <div class="product-thumb-secondary"><img width="300" height="400" src="~/Assets/Front/image/product/3.jpg" alt="47" class="attachment-shop_catalog size-shop_catalog" /></div><a href="#" class="product-link">
-                                            <div class="product-hover-sign">
-                                                <hr />
-                                                <hr />
+                                                <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> Add to cart</a></div><a href="#" class="product-quick-view"><i class="fa fa-search"></i>Quick view</a>
                                             </div>
-                                        </a>
-                                        <div class="product-actions">
-                                            <div class="yith-wcwl-add-to-wishlist add-to-wishlist-225">
-                                                <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i>    Add to Wishlist</a></div>
-                                            </div>
+                                        </div>
+                                        <div class="product-info">
+                                            <div class="rate" style="margin-right:-20px;"><i class="fa fa-eye" aria-hidden="true">&nbsp;@item.Dilihat</i></div><span class="price">
+                                                @if (item.Diskon_Persen == 0 && item.Diskon_Rp == 0)
+                                                {
 
-                                            <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> Add to cart</a></div><a href="#" class="product-quick-view"><i class="fa fa-search"></i>Quick view</a>
+                                                    <ins><span class="woocommerce-Price-currencySymbol" style="color:green;">Rp @item.Harga_Jual</span></ins>
+                                                }
+                                                else
+                                                {
+                                                    <del><span class="woocommerce-Price-amount amount" style="color:red;"><span class="woocommerce-Price-currencySymbol">Rp</span> @item.Harga_Jual</span></del>
+                                                                                                                                                                    <ins><span class="woocommerce-Price-currencySymbol" style="color:green;">@item.Diskon_Persen %</span></ins>
+                                                }
+
+                                            </span><a href="#" target="_blank">
+                                                <h3>@item.Nama_Product</h3>
+                                            </a>
                                         </div>
                                     </div>
-                                    <div class="product-info">
-                                        <div class="rate" style="margin-right:-20px;"><i class="fa fa-eye" aria-hidden="true">&nbsp;1231</i></div><span class="price">
-                                            <del><span class="woocommerce-Price-amount amount" style="color:red;"><span class="woocommerce-Price-currencySymbol">$</span>499.00</span></del><ins><span class="woocommerce-Price-currencySymbol" style="color:green;">$455.00</span></ins>
-                                        </span><a href="#" target="_blank">
-                                            <h3>Nefil Mesh Chair</h3>
-                                        </a>
-                                    </div>
                                 </div>
-                            </div>
-                            <div class="product-item-wrap has-post-thumbnail">
-                                <div class="product-item-inner">
-                                    <div class="product-thumb">
-                                        @*<div class="product-flash-wrap"><span class="on-sale product-flash"></span><span class="on-sale product-flash"></span></div>*@
-                                        <div class="product-thumb-primary"><img width="300" height="400" src="~/Assets/Front/image/product/1.jpg" alt="42" title="42" class="attachment-shop_catalog size-shop_catalog wp-post-image" /></div>
-                                        <div class="product-thumb-secondary"><img width="300" height="400" src="~/Assets/Front/image/product/3.jpg" alt="47" class="attachment-shop_catalog size-shop_catalog" /></div><a href="#" class="product-link">
-                                            <div class="product-hover-sign">
-                                                <hr />
-                                                <hr />
-                                            </div>
-                                        </a>
-                                        <div class="product-actions">
-                                            <div class="yith-wcwl-add-to-wishlist add-to-wishlist-225">
-                                                <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i>    Add to Wishlist</a></div>
-                                            </div>
 
-                                            <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> Add to cart</a></div><a href="#" class="product-quick-view"><i class="fa fa-search"></i>Quick view</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <div class="rate" style="margin-right:-20px;"><i class="fa fa-eye" aria-hidden="true">&nbsp;1231</i></div><span class="price">
-                                            <del><span class="woocommerce-Price-amount amount" style="color:red;"><span class="woocommerce-Price-currencySymbol">$</span>499.00</span></del><ins><span class="woocommerce-Price-currencySymbol" style="color:green;">$455.00</span></ins>
-                                        </span><a href="#" target="_blank">
-                                            <h3>Nefil Mesh Chair</h3>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-item-wrap has-post-thumbnail">
-                                <div class="product-item-inner">
-                                    <div class="product-thumb">
-                                        @*<div class="product-flash-wrap"><span class="on-sale product-flash"></span><span class="on-sale product-flash"></span></div>*@
-                                        <div class="product-thumb-primary"><img width="300" height="400" src="~/Assets/Front/image/product/1.jpg" alt="42" title="42" class="attachment-shop_catalog size-shop_catalog wp-post-image" /></div>
-                                        <div class="product-thumb-secondary"><img width="300" height="400" src="~/Assets/Front/image/product/3.jpg" alt="47" class="attachment-shop_catalog size-shop_catalog" /></div><a href="#" class="product-link">
-                                            <div class="product-hover-sign">
-                                                <hr />
-                                                <hr />
-                                            </div>
-                                        </a>
-                                        <div class="product-actions">
-                                            <div class="yith-wcwl-add-to-wishlist add-to-wishlist-225">
-                                                <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i>    Add to Wishlist</a></div>
-                                            </div>
-
-                                            <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> Add to cart</a></div><a href="#" class="product-quick-view"><i class="fa fa-search"></i>Quick view</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <div class="rate" style="margin-right:-20px;"><i class="fa fa-eye" aria-hidden="true">&nbsp;1231</i></div><span class="price">
-                                            <del><span class="woocommerce-Price-amount amount" style="color:red;"><span class="woocommerce-Price-currencySymbol">$</span>499.00</span></del><ins><span class="woocommerce-Price-currencySymbol" style="color:green;">$455.00</span></ins>
-                                        </span><a href="#" target="_blank">
-                                            <h3>Nefil Mesh Chair</h3>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-item-wrap has-post-thumbnail">
-                                <div class="product-item-inner">
-                                    <div class="product-thumb">
-                                        @*<div class="product-flash-wrap"><span class="on-sale product-flash"></span><span class="on-sale product-flash"></span></div>*@
-                                        <div class="product-thumb-primary"><img width="300" height="400" src="~/Assets/Front/image/product/1.jpg" alt="42" title="42" class="attachment-shop_catalog size-shop_catalog wp-post-image" /></div>
-                                        <div class="product-thumb-secondary"><img width="300" height="400" src="~/Assets/Front/image/product/3.jpg" alt="47" class="attachment-shop_catalog size-shop_catalog" /></div><a href="#" class="product-link">
-                                            <div class="product-hover-sign">
-                                                <hr />
-                                                <hr />
-                                            </div>
-                                        </a>
-                                        <div class="product-actions">
-                                            <div class="yith-wcwl-add-to-wishlist add-to-wishlist-225">
-                                                <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i>    Add to Wishlist</a></div>
-                                            </div>
-
-                                            <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> Add to cart</a></div><a href="#" class="product-quick-view"><i class="fa fa-search"></i>Quick view</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <div class="rate" style="margin-right:-20px;"><i class="fa fa-eye" aria-hidden="true">&nbsp;1231</i></div><span class="price">
-                                            <del><span class="woocommerce-Price-amount amount" style="color:red;"><span class="woocommerce-Price-currencySymbol">$</span>499.00</span></del><ins><span class="woocommerce-Price-currencySymbol" style="color:green;">$455.00</span></ins>
-                                        </span><a href="#" target="_blank">
-                                            <h3>Nefil Mesh Chair</h3>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-item-wrap has-post-thumbnail">
-                                <div class="product-item-inner">
-                                    <div class="product-thumb">
-                                        @*<div class="product-flash-wrap"><span class="on-sale product-flash"></span><span class="on-sale product-flash"></span></div>*@
-                                        <div class="product-thumb-primary"><img width="300" height="400" src="~/Assets/Front/image/product/1.jpg" alt="42" title="42" class="attachment-shop_catalog size-shop_catalog wp-post-image" /></div>
-                                        <div class="product-thumb-secondary"><img width="300" height="400" src="~/Assets/Front/image/product/3.jpg" alt="47" class="attachment-shop_catalog size-shop_catalog" /></div><a href="#" class="product-link">
-                                            <div class="product-hover-sign">
-                                                <hr />
-                                                <hr />
-                                            </div>
-                                        </a>
-                                        <div class="product-actions">
-                                            <div class="yith-wcwl-add-to-wishlist add-to-wishlist-225">
-                                                <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i>    Add to Wishlist</a></div>
-                                            </div>
-
-                                            <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> Add to cart</a></div><a href="#" class="product-quick-view"><i class="fa fa-search"></i>Quick view</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <div class="rate" style="margin-right:-20px;"><i class="fa fa-eye" aria-hidden="true">&nbsp;1231</i></div><span class="price">
-                                            <del><span class="woocommerce-Price-amount amount" style="color:red;"><span class="woocommerce-Price-currencySymbol">$</span>499.00</span></del><ins><span class="woocommerce-Price-currencySymbol" style="color:green;">$455.00</span></ins>
-                                        </span><a href="#" target="_blank">
-                                            <h3>Nefil Mesh Chair</h3>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-item-wrap has-post-thumbnail">
-                                <div class="product-item-inner">
-                                    <div class="product-thumb">
-                                        @*<div class="product-flash-wrap"><span class="on-sale product-flash"></span><span class="on-sale product-flash"></span></div>*@
-                                        <div class="product-thumb-primary"><img width="300" height="400" src="~/Assets/Front/image/product/1.jpg" alt="42" title="42" class="attachment-shop_catalog size-shop_catalog wp-post-image" /></div>
-                                        <div class="product-thumb-secondary"><img width="300" height="400" src="~/Assets/Front/image/product/3.jpg" alt="47" class="attachment-shop_catalog size-shop_catalog" /></div><a href="#" class="product-link">
-                                            <div class="product-hover-sign">
-                                                <hr />
-                                                <hr />
-                                            </div>
-                                        </a>
-                                        <div class="product-actions">
-                                            <div class="yith-wcwl-add-to-wishlist add-to-wishlist-225">
-                                                <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i>    Add to Wishlist</a></div>
-                                            </div>
-
-                                            <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> Add to cart</a></div><a href="#" class="product-quick-view"><i class="fa fa-search"></i>Quick view</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <div class="rate" style="margin-right:-20px;"><i class="fa fa-eye" aria-hidden="true">&nbsp;1231</i></div><span class="price">
-                                            <del><span class="woocommerce-Price-amount amount" style="color:red;"><span class="woocommerce-Price-currencySymbol">$</span>499.00</span></del><ins><span class="woocommerce-Price-currencySymbol" style="color:green;">$455.00</span></ins>
-                                        </span><a href="#" target="_blank">
-                                            <h3>Nefil Mesh Chair</h3>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
+                            }
                         </div>
                     </div>
                 </div>
