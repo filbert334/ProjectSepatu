@@ -29,11 +29,16 @@ namespace ProjectSepatu.Controllers.Admin
 
         #region TabMetodePembayaran
 
-        public ActionResult TabMetodePembayaran()
+        public ActionResult TabMetodePembayaran(int id = 0)
         {
-            var MetodePembayaranList = MetodePembayaran.GetAll();
+            TabMetodePembayaranModel model = new TabMetodePembayaranModel();
 
-            return View(MetodePembayaranList.ToList());
+            model.MetodePembayaranList = MetodePembayaran.GetAll();
+
+            var metodepembayaranitem = MetodePembayaran.GetById(id);
+            model.MetodePembayaran = metodepembayaranitem;
+
+            return View(model);
         }
 
         [HttpPost]
@@ -87,7 +92,7 @@ namespace ProjectSepatu.Controllers.Admin
         [HttpGet]
         public ActionResult SelectMetodePembayaran(int Id)
         {
-            return ViewComponent("TabMetodePembayaranComponent", new { id = Id });
+            return RedirectToAction("TabMetodePembayaran", new { id = Id });
         }
 
         #endregion

@@ -77,10 +77,10 @@
                                 {
                                     <tr class="odd gradeX">
                                         <td>
-                                            <input type="button" name="name" value="Edit" class="btn btn-primary btn-sm" onclick="SelectRow(@item.Id)" />
+                                            <input type="button" name="name" value="Edit" class="btn btn-primary btn-sm" onclick="SelectRowMetode(@item.Id)" />
                                         </td>
                                         <td>
-                                            <input type="button" name="name" value="Delete" class="btn btn-danger btn-sm" onclick="DeleteRow(@item.Id)" />
+                                            <input type="button" name="name" value="Delete" class="btn btn-danger btn-sm" onclick="DeleteRowMetode(@item.Id)" />
                                         </td>
 
                                         <td>@item.Metode_Pembayaran.ToString()</td>
@@ -100,10 +100,10 @@
     </div>
 </div>
 <script>
-    function DeleteRow(id) {
+    function DeleteRowMetode(id) {
         window.location.replace("http://localhost:53293/Operational/DeleteMetodePembayaran/" + id);
     }
-    function SelectRow(id) {
+    function SelectRowMetode(id) {
         window.location.replace("http://localhost:53293/Operational/SelectMetodePembayaran/" + id);
     }
 </script>
