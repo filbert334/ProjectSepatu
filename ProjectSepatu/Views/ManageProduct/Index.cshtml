@@ -1,0 +1,47 @@
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Manage Product</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs">
+                    <li class="active" id="listOperational">
+                        <a href="#view1" data-toggle="tab">Input Product</a>
+                    </li>
+                    <li id="dataBrand">
+                        <a href="#view2" data-toggle="tab">Input Product Details</a>
+                    </li>
+                    <li id="dataBrand">
+                        <a href="#view3" data-toggle="tab">Product List</a>
+                    </li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="view1">
+                        @await Html.PartialAsync("TabInputProduct")
+                    </div>
+                    <div class="tab-pane fade" id="view2">
+                        @await Html.PartialAsync("TabInputProductDetails")
+                    </div>
+                    <div class="tab-pane fade" id="view3">
+                        @await Html.PartialAsync("TabProductList")
+                    </div>
+                </div>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+</div>
+

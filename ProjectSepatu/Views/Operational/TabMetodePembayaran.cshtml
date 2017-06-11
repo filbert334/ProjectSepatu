@@ -77,7 +77,7 @@
                                 {
                                     <tr class="odd gradeX">
                                         <td>
-                                            <input type="button" name="name" value="Edit" class="btn btn-primary btn-sm" onclick="SelectRowMetode(@item.Id)" />
+                                            <input type="button" name="name" value="Edit" class="btn btn-primary btn-sm" onclick="SearchBrandList(@item.Id)" />
                                         </td>
                                         <td>
                                             <input type="button" name="name" value="Delete" class="btn btn-danger btn-sm" onclick="DeleteRowMetode(@item.Id)" />
@@ -105,5 +105,12 @@
     }
     function SelectRowMetode(id) {
         window.location.replace("http://localhost:53293/Operational/SelectMetodePembayaran/" + id);
+    }
+    function SearchBrandList(id) {
+        $.get('/Operational/TabMetodePembayaran/' + id, function (data) {
+            if (data) {
+                $("#view1").html(data);
+            }
+        })
     }
 </script>
