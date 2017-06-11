@@ -35,28 +35,23 @@
                                     var listsort = new List<SelectListItem>();
                                     listsort.Add(new SelectListItem
                                     {
-                                        Value = "Produk Terpopuler",
-                                        Text = "Produk Terpopuler"
+                                        Value = "A",
+                                        Text = "A"
                                     });
                                     listsort.Add(new SelectListItem
                                     {
-                                        Value = "Harga Beli Termurah",
-                                        Text = "Harga Beli Termurah"
+                                        Value = "B",
+                                        Text = "B"
                                     });
                                     listsort.Add(new SelectListItem
                                     {
-                                        Value = "Harga Beli Termahal",
-                                        Text = "Harga Beli Termahal"
+                                        Value = "B",
+                                        Text = "B"
                                     });
                                     listsort.Add(new SelectListItem
                                     {
-                                        Value = "Harga Jual Termurah",
-                                        Text = "Harga Jual Termurah"
-                                    });
-                                    listsort.Add(new SelectListItem
-                                    {
-                                        Value = "Harga Jual Termahal",
-                                        Text = "Harga Jual Termahal"
+                                        Value = "C",
+                                        Text = "C"
                                     });
                                 }
                                 @Html.DropDownList("SortBy", listsort, new { @class = "form-control", @onchange = "CallChangefunc(this.value)", style = "width:300px" })

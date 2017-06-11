@@ -3,7 +3,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Category
+                Product List
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
@@ -13,27 +13,6 @@
                         Filter
                         <div class="btn-group pull-right">
                             <a href="#">
-                                <span class="glyphicon glyphicon-search" onclick=""></span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="panel-body">
-                        <form role="form" id="filterBrandList">
-                            <div class="form-group">
-                                <label>Category</label>
-                                @Html.TextBox("JenisPembayaran", "", new { @class = "form-control", style = "width:300px" })
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Input
-                        <div class="btn-group pull-right">
-                            <a href="#">
-                                <span class="glyphicon glyphicon-file" onclick=""></span>
-                            </a>
-                            <a href="#">
                                 <span class="glyphicon glyphicon-floppy-disk" onclick=""></span>
                             </a>
                         </div>
@@ -41,9 +20,64 @@
                     <div class="panel-body">
                         <form role="form" id="filterBrandList">
                             <div class="form-group">
-                                <label>Category</label>
-                                @Html.TextBox("JenisPembayaran", "", new { @class = "form-control", style = "width:300px" })
+                                <label>Nama Product</label>
+                                @Html.TextBox("JenisPembayaran", "", new { @class = "form-control", style = "width:300px", disabled = "disabled" })
                             </div>
+                            <div class="form-group">
+                                <label>Size</label>
+                                @{
+                                    var listsortSize = new List<SelectListItem>();
+                                    listsortSize.Add(new SelectListItem
+                                    {
+                                        Value = "A",
+                                        Text = "A"
+                                    });
+                                    listsortSize.Add(new SelectListItem
+                                    {
+                                        Value = "B",
+                                        Text = "B"
+                                    });
+                                    listsortSize.Add(new SelectListItem
+                                    {
+                                        Value = "B",
+                                        Text = "B"
+                                    });
+                                    listsortSize.Add(new SelectListItem
+                                    {
+                                        Value = "C",
+                                        Text = "C"
+                                    });
+                                }
+                                @Html.DropDownList("SortBy", listsortSize, new { @class = "form-control", @onchange = "CallChangefunc(this.value)", style = "width:300px" })
+                            </div>
+                            <div class="form-group">
+                                <label>Color</label>
+                                @{
+                                    var listsortColor = new List<SelectListItem>();
+                                    listsortColor.Add(new SelectListItem
+                                    {
+                                        Value = "A",
+                                        Text = "A"
+                                    });
+                                    listsortColor.Add(new SelectListItem
+                                    {
+                                        Value = "B",
+                                        Text = "B"
+                                    });
+                                    listsortColor.Add(new SelectListItem
+                                    {
+                                        Value = "B",
+                                        Text = "B"
+                                    });
+                                    listsortColor.Add(new SelectListItem
+                                    {
+                                        Value = "C",
+                                        Text = "C"
+                                    });
+                                }
+                                @Html.DropDownList("SortBy", listsortColor, new { @class = "form-control", @onchange = "CallChangefunc(this.value)", style = "width:300px" })
+                            </div>
+
                         </form>
                     </div>
                 </div>
@@ -52,7 +86,9 @@
                         <tr>
                             <th style="width:50px"></th>
                             <th style="width:50px"></th>
-                            <th>Category</th>
+                            <th>Size</th>
+                            <th>Color</th>
+                            <th>Stock</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,7 +101,9 @@
                                 <td>
                                     <input type="button" name="name" value="Delete" class="btn btn-danger btn-sm" onclick=")" />
                                 </td>
-                                <td>Uni</td>
+                                <td>43</td>
+                                <td>Red</td>
+                                <td>3</td>
                             </tr>
                         }
                     </tbody>

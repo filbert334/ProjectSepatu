@@ -20,16 +20,16 @@
                         <a href="#view1" data-toggle="tab">Refund</a>
                     </li>
                     <li id="dataBrand">
-                        <a href="#view2" data-toggle="tab">Cancel</a>
+                        <a href="#view2" data-toggle="tab">Refund Details</a>
                     </li>
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div class="tab-pane fade in active" id="view1">
-                        @await Component.InvokeAsync("TabRefund")
+                        @await Html.PartialAsync("TabRefund")
                     </div>
                     <div class="tab-pane fade" id="view2">
-                        @await Component.InvokeAsync("TabCancel")
+                        @await Html.PartialAsync("TabRefundDetails")
                     </div>
                 </div>
             </div>

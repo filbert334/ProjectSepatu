@@ -1,3 +1,327 @@
 
-<h2>TabInputProduct</h2>
+<form id="formBrandData">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Input Product
+                    <div class="btn-group pull-right">
+                        <a href="#">
+                            <span class="glyphicon glyphicon-file" onclick=""></span>
+                        </a>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-floppy-disk" onclick=""></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div role="form">
+                                <div class="form-group">
+                                    <label>Nama Product</label>
+                                    @*@Html.TextBoxFor(j => j.Brand.BrandName, new { @class = "form-control", @Value = Model.Brand.BrandName })
+                                        @Html.HiddenFor(j => j.Brand.Id, new { @id = "hiddenIdBrand" })*@
+                                    @Html.TextBox("JenisPembayaran", "", new { @class = "form-control", style = "width:300px" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Harga Modal</label>
+                                    @Html.TextBox("JenisPembayaran", "", new { @class = "form-control", style = "width:300px" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Harga Jual</label>
+                                    @Html.TextBox("JenisPembayaran", "", new { @class = "form-control", style = "width:300px" })
+                                </div>
 
+                                @*picture*@
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                                        @*@{
+                                                string imageBase64 = Convert.ToBase64String(Model.BrandImage);
+                                                string imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+                                            }*@
+                                        @*<img src="@imageSrc" class="img-responsive img-centered" alt="" width="100" height="100" id="uploadedImageBrand" />*@
+                                        <img src="#" class="img-responsive img-centered" alt="" width="100" height="100" id="uploadedImageBrand" />
+                                        @*<img id="uploadedImageBrand" class="img-responsive img-centered" alt="">*@
+                                        @*<img class="img-responsive img-centered" src="~/img/portfolio/item06.jpg" style="height: 200px; width:auto" alt="">*@
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label>File input</label>
+                                        @*@Html.TextBoxFor(m => m.FilePictBrand, new { @id = "selectImageBrand", type = "file" })*@
+                                        @Html.TextBox("JenisPembayaran", "", new { @class = "form-control", style = "width:300px" })
+                                        <input type="button" name="name" value="Upload" class="btn btn-primary btn-sm" onclick="UploadImageBrand()" />
+                                        @*<a href="#" class="btn btn-sm btn-danger" onclick="UploadImageBrand()">
+                                                Upload
+                                            </a>*@
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Type</label>
+                                    @{
+                                        var listsortType = new List<SelectListItem>();
+                                        listsortType.Add(new SelectListItem
+                                        {
+                                            Value = "A",
+                                            Text = "A"
+                                        });
+                                        listsortType.Add(new SelectListItem
+                                        {
+                                            Value = "B",
+                                            Text = "B"
+                                        });
+                                        listsortType.Add(new SelectListItem
+                                        {
+                                            Value = "B",
+                                            Text = "B"
+                                        });
+                                        listsortType.Add(new SelectListItem
+                                        {
+                                            Value = "C",
+                                            Text = "C"
+                                        });
+                                    }
+                                    @Html.DropDownList("SortBy", listsortType, new { @class = "form-control", @onchange = "CallChangefunc(this.value)", style = "width:300px" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Brand</label>
+                                    @{
+                                        var listsortBrand = new List<SelectListItem>();
+                                        listsortBrand.Add(new SelectListItem
+                                        {
+                                            Value = "A",
+                                            Text = "A"
+                                        });
+                                        listsortBrand.Add(new SelectListItem
+                                        {
+                                            Value = "B",
+                                            Text = "B"
+                                        });
+                                        listsortBrand.Add(new SelectListItem
+                                        {
+                                            Value = "B",
+                                            Text = "B"
+                                        });
+                                        listsortBrand.Add(new SelectListItem
+                                        {
+                                            Value = "C",
+                                            Text = "C"
+                                        });
+                                    }
+                                    @Html.DropDownList("SortBy", listsortBrand, new { @class = "form-control", @onchange = "CallChangefunc(this.value)", style = "width:300px" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Gender</label>
+                                    @{
+                                        var listsortGender = new List<SelectListItem>();
+                                        listsortGender.Add(new SelectListItem
+                                        {
+                                            Value = "A",
+                                            Text = "A"
+                                        });
+                                        listsortGender.Add(new SelectListItem
+                                        {
+                                            Value = "B",
+                                            Text = "B"
+                                        });
+                                        listsortGender.Add(new SelectListItem
+                                        {
+                                            Value = "B",
+                                            Text = "B"
+                                        });
+                                        listsortGender.Add(new SelectListItem
+                                        {
+                                            Value = "C",
+                                            Text = "C"
+                                        });
+                                    }
+                                    @Html.DropDownList("SortBy", listsortGender, new { @class = "form-control", @onchange = "CallChangefunc(this.value)", style = "width:300px" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Berat</label>
+                                    @{
+                                        var listsortBerat = new List<SelectListItem>();
+                                        listsortGender.Add(new SelectListItem
+                                        {
+                                            Value = "A",
+                                            Text = "A"
+                                        });
+                                        listsortGender.Add(new SelectListItem
+                                        {
+                                            Value = "B",
+                                            Text = "B"
+                                        });
+                                        listsortGender.Add(new SelectListItem
+                                        {
+                                            Value = "B",
+                                            Text = "B"
+                                        });
+                                        listsortGender.Add(new SelectListItem
+                                        {
+                                            Value = "C",
+                                            Text = "C"
+                                        });
+                                    }
+                                    @Html.DropDownList("SortBy", listsortBerat, new { @class = "form-control", @onchange = "CallChangefunc(this.value)", style = "width:300px" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Deskripsi</label>
+                                    @Html.TextArea("JenisPembayaran", "", new { @class = "form-control", style = "width:300px" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Diskon</label>
+                                    <label class="radio-inline">
+                                        <input name="optionsRadiosInline" id="optionsRadiosInline1" value="option1" checked="" type="radio">Rp.
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input name="optionsRadiosInline" id="optionsRadiosInline2" value="option2" type="radio">%
+                                    </label>
+                                    @Html.TextBox("JenisPembayaran", "", new { @class = "form-control", style = "width:300px" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@*<script>
+
+        var UploadImageBrand = function () {
+            var IdBrand = $("#hiddenIdBrand").val();
+            var file = $("#selectImageBrand").get(0).files;
+            var data = new FormData;
+
+            data.append("FilePictBrand", file[0]);
+
+            $.ajax({
+                type: "POST",
+                //url: "/Admin/ImageUpload/",
+                url: "/Admin/ImageUploadBrand?idBrand=" + IdBrand,
+                data: data,
+                contentType: false,
+                processData: false,
+                success: function (brandID) {
+                    $.get('/Admin/TabBrandData/' + brandID, function (data) {
+                        if (data) {
+                            $("#view2").html(data);
+
+                        }
+                    })
+                    //alert(brandID);
+                    //$("#uploadedImageBrand").empty();
+                    //$("#uploadedImageBrand").append('<img src="/Admin/DisplayImageBrand?brandID=' + brandID + '"class=img-responsive img-centered>');
+                }
+            })
+        }
+
+
+    </script>*@
+
+
+@*controller*@
+
+@*public ActionResult TabBrandList(string BrandName = "")
+    {
+        var brandRepo = new BrandRepo();
+        var brandList = brandRepo.GetAll().Where(j => j.BrandName.ToLower().Contains(BrandName.Trim().ToLower()));
+
+
+        return View(brandList.ToList());
+    }
+    public ActionResult TabBrandData(long id = 0)
+    {
+        var brandRepo = new BrandRepo();
+        var brandObj = brandRepo.GetById(id);
+        if (brandObj == null)
+        {
+            brandObj = new Brand();
+        }
+
+        string filePath = Server.MapPath(Url.Content("~/Content/Def-Image/no-img.jpg"));
+        byte[] imageArray = System.IO.File.ReadAllBytes(filePath);
+        var model = new TabBrandDataViewModel();
+        model.Brand = brandObj != null ? brandObj : new Brand();
+        if (brandObj.BrandImage != null)
+        {
+            model.BrandImage = brandObj.BrandImage;
+        }
+        else
+        {
+            model.BrandImage = imageArray;
+        }
+
+        return View(model);
+    }
+    public JsonResult ImageUploadBrand(TabBrandDataViewModel model, long idBrand)
+    {
+        try
+        {
+            var brandRepo = new BrandRepo();
+            int imgBrandID = 0;
+            byte[] ImageByte = null;
+            if (model.FilePictBrand != null)
+            {
+                BinaryReader reader = new BinaryReader(model.FilePictBrand.InputStream);
+                ImageByte = reader.ReadBytes(model.FilePictBrand.ContentLength);
+                var brand = brandRepo.GetById(idBrand);
+                brand.BrandImage = ImageByte;
+
+                brandRepo.Save(brand);
+
+                imgBrandID = (int)brand.Id;
+            }
+
+            return Json(imgBrandID, JsonRequestBehavior.AllowGet);
+        }
+        catch (Exception ex)
+        {
+
+            throw;
+        }
+
+    }
+
+    public ActionResult DisplayImageBrand(int brandID)
+    {
+        var brandRepo = new BrandRepo();
+        var brand = brandRepo.GetById(brandID);
+
+        return File(brand.BrandImage, "image/jpg");
+    }
+    public ActionResult SaveBrandData(TabBrandDataViewModel model)
+    {
+        try
+        {
+            var brandRepo = new BrandRepo();
+            var brandObj = brandRepo.GetById(model.Brand.Id);
+            if (brandObj != null)
+            {
+                brandObj.BrandName = model.Brand.BrandName;
+
+                brandRepo.Save(brandObj);
+
+                return RedirectToAction("TabBrandData", new { id = brandObj.Id });
+            }
+
+            else
+            {
+                var newBrand = new Brand();
+                newBrand.BrandName = model.Brand.BrandName;
+
+                brandRepo.Save(newBrand);
+
+                return RedirectToAction("TabBrandData", new { id = newBrand.Id });
+            }
+        }
+        catch (Exception ex)
+        {
+
+            throw;
+        }
+
+    }*@

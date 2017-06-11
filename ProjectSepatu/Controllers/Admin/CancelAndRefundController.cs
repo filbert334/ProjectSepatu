@@ -12,5 +12,15 @@ namespace ProjectSepatu.Controllers.Admin
         {
             return View();
         }
+
+        public IActionResult TabRefund()
+        {
+            return View();
+        }
+
+        public IActionResult TabRefundDetails()
+        {
+            return View();
+        }
     }
 }

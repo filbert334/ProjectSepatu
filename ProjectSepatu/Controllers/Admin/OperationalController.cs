@@ -42,7 +42,7 @@ namespace ProjectSepatu.Controllers.Admin
             var metodepembayaranitem = MetodePembayaran.GetById(id);
             model.MetodePembayaran = metodepembayaranitem;
 
-            return View(model);
+            return View("TabMetodePembayaran", model);
         }
 
         [HttpPost]
