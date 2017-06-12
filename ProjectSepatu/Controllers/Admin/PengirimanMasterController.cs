@@ -12,5 +12,33 @@ namespace ProjectSepatu.Controllers.Admin
         {
             return View();
         }
+        public IActionResult TabProvinsi()
+        {
+            return View();
+        }
+        public IActionResult TabKabupaten()
+        {
+            return View();
+        }
+        public IActionResult TabKecamatan()
+        {
+            return View();
+        }
+        public IActionResult TabPengirim()
+        {
+            return View();
+        }
+        public IActionResult TabPaketPengirim()
+        {
+            return View();
+        }
+        public IActionResult SubTabInputHargaOngkirTabPerhitunganHarga()
+        {
+            return View();
+        }
+        public IActionResult SubTabHargaOngkirListTabPerhitunganHarga()
+        {
+            return View();
+        }
     }
 }

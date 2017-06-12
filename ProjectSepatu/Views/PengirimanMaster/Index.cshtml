@@ -17,19 +17,58 @@
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs">
                     <li class="active" id="listOperational">
-                        <a href="#view1" data-toggle="tab">Refund</a>
+                        <a href="#view1" data-toggle="tab">Provinsi</a>
                     </li>
                     <li id="dataBrand">
-                        <a href="#view2" data-toggle="tab">Cancel</a>
+                        <a href="#view2" data-toggle="tab">Kabupaten</a>
+                    </li>
+                    <li id="dataBrand">
+                        <a href="#view3" data-toggle="tab">Kecamatan</a>
+                    </li>
+                    <li id="dataBrand">
+                        <a href="#view4" data-toggle="tab">Pengirim</a>
+                    </li>
+                    <li id="dataBrand">
+                        <a href="#view5" data-toggle="tab">Paket Pengirim</a>
+                    </li>
+                    <li id="dataBrand">
+                        <a href="#view6" data-toggle="tab">Perhitungan Harga</a>
                     </li>
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div class="tab-pane fade in active" id="view1">
-                        @await Component.InvokeAsync("TabRefund")
+                        @Html.Partial("TabProvinsi")
                     </div>
                     <div class="tab-pane fade" id="view2">
-                        @await Component.InvokeAsync("TabCancel")
+                        @Html.Partial("TabKabupaten")
+                    </div>
+                    <div class="tab-pane fade" id="view2">
+                        @Html.Partial("TabKecamatan")
+                    </div>
+                    <div class="tab-pane fade" id="view2">
+                        @Html.Partial("TabPengirim")
+                    </div>
+                    <div class="tab-pane fade" id="view2">
+                        @Html.Partial("TabPaketPengirim")
+                    </div>
+                    <div class="tab-pane fade" id="view6">
+                        <ul class="nav nav-tabs"    >
+                            <li class="active">
+                                <a href="#view6-1" data-toggle="tab">Input Harga Ongkir</a>
+                            </li>
+                            <li>
+                                <a href="#view6-2" data-toggle="tab">Harga Ongkir List</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active" id="view6-1">
+                                @Html.Partial("SubTabInputHargaOngkirTabPerhitunganHarga")
+                            </div>
+                            <div class="tab-pane fade" id="view6-2">
+                                @Html.Partial("SubTabHargaOngkirListTabPerhitunganHarga")
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
