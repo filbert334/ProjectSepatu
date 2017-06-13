@@ -134,12 +134,37 @@ namespace ProjectSepatu.Controllers
            
             return View(viewModel);
         }
-        public IActionResult List(int idType)
+        public IActionResult List(int idType, string sortOrder="")
         {
+            //buat sorting
+            ViewData["TermurahSortParm"] = String.IsNullOrEmpty(sortOrder) ? "murah" : "";
+            ViewData["TermahalSortParm"] = sortOrder == "" ? "mahal" : "";
+            ViewData["TerbaruSortParm"] = sortOrder == "" ? "terbaru" : "";
+            ViewData["DilihatSortParm"] = sortOrder == "" ? "" : "";
+            ViewData["PenjualanSortParm"] = sortOrder == "" ? "terjual" : "";
+
             var ProductTypeList = _ProductMasterRepo.GetAll().Where(i => i.IsHidden == false).ToList();
             if(idType!=0)
             {
                 ProductTypeList = ProductTypeList.Where(i => i.TypeMasterId == idType).ToList();
+            }
+            switch (sortOrder)
+            {
+                case "murah":
+                    ProductTypeList = ProductTypeList.OrderBy(s => s.Harga_Jual).ToList();
+                    break;
+                case "mahal":
+                    ProductTypeList = ProductTypeList.OrderByDescending(s => s.Harga_Jual).ToList();
+                    break;
+                case "terjual":
+                    ProductTypeList = ProductTypeList.OrderByDescending(s => s.Terjual).ToList();
+                    break;
+                case "terbaru":
+                    ProductTypeList = ProductTypeList.OrderByDescending(s => s.CreatedDate).ToList();
+                    break;
+                default:
+                    ProductTypeList = ProductTypeList.OrderByDescending(s => s.Dilihat).ToList();
+                    break;
             }
             return View(ProductTypeList);
         }
