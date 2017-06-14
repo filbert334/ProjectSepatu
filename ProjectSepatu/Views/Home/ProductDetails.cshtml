@@ -63,7 +63,7 @@
                     <h3>Description</h3>
                     <div class="wpb_text_column wpb_content_element">
                         <div class="wpb_wrapper">
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+                            <p>@Model.Remarks</p>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -78,7 +78,7 @@
                             <textarea type="text" rows="4" placeholder="Contoh : warna, ukuran" class="form-control" id="usr"></textarea>
                         </div>
                     </div>
-                    <button style="background-color:black;color:white" class="btn btn-block">ADD TO CART&nbsp;&nbsp;<i class="fa fa-cart-plus" aria-hidden="true"></i>
+                    <button style="background-color:black;color:white" class="btn btn-block" onclick="AddToCart(@Model.Id)">ADD TO CART&nbsp;&nbsp;<i class="fa fa-cart-plus" aria-hidden="true"></i>
 </button>
                    
                 </div>

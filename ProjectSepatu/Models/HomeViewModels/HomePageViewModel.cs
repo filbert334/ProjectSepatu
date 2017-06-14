@@ -17,4 +17,9 @@ namespace ProjectSepatu.Models.HomeViewModels
         public List<GenderMaster> GenderList { get; set; } = new List<GenderMaster>();
         public List<Brand> BrandList { get; set; } = new List<Brand>();
     }
+    public class ListViewModel
+    {
+        public List<ProductMaster> listProducts { get; set; } = new List<ProductMaster>();
+        public int TypeId { get; set; }
+    }
 }

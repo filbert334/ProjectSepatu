@@ -134,14 +134,44 @@ namespace ProjectSepatu.Controllers
            
             return View(viewModel);
         }
-        public IActionResult List(int idType)
+        public IActionResult List(int idType = 0, string sortOrder="")
         {
+            //buat sorting
+            ViewData["TermurahSortParm"] = String.IsNullOrEmpty(sortOrder) ? "murah" : "";
+            ViewData["TermahalSortParm"] = sortOrder == "" ? "mahal" : "";
+            ViewData["TerbaruSortParm"] = sortOrder == "" ? "terbaru" : "";
+            ViewData["DilihatSortParm"] = sortOrder == "" ? "" : "";
+            ViewData["PenjualanSortParm"] = sortOrder == "" ? "terjual" : "";
+
+            var viewModel = new ListViewModel();
+
             var ProductTypeList = _ProductMasterRepo.GetAll().Where(i => i.IsHidden == false).ToList();
             if(idType!=0)
             {
                 ProductTypeList = ProductTypeList.Where(i => i.TypeMasterId == idType).ToList();
+                viewModel.TypeId = idType;
             }
-            return View(ProductTypeList);
+            switch (sortOrder)
+            {
+                case "murah":
+                    ProductTypeList = ProductTypeList.OrderBy(s => s.Harga_Jual).ToList();
+                    break;
+                case "mahal":
+                    ProductTypeList = ProductTypeList.OrderByDescending(s => s.Harga_Jual).ToList();
+                    break;
+                case "terjual":
+                    ProductTypeList = ProductTypeList.OrderByDescending(s => s.Terjual).ToList();
+                    break;
+                case "terbaru":
+                    ProductTypeList = ProductTypeList.OrderByDescending(s => s.CreatedDate).ToList();
+                    break;
+                default:
+                    ProductTypeList = ProductTypeList.OrderByDescending(s => s.Dilihat).ToList();
+                    break;
+            }
+
+            viewModel.listProducts = ProductTypeList;
+            return View(viewModel);
         }
         public IActionResult ProductDetails(int id = 0)
         {

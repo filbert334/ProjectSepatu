@@ -133,7 +133,7 @@
                     <div class="col-md-3 col-xs-12">
                         <aside>
                             <h4>Brand</h4>
-                            <select id="BrandFilter" class="selectpicker form-control">
+                            <select name="BrandFilter" class="selectpicker form-control">
                                 <option selected>Select All</option>
                                 @foreach (var item in Model.BrandList)
                                 {
@@ -145,8 +145,7 @@
                     </div>
                     <div class="col-md-2 col-xs-12">
                         <aside style="margin-top:58px;">
-
-                            <a href="" class="load-more-shop" style="background-color:black;width:100%;text-align:center" onclick="FilterToListPage('TypeFilter')">Search &nbsp;&nbsp;<i class="fa fa-search"></i></a>
+                            <a href="" class="load-more-shop" style="background-color:black;width:100%;text-align:center" onclick="FilterToListPage()">Search &nbsp;&nbsp;<i class="fa fa-search"></i></a>
                         </aside>
                     </div>
 
