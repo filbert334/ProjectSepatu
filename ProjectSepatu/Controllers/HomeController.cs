@@ -134,7 +134,7 @@ namespace ProjectSepatu.Controllers
            
             return View(viewModel);
         }
-        public IActionResult List(int idType, string sortOrder="")
+        public IActionResult List(int idType = 0, string sortOrder="")
         {
             //buat sorting
             ViewData["TermurahSortParm"] = String.IsNullOrEmpty(sortOrder) ? "murah" : "";
@@ -143,10 +143,13 @@ namespace ProjectSepatu.Controllers
             ViewData["DilihatSortParm"] = sortOrder == "" ? "" : "";
             ViewData["PenjualanSortParm"] = sortOrder == "" ? "terjual" : "";
 
+            var viewModel = new ListViewModel();
+
             var ProductTypeList = _ProductMasterRepo.GetAll().Where(i => i.IsHidden == false).ToList();
             if(idType!=0)
             {
                 ProductTypeList = ProductTypeList.Where(i => i.TypeMasterId == idType).ToList();
+                viewModel.TypeId = idType;
             }
             switch (sortOrder)
             {
@@ -166,7 +169,9 @@ namespace ProjectSepatu.Controllers
                     ProductTypeList = ProductTypeList.OrderByDescending(s => s.Dilihat).ToList();
                     break;
             }
-            return View(ProductTypeList);
+
+            viewModel.listProducts = ProductTypeList;
+            return View(viewModel);
         }
         public IActionResult ProductDetails(int id = 0)
         {

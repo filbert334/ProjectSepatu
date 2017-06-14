@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_LayoutFront.cshtml";
 }
 
-@using ProjectSepatu.Core.ProductProperties.ProductMasterClass
+@using ProjectSepatu.Models.HomeViewModels
 
-@model List<ProductMaster>
+@model ListViewModel
 
 <div class="section" style="margin-top:30px;">
     <div class="products-in-category-tabs-wrapper container">
@@ -20,11 +20,11 @@
                         <h4>Urutkan  </h4>&nbsp;&nbsp;<button class="fa fa-caret-down fa-lg" style="background-color:white;border:none" data-toggle="collapse" data-target="#demo"></button>
                         <div class="collapse" id="demo">
                             <ul class="categories">
-                                <li><a asp-action="List(id = @Model.i)" asp-route-sortOrder="@ViewData["TermurahSortParm"]">Termurah</a></li>
-                                <li><a asp-action="List" asp-route-sortOrder="@ViewData["TermahalSortParm"]">Termahal</a></li>
-                                <li><a asp-action="List" asp-route-sortOrder="@ViewData["DilihatSortParm"]">Dilihat Terbanyak</a></li>
-                                <li><a asp-action="List" asp-route-sortOrder="@ViewData["PenjualanSortParm"]">Penjualan Terbanyak</a></li>
-                                <li><a asp-action="List" asp-route-sortOrder="@ViewData["TerbaruSortParm"]">Terbaru</a></li>
+                                <li><a asp-action="List" asp-route-idType="@Model.TypeId" asp-route-sortOrder="@ViewData["TermurahSortParm"]">Termurah</a></li>
+                                <li><a asp-action="List" asp-route-idType="@Model.TypeId" asp-route-sortOrder="@ViewData["TermahalSortParm"]">Termahal</a></li>
+                                <li><a asp-action="List" asp-route-idType="@Model.TypeId" asp-route-sortOrder="@ViewData["DilihatSortParm"]">Dilihat Terbanyak</a></li>
+                                <li><a asp-action="List" asp-route-idType="@Model.TypeId" asp-route-sortOrder="@ViewData["PenjualanSortParm"]">Penjualan Terbanyak</a></li>
+                                <li><a asp-action="List" asp-route-idType="@Model.TypeId" asp-route-sortOrder="@ViewData["TerbaruSortParm"]">Terbaru</a></li>
                             </ul>
                         </div>
                     </aside>
@@ -59,7 +59,7 @@
                                 <li><a href="#5a" data-toggle="tab">Sofar</a></li>
                             </ul>*@
                         <div class="desc-review-content tab-content clearfix">
-                            @foreach (var item in Model)
+                            @foreach (var item in Model.listProducts)
                             {
                                 <div class="product-item-wrap has-post-thumbnail">
                                     <div class="product-item-inner">
