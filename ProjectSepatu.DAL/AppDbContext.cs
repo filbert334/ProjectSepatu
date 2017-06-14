@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProjectSepatu.Core.ProductProperties.BrandClass;
 using ProjectSepatu.Core.ProductProperties.CabangMasterClass;
+using ProjectSepatu.Core.ProductProperties.CategoryMasterClass;
 using ProjectSepatu.Core.ProductProperties.CustomerClass;
 using ProjectSepatu.Core.ProductProperties.GenderMasterClass;
 using ProjectSepatu.Core.ProductProperties.JenisPembayaranMasterClass;
@@ -52,6 +53,7 @@ namespace ProjectSepatu.DAL
         public DbSet<KecamatanMaster> KecamatanMaster { get; set; }
         public DbSet<SaranaPengirimanMaster> SaranaPengirimanMaster { get; set; }
         public DbSet<PerhitunganPengiriman> PerhitunganPengiriman { get; set; }
+        public DbSet<CategoryMaster> CategoryMaster { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

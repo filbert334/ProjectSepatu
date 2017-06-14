@@ -10,6 +10,8 @@ using ProjectSepatu.DAL.ProductProperties.JenisPembayaranMasterClass;
 using ProjectSepatu.Core.ProductProperties.JenisPembayaranMasterClass;
 using ProjectSepatu.DAL.ProductProperties.BrandClass;
 using ProjectSepatu.Core.ProductProperties.BrandClass;
+using ProjectSepatu.DAL.ProductProperties.ProductTypeMasterClass;
+using ProjectSepatu.Core.ProductProperties.ProductTypeMasterClass;
 
 namespace ProjectSepatu.Controllers.Admin
 {
@@ -18,12 +20,16 @@ namespace ProjectSepatu.Controllers.Admin
         static MetodePembayaranMasterRepo MetodePembayaran;
         static JenisPembayaranMasterRepo JenisPembayaran;
         static BrandRepo BrandRepo;
+        static ProductTypeMasterRepo TypeRepo;
 
-        public OperationalController(MetodePembayaranMasterRepo _MetodePembayaran, JenisPembayaranMasterRepo _JenisPembayaran, BrandRepo _BrandRepo)
+
+        public OperationalController(MetodePembayaranMasterRepo _MetodePembayaran, JenisPembayaranMasterRepo _JenisPembayaran, BrandRepo _BrandRepo,
+            ProductTypeMasterRepo _TypeRepo)
         {
             MetodePembayaran = _MetodePembayaran;
             JenisPembayaran = _JenisPembayaran;
             BrandRepo = _BrandRepo;
+            TypeRepo = _TypeRepo;
         }
 
         public IActionResult Index()
@@ -245,10 +251,13 @@ namespace ProjectSepatu.Controllers.Admin
 
         #endregion
 
+        #region TabCategory
         public IActionResult TabCategory()
         {
             return View();
         }
+        #endregion
+
 
         public IActionResult TabColor()
         {
@@ -260,10 +269,76 @@ namespace ProjectSepatu.Controllers.Admin
             return View();
         }
 
-        public IActionResult TabType()
+        #region TabType
+
+        public IActionResult TabType(int id)
         {
-            return View();
+            TabTypeModel model = new TabTypeModel();
+
+            model.TypeList = TypeRepo.GetAll();
+
+            var Item = TypeRepo.GetById(id);
+            model.Type = Item;
+
+
+            return View("TabType", model);
         }
+
+        [HttpPost]
+        public ActionResult SaveType(TabTypeModel model)
+        {
+            try
+            {
+                var ItemIsi = TypeRepo.GetById(model.Type.Id);
+
+                if (ItemIsi != null)
+                {
+                    ItemIsi.Type = model.Type.Type;
+                    ItemIsi.UpdatedDate = DateTime.Now;
+
+                    TypeRepo.Save(ItemIsi);
+
+                    return RedirectToAction("Index");
+                }
+
+                else
+                {
+                    var NewItem = new ProductTypeMaster();
+                    NewItem.Type = model.Type.Type;
+                    NewItem.CreatedDate = DateTime.Now;
+                    NewItem.UpdatedDate = DateTime.Now;
+                    NewItem.IsHidden = false;
+
+
+                    TypeRepo.Save(NewItem);
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpGet]
+        public ActionResult DeleteType(int id)
+        {
+            var ItemIsi = TypeRepo.GetById(id);
+            ItemIsi.IsHidden = true;
+
+            TypeRepo.Save(ItemIsi);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult SelectType(int Id)
+        {
+            return RedirectToAction("TabBrand", new { id = Id });
+        }
+
+        #endregion
 
         public IActionResult TabBank()
         {

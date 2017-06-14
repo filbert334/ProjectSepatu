@@ -11,6 +11,7 @@ namespace ProjectSepatu.Core.ProductProperties.ProductMasterClass
         public string Nama_Product { get; set; }
         public decimal Harga_Modal { get; set; }
         public decimal Harga_Jual { get; set; }
+        public decimal Harga_Setelah_Diskon { get; set; }
         public decimal Diskon_Rp { get; set; }
         public decimal Diskon_Persen { get; set; }
         public decimal Berat { get; set; }

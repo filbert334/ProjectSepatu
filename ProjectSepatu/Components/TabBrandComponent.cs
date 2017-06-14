@@ -23,8 +23,8 @@ namespace ProjectSepatu.Components
 
             model.BrandList = brandrepo.GetAll();
 
-            var metodepembayaranitem = brandrepo.GetById(id);
-            model.BrandItem = metodepembayaranitem;
+            var Item = brandrepo.GetById(id);
+            model.BrandItem = Item;
 
 
             return View("~/Views/Operational/TabBrand.cshtml", model);

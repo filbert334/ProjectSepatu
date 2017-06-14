@@ -50,7 +50,7 @@
                         @await Html.PartialAsync("TabCategory")
                     </div>
                     <div class="tab-pane fade" id="view7">
-                        @await Html.PartialAsync("TabType")
+                        @await Component.InvokeAsync("TabTypeComponent")
                     </div>
                     <div class="tab-pane fade" id="view8">
                         @await Html.PartialAsync("TabBank")

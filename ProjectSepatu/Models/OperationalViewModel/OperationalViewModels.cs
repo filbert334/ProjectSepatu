@@ -1,6 +1,7 @@
 ﻿using ProjectSepatu.Core.ProductProperties.BrandClass;
 using ProjectSepatu.Core.ProductProperties.JenisPembayaranMasterClass;
 using ProjectSepatu.Core.ProductProperties.MetodePembayaranMasterClass;
+using ProjectSepatu.Core.ProductProperties.ProductTypeMasterClass;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,5 +30,16 @@ namespace ProjectSepatu.Models.OperationalViewModel
     {
         public Brand BrandItem { get; set; }
         public List<Brand> BrandList { get; set; }
+    }
+
+    public class TabCategoryModel
+    {
+
+    }
+
+    public class TabTypeModel
+    {
+        public ProductTypeMaster Type { get; set; }
+        public List<ProductTypeMaster> TypeList { get; set; }
     }
 }

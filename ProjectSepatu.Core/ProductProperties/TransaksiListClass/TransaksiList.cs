@@ -14,6 +14,6 @@ namespace ProjectSepatu.Core.ProductProperties.TransaksiListClass
         public string Remarks { get; set; }
 
         public long TransaksiHeaderId { get; set; }
-        public long ProductDetailsId { get; set; }
+        public long ProductId { get; set; }
     }
 }
