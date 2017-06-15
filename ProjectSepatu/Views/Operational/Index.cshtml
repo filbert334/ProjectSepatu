@@ -31,9 +31,6 @@
                     <li id="dataBrand">
                         <a href="#view7" data-toggle="tab">Type</a>
                     </li>
-                    <li id="dataBrand">
-                        <a href="#view8" data-toggle="tab">Bank</a>
-                    </li>
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content">
@@ -47,13 +44,10 @@
                         @await Component.InvokeAsync("TabBrandComponent")
                     </div>
                     <div class="tab-pane fade" id="view4">
-                        @await Html.PartialAsync("TabCategory")
+                        @await Component.InvokeAsync("TabCategoryComponent")
                     </div>
                     <div class="tab-pane fade" id="view7">
                         @await Component.InvokeAsync("TabTypeComponent")
-                    </div>
-                    <div class="tab-pane fade" id="view8">
-                        @await Html.PartialAsync("TabBank")
                     </div>
                 </div>
             </div>

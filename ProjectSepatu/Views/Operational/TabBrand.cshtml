@@ -80,7 +80,7 @@
                                 {
                                     <tr class="odd gradeX">
                                         <td>
-                                            <input type="button" name="name" value="Edit" class="btn btn-primary btn-sm" onclick="SelectRowBrand(@item.Id)" />
+                                            <input type="button" name="name" value="Edit" class="btn btn-primary btn-sm" onclick="SearchBrand(@item.Id)" />
                                         </td>
                                         <td>
                                             <input type="button" name="name" value="Delete" class="btn btn-danger btn-sm" onclick="DeleteRowBrand(@item.Id)" />
@@ -110,5 +110,12 @@
     }
     function SelectRowBrand(id) {
         window.location.replace("http://localhost:53293/Operational/SelectBrand/" + id);
+    }
+    function SearchBrand(id) {
+        $.get('/Operational/TabBrand/' + id, function (data) {
+            if (data) {
+                $("#view3").html(data);
+            }
+        })
     }
 </script>

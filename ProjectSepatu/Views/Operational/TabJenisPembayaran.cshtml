@@ -80,6 +80,14 @@
                                 @Html.HiddenFor(model => model.JenisPembayaranItem.Id)
                             </div>
                             <div class="form-group">
+                                <label>Nomor Rekening (Optional)</label>
+                                @Html.TextBoxFor(model => model.JenisPembayaranItem.Nomor_Rekening, new { @class = "form-control", style = "width:300px" })
+                            </div>
+                            <div class="form-group">
+                                <label>Atas Nama (Optional)</label>
+                                @Html.TextBoxFor(model => model.JenisPembayaranItem.Atas_Nama, new { @class = "form-control", style = "width:300px" })
+                            </div>
+                            <div class="form-group">
                                 <label>Metode Pembayaran</label>
                                 @{
                                     var list = new List<SelectListItem>();
@@ -108,6 +116,8 @@
                             <th style="width:50px"></th>
                             <th>Metode Pembayaran</th>
                             <th>Sarana Pembayaran</th>
+                            <th>Nomor Rekening (Optional)</th>
+                            <th>Atas Nama (Optional)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -119,7 +129,7 @@
                                 {
                                     <tr class="odd gradeX">
                                         <td>
-                                            <input type="button" name="name" value="Edit" class="btn btn-primary btn-sm" onclick="SelectRow(@item.Id)" />
+                                            <input type="button" name="name" value="Edit" class="btn btn-primary btn-sm" onclick="SearchJenisPembayaran(@item.Id)" />
                                         </td>
                                         <td>
                                             <input type="button" name="name" value="Delete" class="btn btn-danger btn-sm" onclick="DeleteRow(@item.Id)" />
@@ -137,7 +147,8 @@
                                             }
                                         }
                                         <td>@item.Jenis_Pembayaran</td>
-
+                                        <td>@item.Nomor_Rekening</td>
+                                        <td>@item.Atas_Nama</td>
 
                                     </tr>
                                 }
@@ -159,5 +170,12 @@
     }
     function SelectRow(id) {
         window.location.replace("http://localhost:53293/Operational/SelectJenisPembayaran/" + id);
+    }
+    function SearchJenisPembayaran(id) {
+        $.get('/Operational/TabJenisPembayaran/' + id, function (data) {
+            if (data) {
+                $("#view2").html(data);
+            }
+        })
     }
 </script>
