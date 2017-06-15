@@ -28,6 +28,7 @@ using ProjectSepatu.DAL.ProductProperties.SaranaPengirimanMasterClass;
 using ProjectSepatu.DAL.ProductProperties.TransaksiHeaderClass;
 using ProjectSepatu.DAL.ProductProperties.TransaksiListClass;
 using ProjectSepatu.DAL.ProductProperties.MetodePembayaranMasterClass;
+using ProjectSepatu.DAL.ProductProperties.CategoryMasterClass;
 
 namespace ProjectSepatu
 {
@@ -87,6 +88,7 @@ namespace ProjectSepatu
             services.AddTransient<TransaksiHeaderRepo, TransaksiHeaderRepo>();
             services.AddTransient<TransaksiListRepo, TransaksiListRepo>();
             services.AddTransient<MetodePembayaranMasterRepo, MetodePembayaranMasterRepo>();
+            services.AddTransient<CategoryMasterRepo, CategoryMasterRepo>();
 
 
 

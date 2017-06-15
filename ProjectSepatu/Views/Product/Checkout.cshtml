@@ -16,51 +16,96 @@
 
                     <div class="shopping_cart">
                         <form class="form-horizontal" role="form" action="" method="post" id="payment-form">
-                            <div class="panel-group" id="accordion">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" href="#collapseTwo">
+                                            Rincian Harga Ongkir
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseTwo" class="panel-collapse">
+                                    <div class="panel-body">
+                                        <table class="table table-striped" style="font-weight: bold;">
+                                            <tr>
+                                                <td style="width: 175px;">
+                                                    <label for="id_email">Rincian harga ongkir</label>
+                                                </td>
+                                                <td>
+                                                    <input class="form-control" id="id_email" name="email"
+                                                           required="required" type="text" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 175px;">
+                                                    <label for="id_first_name">Total harga barang</label>
+                                                </td>
+                                                <td>
+                                                    <input class="form-control" id="id_first_name" name="first_name"
+                                                           required="required" type="text" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 175px;">
+                                                    <label for="id_last_name">Total pembelian</label>
+                                                </td>
+                                                <td>
+                                                    <input class="form-control" id="id_last_name" name="last_name"
+                                                           required="required" type="text" />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                            <a data-toggle="collapse" href="#collapseOne">
                                                 Review
                                                 Your Order
                                             </a>
                                         </h4>
                                     </div>
-                                    <div id="collapseOne" class="panel-collapse collapse in">
+                                    <div id="collapseOne" class="panel-collapse">
                                         <div class="panel-body">
                                             <div class="items">
                                                 <table id="cart" class="table table-hover table-condensed">
                                                     <thead>
                                                         <tr>
                                                             <th style="width:50%">Product</th>
-                                                            <th style="width:10%">Price (Rp)</th>
+                                                            <th style="width:15%">Price (Rp)</th>
                                                             <th style="width:8%">Quantity</th>
                                                             <th style="width:22%" class="text-center">Subtotal (Rp)</th>
-                                                            <th style="width:10%"></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td data-th="Product">
-                                                                <div class="row">
-                                                                    <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/500x500" alt="..." class="img-responsive" /></div>
-                                                                    <div class="col-sm-10">
-                                                                        <h4 class="nomargin">Product 1</h4>
-                                                                        <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
+                                                        @for (int i = 0; i < 2; i++)
+                                                        {
+                                                            <tr>
+                                                                <td data-th="Product">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-2 hidden-xs"><img src="http://placehold.it/500x500" alt="..." class="img-responsive" /></div>
+                                                                        <div class="col-sm-10">
+                                                                            <h4 class="nomargin">Product 1</h4>
+                                                                            <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                            </td>
-                                                            <td data-th="Price">1.000.000</td>
-                                                            <td data-th="Quantity" style="text-align:center">
-                                                                1
-                                                            </td>
-                                                            <td data-th="Subtotal" class="text-center">1.000.000</td>
-                                                            <td class="actions" data-th="">
-                                                                <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-                                                                
-                                                            </td>
-                                                            <td><button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button></td>
-                                                        </tr>
+                                                                </td>
+                                                                <td data-th="Price">1.000.000</td>
+                                                                <td data-th="Quantity" style="text-align:center">
+                                                                    1
+                                                                </td>
+                                                                <td data-th="Subtotal" class="text-center">1.000.000</td>
+                                                                @*<td class="actions" data-th="">
+                                                                        <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
+                                                                    </td>
+                                                                    <td>
+                                                                        <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+                                                                    </td>*@
+                                                            </tr>
+                                                        }
                                                     </tbody>
                                                     <tfoot>
                                                         <tr class="visible-xs">
@@ -69,7 +114,7 @@
                                                         <tr>
                                                             <td><strong>Total</strong> </td>
                                                             <td colspan="2" class="hidden-xs"></td>
-                                                            <td class="hidden-xs text-center"><strong>Rp 1.000.000</strong></td>
+                                                            <td class="hidden-xs text-center"><strong>Rp 2.000.000</strong></td>
                                                             <td></td>
                                                             <td></td>
                                                         </tr>
@@ -84,17 +129,9 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <div style="text-align: center; width:100%;">
-                                            <a style="width:100%;"
-                                               data-toggle="collapse"
-                                               data-parent="#accordion"
-                                               href="#collapseTwo"
-                                               class=" btn btn-success"
-                                               onclick="$(this).fadeOut(); $('#payInfo').fadeIn();">
-                                                Continue
-                                                to Billing Information»
-                                            </a>
-                                        </div>
+                                        <a data-toggle="collapse" href="#collapseThree">
+                                            <b>Metode Pembayaran</b>
+                                        </a>
                                     </h4>
                                 </div>
                             </div>
@@ -258,84 +295,57 @@
                                         <fieldset>
                                             <legend>What method would you like to pay with today?</legend>
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label" for="card-holder-name">
-                                                    Name on
-                                                    Card
+                                                <label class="col-sm-3 control-label" for="expiry-month">
+                                                    Metode Pembayaran
                                                 </label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" stripe-data="name"
-                                                           id="name-on-card" placeholder="Card Holder's Name">
+                                                    <select class="form-control col-sm-2"
+                                                            data-stripe="exp-month" id="card-exp-month"
+                                                            style="margin-left:5px;">
+                                                        <option>Month</option>
+                                                        <option value="01">Jan (01)</option>
+                                                        <option value="02">Feb (02)</option>
+                                                        <option value="03">Mar (03)</option>
+                                                        <option value="04">Apr (04)</option>
+                                                        <option value="05">May (05)</option>
+                                                        <option value="06">June (06)</option>
+                                                        <option value="07">July (07)</option>
+                                                        <option value="08">Aug (08)</option>
+                                                        <option value="09">Sep (09)</option>
+                                                        <option value="10">Oct (10)</option>
+                                                        <option value="11">Nov (11)</option>
+                                                        <option value="12">Dec (12)</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-sm-3 control-label" for="card-number">
-                                                    Card
-                                                    Number
+                                                <label class="col-sm-3 control-label" for="expiry-month">
+                                                    Pembayaran
                                                 </label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" class="form-control" stripe-data="number"
-                                                           id="card-number" placeholder="Debit/Credit Card Number">
-                                                    <br />
-                                                    <div>
-                                                        <img class="pull-right"
-                                                             src="https://s3.amazonaws.com/hiresnetwork/imgs/cc.png"
-                                                             style="max-width: 250px; padding-bottom: 20px;">
-                                                    </div>
+                                                    <select class="form-control col-sm-2"
+                                                            data-stripe="exp-month" id="card-exp-month"
+                                                            style="margin-left:5px;">
+                                                        <option>Month</option>
+                                                        <option value="01">Jan (01)</option>
+                                                        <option value="02">Feb (02)</option>
+                                                        <option value="03">Mar (03)</option>
+                                                        <option value="04">Apr (04)</option>
+                                                        <option value="05">May (05)</option>
+                                                        <option value="06">June (06)</option>
+                                                        <option value="07">July (07)</option>
+                                                        <option value="08">Aug (08)</option>
+                                                        <option value="09">Sep (09)</option>
+                                                        <option value="10">Oct (10)</option>
+                                                        <option value="11">Nov (11)</option>
+                                                        <option value="12">Dec (12)</option>
+                                                    </select>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-3 control-label" for="expiry-month">
-                                                        Expiration
-                                                        Date
-                                                    </label>
-                                                    <div class="col-sm-9">
-                                                        <div class="row">
-                                                            <div class="col-xs-3">
-                                                                <select class="form-control col-sm-2"
-                                                                        data-stripe="exp-month" id="card-exp-month"
-                                                                        style="margin-left:5px;">
-                                                                    <option>Month</option>
-                                                                    <option value="01">Jan (01)</option>
-                                                                    <option value="02">Feb (02)</option>
-                                                                    <option value="03">Mar (03)</option>
-                                                                    <option value="04">Apr (04)</option>
-                                                                    <option value="05">May (05)</option>
-                                                                    <option value="06">June (06)</option>
-                                                                    <option value="07">July (07)</option>
-                                                                    <option value="08">Aug (08)</option>
-                                                                    <option value="09">Sep (09)</option>
-                                                                    <option value="10">Oct (10)</option>
-                                                                    <option value="11">Nov (11)</option>
-                                                                    <option value="12">Dec (12)</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-xs-3">
-                                                                <select class="form-control" data-stripe="exp-year"
-                                                                        id="card-exp-year">
-                                                                    <option value="2016">2016</option>
-                                                                    <option value="2017">2017</option>
-                                                                    <option value="2018">2018</option>
-                                                                    <option value="2019">2019</option>
-                                                                    <option value="2020">2020</option>
-                                                                    <option value="2021">2021</option>
-                                                                    <option value="2022">2022</option>
-                                                                    <option value="2023">2023</option>
-                                                                    <option value="2024">2024</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-3 col-sm-9">
                                                 </div>
-                                                <div class="form-group">
-                                                    <label class="col-sm-3 control-label" for="cvv">Card CVC</label>
-                                                    <div class="col-sm-3">
-                                                        <input type="text" class="form-control" stripe-data="cvc"
-                                                               id="card-cvc" placeholder="Security Code">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="col-sm-offset-3 col-sm-9">
-                                                    </div>
-                                                </div>
+                                            </div>
                                         </fieldset>
                                         <button type="submit" class="btn btn-success btn-lg" style="width:100%;">
                                             Pay
@@ -354,9 +364,9 @@
                                     </div>
                                 </div>
                             </div>
+                        </form>
                     </div>
                 </div>
-                </form>
             </div>
         </div>
     </div>

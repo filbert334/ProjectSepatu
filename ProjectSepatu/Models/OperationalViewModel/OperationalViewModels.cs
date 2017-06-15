@@ -1,4 +1,5 @@
 ﻿using ProjectSepatu.Core.ProductProperties.BrandClass;
+using ProjectSepatu.Core.ProductProperties.CategoryMasterClass;
 using ProjectSepatu.Core.ProductProperties.JenisPembayaranMasterClass;
 using ProjectSepatu.Core.ProductProperties.MetodePembayaranMasterClass;
 using ProjectSepatu.Core.ProductProperties.ProductTypeMasterClass;
@@ -34,7 +35,8 @@ namespace ProjectSepatu.Models.OperationalViewModel
 
     public class TabCategoryModel
     {
-
+        public CategoryMaster CategoryItem { get; set; }
+        public List<CategoryMaster> CategoryList { get; set; }
     }
 
     public class TabTypeModel
