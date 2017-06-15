@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProjectSepatu.DAL.ProductProperties.CategoryMasterClass;
+using ProjectSepatu.Models.OperationalViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,25 +8,26 @@ using System.Threading.Tasks;
 
 namespace ProjectSepatu.Components
 {
-    //public class TabCategoryComponent : ViewComponent
-    //{
+    public class TabCategoryComponent : ViewComponent
+    {
+        CategoryMasterRepo CategoryRepo;
 
-    //    public TabCategoryComponent()
-    //    {
+        public TabCategoryComponent(CategoryMasterRepo _CategoryRepo)
+        {
+            CategoryRepo = _CategoryRepo;
+        }
 
-    //    }
+        public IViewComponentResult Invoke(int id = 0)
+        {
+            TabCategoryModel model = new TabCategoryModel();
 
-    //    public IViewComponentResult Invoke(int id = 0)
-    //    {
-    //        TabBrandModel model = new TabBrandModel();
+            model.CategoryList = CategoryRepo.GetAll();
 
-    //        model.BrandList = brandrepo.GetAll();
-
-    //        var metodepembayaranitem = brandrepo.GetById(id);
-    //        model.BrandItem = metodepembayaranitem;
+            var item = CategoryRepo.GetById(id);
+            model.CategoryItem = item;
 
 
-    //        return View("~/Views/Operational/TabCategory.cshtml", model);
-    //    }
-    //}
+            return View("~/Views/Operational/TabCategory.cshtml", model);
+        }
+    }
 }

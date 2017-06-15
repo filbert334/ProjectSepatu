@@ -12,6 +12,8 @@ using ProjectSepatu.DAL.ProductProperties.BrandClass;
 using ProjectSepatu.Core.ProductProperties.BrandClass;
 using ProjectSepatu.DAL.ProductProperties.ProductTypeMasterClass;
 using ProjectSepatu.Core.ProductProperties.ProductTypeMasterClass;
+using ProjectSepatu.DAL.ProductProperties.CategoryMasterClass;
+using ProjectSepatu.Core.ProductProperties.CategoryMasterClass;
 
 namespace ProjectSepatu.Controllers.Admin
 {
@@ -21,15 +23,16 @@ namespace ProjectSepatu.Controllers.Admin
         static JenisPembayaranMasterRepo JenisPembayaran;
         static BrandRepo BrandRepo;
         static ProductTypeMasterRepo TypeRepo;
-
+        static CategoryMasterRepo CategoryRepo;
 
         public OperationalController(MetodePembayaranMasterRepo _MetodePembayaran, JenisPembayaranMasterRepo _JenisPembayaran, BrandRepo _BrandRepo,
-            ProductTypeMasterRepo _TypeRepo)
+            ProductTypeMasterRepo _TypeRepo, CategoryMasterRepo _CategoryRepo)
         {
             MetodePembayaran = _MetodePembayaran;
             JenisPembayaran = _JenisPembayaran;
             BrandRepo = _BrandRepo;
             TypeRepo = _TypeRepo;
+            CategoryRepo = _CategoryRepo;
         }
 
         public IActionResult Index()
@@ -133,6 +136,8 @@ namespace ProjectSepatu.Controllers.Admin
                 if (JenisPembayaranIsi != null)
                 {
                     JenisPembayaranIsi.Jenis_Pembayaran = model.JenisPembayaranItem.Jenis_Pembayaran;
+                    JenisPembayaranIsi.Nomor_Rekening = model.JenisPembayaranItem.Nomor_Rekening;
+                    JenisPembayaranIsi.Atas_Nama = model.JenisPembayaranItem.Atas_Nama;
                     JenisPembayaranIsi.MetodePembayaranMasterId = model.JenisPembayaranItem.MetodePembayaranMasterId;
                     JenisPembayaranIsi.UpdatedDate = DateTime.Now;
 
@@ -145,6 +150,8 @@ namespace ProjectSepatu.Controllers.Admin
                 {
                     var NewJenisPembayaran = new JenisPembayaranMaster();
                     NewJenisPembayaran.Jenis_Pembayaran = model.JenisPembayaranItem.Jenis_Pembayaran;
+                    NewJenisPembayaran.Nomor_Rekening = model.JenisPembayaranItem.Nomor_Rekening;
+                    NewJenisPembayaran.Atas_Nama = model.JenisPembayaranItem.Atas_Nama;
                     NewJenisPembayaran.MetodePembayaranMasterId = model.JenisPembayaranItem.MetodePembayaranMasterId;
                     NewJenisPembayaran.CreatedDate = DateTime.Now;
                     NewJenisPembayaran.UpdatedDate = DateTime.Now;
@@ -252,10 +259,72 @@ namespace ProjectSepatu.Controllers.Admin
         #endregion
 
         #region TabCategory
-        public IActionResult TabCategory()
+        public IActionResult TabCategory(int id = 0)
         {
-            return View();
+            TabCategoryModel model = new TabCategoryModel();
+
+            model.CategoryList = CategoryRepo.GetAll();
+
+            var item = CategoryRepo.GetById(id);
+            model.CategoryItem = item;
+
+            return View(model);
         }
+
+        [HttpPost]
+        public ActionResult SaveCategory(TabCategoryModel model)
+        {
+            try
+            {
+                var ItemIsi = CategoryRepo.GetById(model.CategoryItem.Id);
+
+                if (ItemIsi != null)
+                {
+                    ItemIsi.Gender = model.CategoryItem.Gender;
+                    ItemIsi.UpdatedDate = DateTime.Now;
+
+                    CategoryRepo.Save(ItemIsi);
+
+                    return RedirectToAction("Index");
+                }
+
+                else
+                {
+                    var NewItem = new CategoryMaster();
+                    NewItem.Gender = model.CategoryItem.Gender;
+                    NewItem.CreatedDate = DateTime.Now;
+                    NewItem.UpdatedDate = DateTime.Now;
+                    NewItem.IsHidden = false;
+
+
+                    CategoryRepo.Save(NewItem);
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpGet]
+        public ActionResult DeleteCategory(int id)
+        {
+            var ItemIsi = CategoryRepo.GetById(id);
+            ItemIsi.IsHidden = true;
+
+            CategoryRepo.Save(ItemIsi);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult SelectCategory(int Id)
+        {
+            return RedirectToAction("TabCategory", new { id = Id });
+        }
+
         #endregion
 
 
