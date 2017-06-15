@@ -1,4 +1,5 @@
 ﻿using ProjectSepatu.Core.ProductProperties.BrandClass;
+using ProjectSepatu.Core.ProductProperties.CategoryMasterClass;
 using ProjectSepatu.Core.ProductProperties.GenderMasterClass;
 using ProjectSepatu.Core.ProductProperties.ProductMasterClass;
 using ProjectSepatu.Core.ProductProperties.ProductTypeMasterClass;
@@ -14,12 +15,23 @@ namespace ProjectSepatu.Models.HomeViewModels
         public List<ProductMaster> listProduct { get; set; } = new List<ProductMaster>();
         public List<ProductMaster> listLatestProduct { get; set; } = new List<ProductMaster>();
         public List<ProductTypeMaster> ProductTypeList { get; set; } = new List<ProductTypeMaster>();
-        public List<GenderMaster> GenderList { get; set; } = new List<GenderMaster>();
+        public List<CategoryMaster> CategoryList{ get; set; } = new List<CategoryMaster>();
         public List<Brand> BrandList { get; set; } = new List<Brand>();
     }
     public class ListViewModel
     {
         public List<ProductMaster> listProducts { get; set; } = new List<ProductMaster>();
         public int TypeId { get; set; }
+        public int BrandId { get; set; }
+        public int CategoryId { get; set; }
+    }
+
+    public class ProductDetailsViewModel
+    {
+        public ProductMaster ProductDetails { get; set; }
+        public List<ProductMaster> RelatedProducts { get; set; } = new List<ProductMaster>();
+        public int TypeId { get; set; }
+        public int BrandId { get; set; }
+        public int CategoryId { get; set; }
     }
 }
