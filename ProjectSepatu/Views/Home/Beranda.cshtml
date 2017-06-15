@@ -44,6 +44,58 @@
         elem.parents('.owl-wrapper, .owl-carousel').css('height', height);
     }
 </script>
+    
+<div class="section-no-margin" style="margin-top:50px;">
+    <div class="banner-home-3">
+        <div class="container">
+            <div class="banner-shortcode-5-content">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        <div class="banner-shortcode-wrap style_5">
+                            <div class="banner-content">
+                                <a href="#">
+                                    <h3 class="banner-title">Casual</h3><img src="~/Assets/Front/image/banner/casual.jpg" alt="In your bedroom" style="height:390px;width:350px;" />
+                                    <div class="banner-hover">
+                                        <h5 class="banner-hover-title">Casual</h5>
+                                        <p class="banner-hover-sub-title">Shop now</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="banner-shortcode-wrap style_5">
+                            <div class="banner-content">
+                                <a href="#">
+                                    <h3 class="banner-title">Running</h3><img src="~/Assets/Front/image/banner/running.jpg" alt="In your bedroom" style="height:390px;width:350px;" />
+                                    <div class="banner-hover">
+                                        <h5 class="banner-hover-title">Casual</h5>
+                                        <p class="banner-hover-sub-title">Shop now</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="banner-shortcode-wrap style_5">
+                            <div class="banner-content">
+                                <a href="#">
+                                    <h3 class="banner-title">SPORT</h3><img src="~/Assets/Front/image/banner/sport.jpg" alt="In your bedroom" style="height:390px;width:350px;" />
+                                    <div class="banner-hover">
+                                        <h5 class="banner-hover-title">Casual</h5>
+                                        <p class="banner-hover-sub-title">Shop now</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <section>
     <div class="latest-home-3" style="margin-top:30px;">
         <div class="container">
@@ -90,162 +142,151 @@
         <div class="sperator text-left">
             <p>PRODUCTS DISPLAY</p><span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</span>
         </div>
-            <div class="sidebar-product-style-2">
-                <div class="row">
-                    <div class="col-md-4 col-xs-12">
-                        <aside>
-                            <h4>Kategori</h4>
+        <div class="sidebar-product-style-2">
+            <div class="row">
+                <div class="col-md-4 col-xs-12">
+                    <aside>
+                        <h4>Kategori</h4>
+                        <select id="CategoryFilter" class="selectpicker form-control">
+                            <option selected>Select All</option>
+                            @*@foreach (var item in Model.CategoryList)
+                            {
+                                <option value="@item.Id">@item.Gender</option>
+                            }*@
+                        </select>
 
-                            <select class="selectpicker form-control">
-                                <option>asdfasdfasdfasdfasdfaf</option>
-                                <option>cow</option>
-                                <option>cow</option>
-                                <option>cow</option>
-                                <option>cow</option>
-                                <option>cow</option>
-                                <option>cow</option>
-                                <option>cow</option>
-                                <option>cow</option>
-                                <option>cow</option>
-                                <option>cow</option>
-                                <option>cow</option>
-                                <option>cow</option>
-                                <option>cow</option>
-                                <option>cow</option>
-                                <option>cow</option>
-                                <option>cow</option>
-                            </select>
-
-                        </aside>
-                    </div>
-                    <div class="col-md-3 col-xs-12">
-                        <aside>
-                            <h4>Tipe</h4>
-                            <select id="TypeFilter" class="selectpicker form-control">
-                                <option selected>Select All</option>
-                                @foreach (var item in Model.ProductTypeList)
-                                {
-                                    <option value="@item.Id">@item.Type</option>
-                                }
-                            </select>
-                        </aside>
-                    </div>
-                    <div class="col-md-3 col-xs-12">
-                        <aside>
-                            <h4>Brand</h4>
-                            <select name="BrandFilter" class="selectpicker form-control">
-                                <option selected>Select All</option>
-                                @foreach (var item in Model.BrandList)
-                                {
-                                    <option value="@item.Id">@item.Nama_Brand</option>
-
-                                }
-                            </select>
-                        </aside>
-                    </div>
-                    <div class="col-md-2 col-xs-12">
-                        <aside style="margin-top:58px;">
-                            <a href="" class="load-more-shop" style="background-color:black;width:100%;text-align:center" onclick="FilterToListPage()">Search &nbsp;&nbsp;<i class="fa fa-search"></i></a>
-                        </aside>
-                    </div>
-
+                    </aside>
                 </div>
+                <div class="col-md-3 col-xs-12">
+                    <aside>
+                        <h4>Tipe</h4>
+                        <select id="TypeFilter" class="selectpicker form-control">
+                            <option selected>Select All</option>
+                            @foreach (var item in Model.ProductTypeList)
+                            {
+                                <option value="@item.Id">@item.Type</option>
+                            }
+                        </select>
+                    </aside>
+                </div>
+                <div class="col-md-3 col-xs-12">
+                    <aside>
+                        <h4>Brand</h4>
+                        <select id="BrandFilter" class="selectpicker form-control">
+                            <option selected>Select All</option>
+                            @foreach (var item in Model.BrandList)
+                            {
+                                <option value="@item.Id">@item.Nama_Brand</option>
+
+                            }
+                        </select>
+                    </aside>
+                </div>
+                <div class="col-md-2 col-xs-12">
+                    <aside style="margin-top:60px;">
+
+                        <button class="btn btn-baru btn-block" onclick="FilterToListPage()">Search &nbsp;&nbsp;<i class="fa fa-search"></i></button>
+
+                    </aside>
+                </div>
+
             </div>
+        </div>
         <div class="sidebar-product-style-2" style="margin-top:-50px;">
             <div class="woocommerce product-listing columns-4">
                 @*<div class="sidebar-shop-col toggle-sidebar-shop">
-                    <div class="sidebar-product-style-2">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <aside class="sort-by">
-                                    <h4>Sort By</h4>
-                                    <ul>
-                                        <li><a asp-action="Beranda" asp-route-sortOrder="@ViewData["TermurahSortParm"]">Termurah</a></li>
-                                        <li><a asp-action="Beranda" asp-route-sortOrder="@ViewData["TermahalSortParm"]">Termahal</a></li>
-                                        <li><a asp-action="Beranda" asp-route-sortOrder="@ViewData["DilihatSortParm"]">Dilihat Terbanyak</a></li>
-                                        <li><a asp-action="Beranda" asp-route-sortOrder="@ViewData["PenjualanSortParm"]">Penjualan Terbanyak</a></li>
-                                        <li><a asp-action="Beranda" asp-route-sortOrder="@ViewData["TerbaruSortParm"]">Terbaru</a></li>
-                                    </ul>
-                                </aside>
-                            </div>
-                            <div class="col-md-2">
-                                <aside class="sort-by">
-                                    <h4>Filter by price</h4>
-                                    <div class="form-group">
-                                        <label for="min">Harga Terendah (Rp): </label>
-                                        <input type="text"   placeholder="Contoh :  500000" class="form-control" id="minimal">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="max">Harga Tertinggi (Rp): </label>
-                                        <input type="text" placeholder="Contoh :  1500000" class="form-control" id="maksimal">
-                                    </div>
-                                </aside>
-                            </div>
-                            <div class="col-md-2">
-                                <aside class="categorie">
-                                    <h4>Kategori</h4>
+                        <div class="sidebar-product-style-2">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <aside class="sort-by">
+                                        <h4>Sort By</h4>
+                                        <ul>
+                                            <li><a asp-action="Beranda" asp-route-sortOrder="@ViewData["TermurahSortParm"]">Termurah</a></li>
+                                            <li><a asp-action="Beranda" asp-route-sortOrder="@ViewData["TermahalSortParm"]">Termahal</a></li>
+                                            <li><a asp-action="Beranda" asp-route-sortOrder="@ViewData["DilihatSortParm"]">Dilihat Terbanyak</a></li>
+                                            <li><a asp-action="Beranda" asp-route-sortOrder="@ViewData["PenjualanSortParm"]">Penjualan Terbanyak</a></li>
+                                            <li><a asp-action="Beranda" asp-route-sortOrder="@ViewData["TerbaruSortParm"]">Terbaru</a></li>
+                                        </ul>
+                                    </aside>
+                                </div>
+                                <div class="col-md-2">
+                                    <aside class="sort-by">
+                                        <h4>Filter by price</h4>
+                                        <div class="form-group">
+                                            <label for="min">Harga Terendah (Rp): </label>
+                                            <input type="text"   placeholder="Contoh :  500000" class="form-control" id="minimal">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="max">Harga Tertinggi (Rp): </label>
+                                            <input type="text" placeholder="Contoh :  1500000" class="form-control" id="maksimal">
+                                        </div>
+                                    </aside>
+                                </div>
+                                <div class="col-md-2">
+                                    <aside class="categorie">
+                                        <h4>Kategori</h4>
 
-                                    <select class="selectpicker form-control">
-                                        <option>asdfasdfasdfasdfasdfaf</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                        <option>cow</option>
-                                    </select>
+                                        <select class="selectpicker form-control">
+                                            <option>asdfasdfasdfasdfasdfaf</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                            <option>cow</option>
+                                        </select>
 
-                                </aside>
-                            </div>
-                            <div class="col-md-3">
-                                <aside class="tagcloud">
-                                    <h4>Tipe</h4>
-                                    <ul class="tagcloud">
-                                        <li><a href="#">Bag</a></li>
-                                        <li><a href="#">Comb</a></li>
-                                        <li><a href="#">Chair</a></li>
-                                        <li><a href="#">Classic</a></li>
-                                        <li><a href="#">Desk</a></li>
-                                        <li><a href="#">Gel</a></li>
-                                        <li><a href="#">Lamp</a></li>
-                                        <li><a href="#">Glass</a></li>
-                                        <li><a href="#">Office</a></li>
-                                        <li><a href="#">Table Tiles</a></li>
-                                        <li><a href="#">Socks</a></li>
-                                    </ul>
-                                </aside>
-                            </div>
-                            <div class="col-md-3">
-                                <aside class="tagcloud">
-                                    <h4>Brand</h4>
-                                    <ul class="tagcloud">
-                                        <li><a href="#">Bag</a></li>
-                                        <li><a href="#">Comb</a></li>
-                                        <li><a href="#">Chair</a></li>
-                                        <li><a href="#">Classic</a></li>
-                                        <li><a href="#">Desk</a></li>
-                                        <li><a href="#">Gel</a></li>
-                                        <li><a href="#">Lamp</a></li>
-                                        <li><a href="#">Glass</a></li>
-                                        <li><a href="#">Office</a></li>
-                                        <li><a href="#">Table Tiles</a></li>
-                                        <li><a href="#">Socks</a></li>
-                                    </ul>
-                                </aside>
+                                    </aside>
+                                </div>
+                                <div class="col-md-3">
+                                    <aside class="tagcloud">
+                                        <h4>Tipe</h4>
+                                        <ul class="tagcloud">
+                                            <li><a href="#">Bag</a></li>
+                                            <li><a href="#">Comb</a></li>
+                                            <li><a href="#">Chair</a></li>
+                                            <li><a href="#">Classic</a></li>
+                                            <li><a href="#">Desk</a></li>
+                                            <li><a href="#">Gel</a></li>
+                                            <li><a href="#">Lamp</a></li>
+                                            <li><a href="#">Glass</a></li>
+                                            <li><a href="#">Office</a></li>
+                                            <li><a href="#">Table Tiles</a></li>
+                                            <li><a href="#">Socks</a></li>
+                                        </ul>
+                                    </aside>
+                                </div>
+                                <div class="col-md-3">
+                                    <aside class="tagcloud">
+                                        <h4>Brand</h4>
+                                        <ul class="tagcloud">
+                                            <li><a href="#">Bag</a></li>
+                                            <li><a href="#">Comb</a></li>
+                                            <li><a href="#">Chair</a></li>
+                                            <li><a href="#">Classic</a></li>
+                                            <li><a href="#">Desk</a></li>
+                                            <li><a href="#">Gel</a></li>
+                                            <li><a href="#">Lamp</a></li>
+                                            <li><a href="#">Glass</a></li>
+                                            <li><a href="#">Office</a></li>
+                                            <li><a href="#">Table Tiles</a></li>
+                                            <li><a href="#">Socks</a></li>
+                                        </ul>
+                                    </aside>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>*@
+                    </div>*@
                 <div class="desc-review-content tab-content clearfix">
                     @foreach (var item in Model.listProduct)
                     {
@@ -258,11 +299,11 @@
                                     <div class="product-thumb-secondary"><img width="300" height="400" src="~/Assets/Front/image/product/3.jpg" alt="47" class="attachment-shop_catalog size-shop_catalog" onclick="ToDetailsProduct(@item.Id)" /></div>
 
                                     @*<a href="" class="product-link">
-                                        <div class="product-hover-sign" >
-                                            <hr />
-                                            <hr />
-                                        </div>
-                                    </a>*@
+                                            <div class="product-hover-sign" >
+                                                <hr />
+                                                <hr />
+                                            </div>
+                                        </a>*@
                                     <div class="product-actions">
                                         <div class="yith-wcwl-add-to-wishlist add-to-wishlist-225">
                                             <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i>    Add to Wishlist</a></div>
@@ -273,17 +314,16 @@
                                 </div>
                                 <div class="product-info">
                                     <div class="rate" style="margin-right:-20px;"><i class="fa fa-eye" aria-hidden="true">&nbsp;@item.Dilihat</i></div><span class="price">
-                                        @if (item.Diskon_Persen == 0 && item.Diskon_Rp == 0)
-                                        {
+                                        @*@if (item.Diskon_Persen == 0 && item.Diskon_Rp == 0)
+                                        {*@
 
-                                            <ins><span class="woocommerce-Price-currencySymbol" style="color:green;">Rp @item.Harga_Jual</span></ins>
-                                        }
-                                        else
+                                            <ins><span class="woocommerce-Price-currencySymbol" style="color:green;">Rp @item.Harga_Setelah_Diskon</span></ins>
+                                        @* } *@
+                                        @*else
                                         {
                                             <del><span class="woocommerce-Price-amount amount" style="color:red;"><span class="woocommerce-Price-currencySymbol">Rp</span> @item.Harga_Jual</span></del>
-                                            <ins><span class="woocommerce-Price-currencySymbol" style="color:green;">@item.Diskon_Persen %</span></ins>
-                                        }
-
+                                                <ins><span class="woocommerce-Price-currencySymbol" style="color:green;">@item.Diskon_Persen %</span></ins>
+                                        }*@
                                     </span><a href="#" target="_blank">
                                         <h3>@item.Nama_Product</h3>
                                     </a>
@@ -296,8 +336,34 @@
             </div>
         </div>
 
+    </div>
+</div>
+<section></section>
+<section>
+    <div class="sn-newletter-style3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="sn-newletter-style3-left">
+                        <div class="newletter-style3-left-content">
+                            <h1>NEWSLETTER</h1>
+                            <p>Subscribe for latest stories and promotions</p>
+                        </div>
+                       
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="sn-newletter-style3-right">
+                        <form>
+                            <input placeholder="Subscribe your email here" type="text" /><a href="#">subcribe</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row"><br /></div>
         </div>
     </div>
+</section>
 <section></section>
 <script>
     // insert commas as thousands separators

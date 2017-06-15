@@ -85,12 +85,12 @@
                                                 @if (item.Diskon_Persen == 0 && item.Diskon_Rp == 0)
                                                 {
 
-                                                    <ins><span class="woocommerce-Price-currencySymbol" style="color:green;">Rp @item.Harga_Jual</span></ins>
+                                                    <ins><span class="woocommerce-Price-currencySymbol" style="color:green;">Rp @item.Harga_Setelah_Diskon</span></ins>
                                                 }
                                                 else
                                                 {
                                                     <del><span class="woocommerce-Price-amount amount" style="color:red;"><span class="woocommerce-Price-currencySymbol">Rp</span> @item.Harga_Jual</span></del>
-                                                                                                                                                                    <ins><span class="woocommerce-Price-currencySymbol" style="color:green;">@item.Diskon_Persen %</span></ins>
+                                                    <ins><span class="woocommerce-Price-currencySymbol" style="color:green;">@item.Harga_Setelah_Diskon</span></ins>
                                                 }
 
                                             </span><a href="#" target="_blank">

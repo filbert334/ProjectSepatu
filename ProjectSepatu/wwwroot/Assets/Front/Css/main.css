@@ -14,6 +14,15 @@ FOOTER
 PAGES
 ------------------------------------------------------------------------ */
 /**/
+.btn-baru {
+    background-color: #424242;
+    color: white
+}
+
+    .btn-baru:hover {
+        color: #ffdc73;
+    }
+
 /**/
 /**/
 .taghover_tag {
