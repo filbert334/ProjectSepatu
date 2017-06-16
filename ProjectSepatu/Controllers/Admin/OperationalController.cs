@@ -328,6 +328,23 @@ namespace ProjectSepatu.Controllers.Admin
         #endregion
 
 
+        #region PopUp
+
+        public ActionResult SaveDataPopUp()
+        {
+            //TabMetodePembayaranModel model = new TabMetodePembayaranModel();
+
+            //model.MetodePembayaranList = MetodePembayaran.GetAll();
+
+            //var metodepembayaranitem = MetodePembayaran.GetById(id);
+            //model.MetodePembayaran = metodepembayaranitem;
+            
+            return PartialView("_LayoutPopUp");
+        }
+
+        #endregion
+
+
         public IActionResult TabColor()
         {
             return View();
