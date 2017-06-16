@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using ProjectSepatu.Core.ProductProperties.BrandClass;
 using ProjectSepatu.Core.ProductProperties.CabangMasterClass;
 using ProjectSepatu.Core.ProductProperties.CategoryMasterClass;
@@ -17,13 +18,14 @@ using ProjectSepatu.Core.ProductProperties.RefundClass;
 using ProjectSepatu.Core.ProductProperties.SaranaPengirimanMasterClass;
 using ProjectSepatu.Core.ProductProperties.TransaksiHeaderClass;
 using ProjectSepatu.Core.ProductProperties.TransaksiListClass;
+using ProjectSepatu.Core.ProductProperties.UserClass;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ProjectSepatu.DAL
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<User>
     {
 
         public AppDbContext(DbContextOptions<AppDbContext> options)

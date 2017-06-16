@@ -1,8 +1,10 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using ProjectSepatu.Models
 
-@inject SignInManager<ApplicationUser> SignInManager
-@inject UserManager<ApplicationUser> UserManager
+@using ProjectSepatu.Core.ProductProperties.UserClass
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
 
 @if (SignInManager.IsSignedIn(User))
 {

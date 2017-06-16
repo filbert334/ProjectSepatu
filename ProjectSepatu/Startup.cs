@@ -29,6 +29,8 @@ using ProjectSepatu.DAL.ProductProperties.TransaksiHeaderClass;
 using ProjectSepatu.DAL.ProductProperties.TransaksiListClass;
 using ProjectSepatu.DAL.ProductProperties.MetodePembayaranMasterClass;
 using ProjectSepatu.DAL.ProductProperties.CategoryMasterClass;
+using ProjectSepatu.Core.ProductProperties.UserClass;
+using Microsoft.AspNetCore.Identity;
 
 namespace ProjectSepatu
 {
@@ -64,14 +66,36 @@ namespace ProjectSepatu
                 options.UseSqlServer(Configuration.GetConnectionString("DbToti")));
 
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
             
 
             services.AddMvc();
 
-            
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Password settings
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 8;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireLowercase = false;
+
+                // Lockout settings
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                options.Lockout.MaxFailedAccessAttempts = 10;
+
+                //// Cookie settings
+                //options.Cookies.ApplicationCookie.ExpireTimeSpan = TimeSpan.FromDays(150);
+                //options.Cookies.ApplicationCookie.LoginPath = "/Account/LogIn";
+                //options.Cookies.ApplicationCookie.LogoutPath = "/Account/LogOut";
+
+                //// User settings
+                //options.User.RequireUniqueEmail = true;
+            });
+
+
             // Add application services.
             services.AddTransient<BrandRepo, BrandRepo>();
             services.AddTransient<CabangMasterRepo, CabangMasterRepo>();
@@ -90,6 +114,10 @@ namespace ProjectSepatu
             services.AddTransient<MetodePembayaranMasterRepo, MetodePembayaranMasterRepo>();
             services.AddTransient<CategoryMasterRepo, CategoryMasterRepo>();
 
+            services.AddScoped<SignInManager<User>, SignInManager<User>>();
+            services.AddScoped<UserManager<User>, UserManager<User>>();
+            services.AddScoped<SignInManager<ApplicationUser>, SignInManager<ApplicationUser>>();
+            services.AddScoped<UserManager<ApplicationUser>, UserManager<ApplicationUser>>();
 
 
             services.AddTransient<IEmailSender, AuthMessageSender>();
