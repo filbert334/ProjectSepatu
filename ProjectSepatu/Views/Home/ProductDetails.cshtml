@@ -6,6 +6,7 @@
 }
 @using ProjectSepatu.Models.HomeViewModels
 
+
 @model ProductDetailsViewModel
 <section class="product-information" style="margin-top:60px;">
     <div class="container">
@@ -43,10 +44,12 @@
             <div class="col-md-6">
                 <div class="summary-product entry-summary">
                     <h1 class="product_title">@Model.ProductDetails.Nama_Product</h1>
-                    <div class="woocommerce-product-rating"></div>
+                    
                     <div class="rate-price">
                         <p class="price"><span>Rp @Model.ProductDetails.Harga_Setelah_Diskon</span></p>
                     </div>
+                    <div class="woocommerce-product-rating" style="margin-top:-20px;">
+                        <i class="fa fa-eye" aria-hidden="true">&nbsp;@Model.ProductDetails.Dilihat</i></div>
                     <div class="product-single-short-description">
                         <p>@Model.ProductDetails.Remarks</p>
                     </div>

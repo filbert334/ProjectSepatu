@@ -15,6 +15,9 @@ using ProjectSepatu.Core.ProductProperties.GenderMasterClass;
 using ProjectSepatu.Core.ProductProperties.ProductTypeMasterClass;
 using ProjectSepatu.Core.ProductProperties.TransaksiListClass;
 using ProjectSepatu.DAL.ProductProperties.TransaksiListClass;
+using ProjectSepatu.DAL.ProductProperties.ProductPictureClass;
+using ProjectSepatu.DAL.ProductProperties.CategoryMasterClass;
+using ProjectSepatu.Core.ProductProperties.CategoryMasterClass;
 //using ProjectSepatu.DAL.ProductProperties.CategoryMasterClass;
 //using ProjectSepatu.Core.ProductProperties.CategoryMasterClass;
 
@@ -26,16 +29,17 @@ namespace ProjectSepatu.Controllers
         private ProductMasterRepo _ProductMasterRepo;
         private ProductTypeMasterRepo _ProductTypeMasterRepo;
         private TransaksiListRepo _TransaksiListRepo;
-    //   private CategoryMasterRepo _CategoryMasterRepo;
+        private CategoryMasterRepo _CategoryMasterRepo;
+        
 
 
-        public HomeController(BrandRepo BrandRepo, ProductMasterRepo ProductMasterRepo, ProductTypeMasterRepo ProductTypeMasterRepo, TransaksiListRepo TransaksiListRepo)
+        public HomeController(BrandRepo BrandRepo, ProductMasterRepo ProductMasterRepo, ProductTypeMasterRepo ProductTypeMasterRepo, TransaksiListRepo TransaksiListRepo, CategoryMasterRepo CategoryMasterRepo)
         {
             _BrandRepo = BrandRepo;
             _ProductMasterRepo = ProductMasterRepo;
             _ProductTypeMasterRepo = ProductTypeMasterRepo;
             _TransaksiListRepo = TransaksiListRepo;
-           // _CategoryMasterRepo = CategoryMasterRepo;
+           _CategoryMasterRepo = CategoryMasterRepo;
         }
 
         public IActionResult Index()
@@ -63,18 +67,19 @@ namespace ProjectSepatu.Controllers
             return TypeList;
         }
 
-        //public List<CategoryMaster> FilterCategory()
-        //{
-        //    var CategoryList = _CategoryMasterRepo.GetAll().OrderBy(i=>i.Gender).Where(i => i.IsHidden == false).ToList();
-        //    if (CategoryList == null)
-        //    {
-        //        CategoryList = new List<CategoryMaster>();
-        //    }
-        //    return CategoryList;
-        //}
-
-        public IActionResult Beranda()
+        public List<CategoryMaster> FilterCategory()
         {
+            var CategoryList = _CategoryMasterRepo.GetAll().OrderBy(i=>i.Gender).Where(i => i.IsHidden == false).ToList();
+            if (CategoryList == null)
+            {
+                CategoryList = new List<CategoryMaster>();
+            }
+            return CategoryList;
+        }
+
+        public IActionResult Beranda(int viewcount)
+        {
+
             var ProductList = _ProductMasterRepo.GetAll().OrderByDescending(i=>i.Dilihat).Where(i => i.IsHidden == false).ToList();
             var LatestProductList = _ProductMasterRepo.GetAll().OrderByDescending(i => i.CreatedDate).Where(i => i.IsHidden == false).ToList();
             var viewModel = new HomePageViewModel();
@@ -103,7 +108,7 @@ namespace ProjectSepatu.Controllers
             {
                 foreach (var item in LatestProductList)
                 {
-                    if (counter < 6)
+                    if (counter < 4)
                     {
                         viewModel.listLatestProduct.Add(item);
                     }
@@ -115,6 +120,7 @@ namespace ProjectSepatu.Controllers
             {
                 viewModel.listLatestProduct = new List<ProductMaster>();
             }
+
             return View(viewModel);
         }
 
@@ -153,7 +159,12 @@ namespace ProjectSepatu.Controllers
             ViewData["DilihatSortParm"] = sortOrder == "" ? "" : "";
             ViewData["PenjualanSortParm"] = sortOrder == "" ? "terjual" : "";
 
+
+
             var viewModel = new ListViewModel();
+            viewModel.BrandList = FilterBrand();
+            viewModel.ProductTypeList = FilterType();
+            viewModel.CategoryList = FilterCategory();
 
             var ProductTypeList = _ProductMasterRepo.GetAll().Where(i => i.IsHidden == false).ToList();
             if(idType!=0)
@@ -161,11 +172,11 @@ namespace ProjectSepatu.Controllers
                 ProductTypeList = ProductTypeList.Where(i => i.TypeMasterId == idType).ToList();
                 viewModel.TypeId = idType;
             }
-            //if (idCategory != 0)
-            //{
-            //    ProductTypeList = ProductTypeList.Where(i => i.GenderMasterId == idCategory).ToList();
-            //    viewModel.CategoryId = idCategory ;
-            //}
+            if (idCategory != 0)
+            {
+                ProductTypeList = ProductTypeList.Where(i => i.GenderMasterId == idCategory).ToList();
+                viewModel.CategoryId = idCategory ;
+            }
             if (idBrand != 0)
             {
                 ProductTypeList = ProductTypeList.Where(i => i.BrandId == idBrand).ToList();
@@ -197,6 +208,11 @@ namespace ProjectSepatu.Controllers
         public IActionResult ProductDetails(int id = 0)
         {
             var ProductSelect = _ProductMasterRepo.GetById(id);
+
+            ProductSelect.Dilihat++;
+            _ProductMasterRepo.Save(ProductSelect);
+
+
             var ProductRelated = _ProductMasterRepo.GetAll().Where(i => i.TypeMasterId == ProductSelect.TypeMasterId).ToList();
             var viewModel = new ProductDetailsViewModel();
 

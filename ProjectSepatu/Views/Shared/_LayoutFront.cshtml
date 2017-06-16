@@ -96,10 +96,11 @@
                         <!-- .header-logo-->
                         <nav id="primary-menu" class="main-nav">
                             <ul class="nav">
-                                <li class="mega-menu-item">
-                                    <a href="">BERANDA</a>
-                                </li>
-                                <li class="mega-menu menu-item">
+
+                                <li>@using (Html.BeginForm("Beranda", "Home")){<button class="btn btn-baru"><strong>HOME</strong></button>}</li>
+                                <li>@using (Html.BeginForm("List", "Home"))
+                                {<button class="btn btn-baru"><strong>CATALOG</strong></button>}</li>
+                                @*<li class="mega-menu menu-item">
                                     <a href="#">Filter</a>
                                     <ul class="sub-menu sub-menu-mega">
                                         <li class="sub-menu-mega-item">
@@ -265,7 +266,7 @@
                                         <li><a href="contact-us.html">Contact Us</a></li>
                                         <li><a href="page-404.html">404 Page</a></li>
                                     </ul>
-                                </li>
+                                </li>*@
                             </ul>
                             <ul class="header-customize-item header-social-profile-wrapper">
                                 <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
@@ -326,15 +327,7 @@
                                     <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper</p><a href="#">DETAILS</a>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <h3>INFORMATION</h3>
-                                <ul class="footer-top-content">
-                                    <li><a href="#">About US</a></li>
-                                    <li><a href="#">Contact Us</a></li>
-                                    <li><a href="#">News</a></li>
-                                    <li><a href="#">Store</a></li>
-                                </ul>
-                            </div>
+                            <div class="col-md-4"></div>
                             <div class="col-md-4">
                                 <h3>CONTACT US</h3>
                                 <div class="icon-box icon-box-style2">
@@ -357,7 +350,7 @@
                             <button type="button" class="sn-btn sn-btn-style-17 sn-back-to-top fixed-right-bottom"><i class="btn-icon fa fa-angle-up"></i></button>
                         </div>
                         <div class="footer-bottom-content">
-                            <div class="copyright">©  2016  Sofani  Designed  with by  <a href="#">YoloTemplate</a></div>
+                            <div class="copyright">©  2017  Insole  Designed  with by  <a href="#">Kelompok 3</a></div>
                             <figure><img src="images/demo/payment-home-3.png" alt="pay-footer3" /></figure>
                         </div>
                     </div>
