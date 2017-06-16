@@ -15,6 +15,7 @@ using ProjectSepatu.Core.ProductProperties.GenderMasterClass;
 using ProjectSepatu.Core.ProductProperties.ProductTypeMasterClass;
 using ProjectSepatu.Core.ProductProperties.TransaksiListClass;
 using ProjectSepatu.DAL.ProductProperties.TransaksiListClass;
+using ProjectSepatu.DAL.ProductProperties.ProductPictureClass;
 //using ProjectSepatu.DAL.ProductProperties.CategoryMasterClass;
 //using ProjectSepatu.Core.ProductProperties.CategoryMasterClass;
 
@@ -26,6 +27,7 @@ namespace ProjectSepatu.Controllers
         private ProductMasterRepo _ProductMasterRepo;
         private ProductTypeMasterRepo _ProductTypeMasterRepo;
         private TransaksiListRepo _TransaksiListRepo;
+
     //   private CategoryMasterRepo _CategoryMasterRepo;
 
 
@@ -73,8 +75,9 @@ namespace ProjectSepatu.Controllers
         //    return CategoryList;
         //}
 
-        public IActionResult Beranda()
+        public IActionResult Beranda(int viewcount)
         {
+
             var ProductList = _ProductMasterRepo.GetAll().OrderByDescending(i=>i.Dilihat).Where(i => i.IsHidden == false).ToList();
             var LatestProductList = _ProductMasterRepo.GetAll().OrderByDescending(i => i.CreatedDate).Where(i => i.IsHidden == false).ToList();
             var viewModel = new HomePageViewModel();
@@ -103,7 +106,7 @@ namespace ProjectSepatu.Controllers
             {
                 foreach (var item in LatestProductList)
                 {
-                    if (counter < 6)
+                    if (counter < 4)
                     {
                         viewModel.listLatestProduct.Add(item);
                     }
@@ -115,6 +118,7 @@ namespace ProjectSepatu.Controllers
             {
                 viewModel.listLatestProduct = new List<ProductMaster>();
             }
+
             return View(viewModel);
         }
 
@@ -197,6 +201,11 @@ namespace ProjectSepatu.Controllers
         public IActionResult ProductDetails(int id = 0)
         {
             var ProductSelect = _ProductMasterRepo.GetById(id);
+
+            ProductSelect.Dilihat++;
+            _ProductMasterRepo.Save(ProductSelect);
+
+
             var ProductRelated = _ProductMasterRepo.GetAll().Where(i => i.TypeMasterId == ProductSelect.TypeMasterId).ToList();
             var viewModel = new ProductDetailsViewModel();
 
