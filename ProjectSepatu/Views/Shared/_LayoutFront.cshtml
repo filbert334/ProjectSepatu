@@ -1,4 +1,16 @@
-﻿<!DOCTYPE html>
+﻿
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Identity
+@using ProjectSepatu.Models
+
+@using ProjectSepatu.Core.ProductProperties.UserClass
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+
+
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -50,9 +62,18 @@
                                     <div class="textwidget"><i class="fa fa-clock-o"></i> 24 Jam. Batas transfer pukul 15.00 kirim hari ini. </div>
                                 </aside>
                             </div>
-                            <div class="header-top-right">
-                                <div class="header-top-div header-top-search"><a href="">Daftar &nbsp;&nbsp;&nbsp;</a> <button type="button" class="btn" style="border-color:black;">Masuk</button></div>
-                            </div>
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                <div>@UserManager.GetUserName(User)</div>
+                                <form method="post" asp-controller="Login" asp-action="Logout">
+                                    <input type="submit" value="Logout" />
+                                </form>
+                            }
+                            else
+                            {
+                                <a asp-controller="Login" asp-action="Login">Login</a>
+                                <a asp-controller="Login" asp-action="Daftar">Register</a>
+                            }
                         </div>
                         <div class="header-top-logo">
                             <a href="" title="INSOLE"><img src="~/Assets/Front/image/logo/logo-black.png" alt="logo" class="logo-img" /></a>
@@ -83,7 +104,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                       
+
                                     </div>
                                 </div>
                             </div>
@@ -97,10 +118,13 @@
                         <nav id="primary-menu" class="main-nav">
                             <ul class="nav">
 
-                                <li>@using (Html.BeginForm("Beranda", "Home")){<button class="btn btn-baru"><strong>HOME</strong></button>}</li>
-                                <li>@using (Html.BeginForm("List", "Home"))
-                                {<button class="btn btn-baru"><strong>CATALOG</strong></button>}</li>
-                                @*<li class="mega-menu menu-item">
+                                <li>@using (Html.BeginForm("Beranda", "Home"))
+                                {<button class="btn btn-baru"><strong>HOME</strong></button>}</li>
+                                <li>
+                                    @using (Html.BeginForm("List", "Home"))
+                                {<button class="btn btn-baru"><strong>CATALOG</strong></button>}
+                            </li>
+                            @*<li class="mega-menu menu-item">
                                     <a href="#">Filter</a>
                                     <ul class="sub-menu sub-menu-mega">
                                         <li class="sub-menu-mega-item">
@@ -267,126 +291,126 @@
                                         <li><a href="page-404.html">404 Page</a></li>
                                     </ul>
                                 </li>*@
-                            </ul>
-                            <ul class="header-customize-item header-social-profile-wrapper">
-                                <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="fa fa-youtube"></i></a></li>
-                                <li><a href="#" target="_blank"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                        </nav>
-                        <!-- .header-main-nav-->
-                    </div>
-                    <div class="main-nav-wrapper header-right">
-                        <div class="header-right-box">
-                            <div class="header-customize header-customize-right">
-                                <div class="shopping-cart-wrapper header-customize-item no-price style-default">
-                                    <div class="widget_shopping_cart_content">
-                                        <div class="widget_shopping_cart_icon"><i class="wicon fa fa-cart-plus"></i><span class="total">0</span></div>
-                                        <div class="sub-total-text"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>0.00</span></div>
-                                        <div class="cart_list_wrapper">
-                                            <div class="scroll-wrapper cart_list product_list_widget scrollbar-inner">
-                                                <ul class="cart_list product_list_widget scrollbar-inner scroll-content">
-                                                    <li class="empty">
-                                                        <h4>An empty cart</h4>
-                                                        <p>You have no item in your shopping cart</p>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <!-- end product list-->
+                        </ul>
+                        <ul class="header-customize-item header-social-profile-wrapper">
+                            <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                            <li><a href="#" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </nav>
+                    <!-- .header-main-nav-->
+                </div>
+                <div class="main-nav-wrapper header-right">
+                    <div class="header-right-box">
+                        <div class="header-customize header-customize-right">
+                            <div class="shopping-cart-wrapper header-customize-item no-price style-default">
+                                <div class="widget_shopping_cart_content">
+                                    <div class="widget_shopping_cart_icon"><i class="wicon fa fa-cart-plus"></i><span class="total">0</span></div>
+                                    <div class="sub-total-text"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>0.00</span></div>
+                                    <div class="cart_list_wrapper">
+                                        <div class="scroll-wrapper cart_list product_list_widget scrollbar-inner">
+                                            <ul class="cart_list product_list_widget scrollbar-inner scroll-content">
+                                                <li class="empty">
+                                                    <h4>An empty cart</h4>
+                                                    <p>You have no item in your shopping cart</p>
+                                                </li>
+                                            </ul>
                                         </div>
+                                        <!-- end product list-->
                                     </div>
                                 </div>
-                                <div class="my-wishlist header-customize-item">
-                                    <div class="widget_shopping_wishlist_content">
-                                        <div class="my-wishlist-wrapper"><a title="Wishlist" href="#" class="yolo-wishlist"><i class="wicon fa fa-heart-o"></i><span class="total">0</span></a></div>
-                                    </div>
+                            </div>
+                            <div class="my-wishlist header-customize-item">
+                                <div class="widget_shopping_wishlist_content">
+                                    <div class="my-wishlist-wrapper"><a title="Wishlist" href="#" class="yolo-wishlist"><i class="wicon fa fa-heart-o"></i><span class="total">0</span></a></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
             </div>
 
-        </header>
-        <div>
-            @RenderBody()
-        </div>
-        <div class="section-no-margin">
-            <footer class="footer footer-style-3" style="background-color:#444649;">
-               
 
-                <div class="container">
-                    <div class="footer-top">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="header-logo"><a href="index.html" title="YOLO"><img src="images/logo/logo.png" alt="logo" class="logo-img" /></a></div>
-                                <div class="footer-top-content">
-                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore</p>
-                                    <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper</p><a href="#">DETAILS</a>
-                                </div>
-                            </div>
-                            <div class="col-md-4"></div>
-                            <div class="col-md-4">
-                                <h3>CONTACT US</h3>
-                                <div class="icon-box icon-box-style2">
-                                    <div class="icon-box-left"><i class="fa fa-map-marker"></i></div>
-                                    <div class="icon-box-right"><span>123 Sky Tower address name, Los Algeles</span></div>
-                                </div>
-                                <div class="icon-box icon-box-style2">
-                                    <div class="icon-box-left"><i class="fa fa-phone"></i></div>
-                                    <div class="icon-box-right"><span>Phone : (012) 345 6789</span></div>
-                                </div>
-                                <div class="icon-box icon-box-style2">
-                                    <div class="icon-box-left"><i class="fa fa-envelope-o"></i></div>
-                                    <div class="icon-box-right"><span>Email : email@yoursite.com</span></div>
-                                </div>
+        </div>
+
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+    <div class="section-no-margin">
+        <footer class="footer footer-style-3" style="background-color:#444649;">
+
+
+            <div class="container">
+                <div class="footer-top">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="header-logo"><a href="index.html" title="YOLO"><img src="images/logo/logo.png" alt="logo" class="logo-img" /></a></div>
+                            <div class="footer-top-content">
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore</p>
+                                <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper</p><a href="#">DETAILS</a>
                             </div>
                         </div>
-                    </div>
-                    <div class="footer-bottom">
-                        <div class="click-back-top-footer">
-                            <button type="button" class="sn-btn sn-btn-style-17 sn-back-to-top fixed-right-bottom"><i class="btn-icon fa fa-angle-up"></i></button>
-                        </div>
-                        <div class="footer-bottom-content">
-                            <div class="copyright">©  2017  Insole  Designed  with by  <a href="#">Kelompok 3</a></div>
-                            <figure><img src="images/demo/payment-home-3.png" alt="pay-footer3" /></figure>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <h3>CONTACT US</h3>
+                            <div class="icon-box icon-box-style2">
+                                <div class="icon-box-left"><i class="fa fa-map-marker"></i></div>
+                                <div class="icon-box-right"><span>123 Sky Tower address name, Los Algeles</span></div>
+                            </div>
+                            <div class="icon-box icon-box-style2">
+                                <div class="icon-box-left"><i class="fa fa-phone"></i></div>
+                                <div class="icon-box-right"><span>Phone : (012) 345 6789</span></div>
+                            </div>
+                            <div class="icon-box icon-box-style2">
+                                <div class="icon-box-left"><i class="fa fa-envelope-o"></i></div>
+                                <div class="icon-box-right"><span>Email : email@yoursite.com</span></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </footer>
-        </div>
+                <div class="footer-bottom">
+                    <div class="click-back-top-footer">
+                        <button type="button" class="sn-btn sn-btn-style-17 sn-back-to-top fixed-right-bottom"><i class="btn-icon fa fa-angle-up"></i></button>
+                    </div>
+                    <div class="footer-bottom-content">
+                        <div class="copyright">©  2017  Insole  Designed  with by  <a href="#">Kelompok 3</a></div>
+                        <figure><img src="images/demo/payment-home-3.png" alt="pay-footer3" /></figure>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
+</div>
 
 
-    <div class="popup-wrapper">
-    </div>
-    <!-- .popup-wrapper-->
-    <div class="click-back-top-body">
-        <button type="button" class="sn-btn sn-btn-style-17 sn-back-to-top fixed-right-bottom"><i class="btn-icon fa fa-angle-up"></i></button>
-    </div>
-    <!-- Vendor jQuery-->
+<div class="popup-wrapper">
+</div>
+<!-- .popup-wrapper-->
+<div class="click-back-top-body">
+    <button type="button" class="sn-btn sn-btn-style-17 sn-back-to-top fixed-right-bottom"><i class="btn-icon fa fa-angle-up"></i></button>
+</div>
+<!-- Vendor jQuery-->
 
-    <script type="text/javascript" src="~/Assets/Front/Js/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="~/Assets/Front/Js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="~/Assets/Front/Js/wow.min.js"></script>
-    <script type="text/javascript" src="~/Assets/Front/Js/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="~/Assets/Front/Js/jquery.mmenu.all.min.js"></script>
-    <script type="text/javascript" src="~/Assets/Front/Js/jquery.countdown.min.js"></script>
-    <script type="text/javascript" src="~/Assets/Front/Js/jquery.appear.min.js"></script>
-    <script type="text/javascript" src="~/Assets/Front/Js/jquery.countTo.min.js"></script>
-    <script type="text/javascript" src="~/Assets/Front/Js/HomePageJS.js"></script>
-    <script type="text/javascript" src="~/Assets/Front/Js/jquery.hoverdir.js"></script>
-    <script type="text/javascript" src="~/Assets/Front/Js/modernizr.custom.97074.js"></script>
-    <script type="text/javascript" src="~/Assets/Front/Js/isotope.pkgd.min.js"></script>
-    <script type="text/javascript" src="~/Assets/Front/Js/fit-columns.js"></script>
-    <script type="text/javascript" src="~/Assets/Front/Js/isotope-docs.min.js"></script>
-    <script type="text/javascript" src="~/Assets/Front/Js/mansory.js"></script>
-    <script type="text/javascript" src="~/Assets/Front/Js/jquery.prettyPhoto.js"></script>
-    <script type="text/javascript" src="~/Assets/Front/Js/slick.min.js"></script>
-    <script type="text/javascript" src="~/Assets/Front/Js/main.min.js"></script>
-    <script type="text/javascript" src="~/Assets/Front/Js/bootstrap-select.js"></script>
+<script type="text/javascript" src="~/Assets/Front/Js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="~/Assets/Front/Js/bootstrap.min.js"></script>
+<script type="text/javascript" src="~/Assets/Front/Js/wow.min.js"></script>
+<script type="text/javascript" src="~/Assets/Front/Js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="~/Assets/Front/Js/jquery.mmenu.all.min.js"></script>
+<script type="text/javascript" src="~/Assets/Front/Js/jquery.countdown.min.js"></script>
+<script type="text/javascript" src="~/Assets/Front/Js/jquery.appear.min.js"></script>
+<script type="text/javascript" src="~/Assets/Front/Js/jquery.countTo.min.js"></script>
+<script type="text/javascript" src="~/Assets/Front/Js/HomePageJS.js"></script>
+<script type="text/javascript" src="~/Assets/Front/Js/jquery.hoverdir.js"></script>
+<script type="text/javascript" src="~/Assets/Front/Js/modernizr.custom.97074.js"></script>
+<script type="text/javascript" src="~/Assets/Front/Js/isotope.pkgd.min.js"></script>
+<script type="text/javascript" src="~/Assets/Front/Js/fit-columns.js"></script>
+<script type="text/javascript" src="~/Assets/Front/Js/isotope-docs.min.js"></script>
+<script type="text/javascript" src="~/Assets/Front/Js/mansory.js"></script>
+<script type="text/javascript" src="~/Assets/Front/Js/jquery.prettyPhoto.js"></script>
+<script type="text/javascript" src="~/Assets/Front/Js/slick.min.js"></script>
+<script type="text/javascript" src="~/Assets/Front/Js/main.min.js"></script>
+<script type="text/javascript" src="~/Assets/Front/Js/bootstrap-select.js"></script>
 </body>
 
 </html>

@@ -1,14 +1,4 @@
-﻿@using System.Security.Claims
-@using Microsoft.AspNetCore.Identity
-@using ProjectSepatu.Models
-
-@using ProjectSepatu.Core.ProductProperties.UserClass
-
-
-@inject SignInManager<User> SignInManager
-@inject UserManager<User> UserManager
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -47,19 +37,7 @@
                 </button>
                 <a class="navbar-brand" href="Admin">TOTU Admin</a>
             </div>
-            <div>TEST</div>
-            @if (SignInManager.IsSignedIn(User))
-            {
-                <div>@UserManager.GetUserName(User)</div>
-                <form method="post" asp-controller="Login" asp-action="Logout">
-                    <input type="submit" value="Logout" />
-                </form>
-            }
-            else
-            {
-                <a asp-controller="Login" asp-action="Login">Login</a>
-                <a asp-controller="Login" asp-action="Daftar">Register</a>
-            }
+            
 
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
