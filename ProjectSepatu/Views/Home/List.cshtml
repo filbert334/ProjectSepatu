@@ -9,9 +9,59 @@
 
 @model ListViewModel
 
-<div class="section" style="margin-top:30px;">
+<div class="section" style="margin-top:90px;">
     <div class="products-in-category-tabs-wrapper container">
 
+        <div class="sidebar-product-style-2" style="margin-top:-30px;">
+            <div class="row">
+                <div class="col-md-4 col-xs-12">
+                    <aside>
+                        <h4>Kategori</h4>
+                        <select id="CategoryFilter" class="selectpicker form-control">
+                            <option selected>Select All</option>
+                            @*@foreach (var item in Model.CategoryList)
+                            {
+                                <option value="@item.Id">@item.Gender</option>
+                            }*@
+                        </select>
+
+                    </aside>
+                </div>
+                <div class="col-md-3 col-xs-12">
+                    <aside>
+                        <h4>Tipe</h4>
+                        <select id="TypeFilter" class="selectpicker form-control">
+                            <option selected>Select All</option>
+                            @foreach (var item in Model.ProductTypeList)
+                            {
+                                <option value="@item.Id">@item.Type</option>
+                            }
+                        </select>
+                    </aside>
+                </div>
+                <div class="col-md-3 col-xs-12">
+                    <aside>
+                        <h4>Brand</h4>
+                        <select id="BrandFilter" class="selectpicker form-control">
+                            <option selected>Select All</option>
+                            @foreach (var item in Model.BrandList)
+                            {
+                                <option value="@item.Id">@item.Nama_Brand</option>
+
+                            }
+                        </select>
+                    </aside>
+                </div>
+                <div class="col-md-2 col-xs-12">
+                    <aside style="margin-top:53px;">
+
+                        <button class="btn btn-baru btn-block" onclick="FilterToListPage()">Search &nbsp;&nbsp;<i class="fa fa-search"></i></button>
+
+                    </aside>
+                </div>
+
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-3" style="margin-top:-10px;">
 
@@ -74,10 +124,9 @@
                                             
                                             <div class="product-actions">
                                                 <div class="yith-wcwl-add-to-wishlist add-to-wishlist-225">
-                                                    <div class="yith-wcwl-add-button show"><a href="#" class="add_to_wishlist"><i class="fa fa-heart-o"></i>    Add to Wishlist</a></div>
                                                 </div>
 
-                                                <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> Add to cart</a></div><a href="#" class="product-quick-view"><i class="fa fa-search"></i>Quick view</a>
+                                                <div class="add-to-cart-wrap"><a href="#" class="add_to_cart_button"><i class="fa fa-cart-plus"></i> <span>Add to cart</span></a></div>
                                             </div>
                                         </div>
                                         <div class="product-info">
