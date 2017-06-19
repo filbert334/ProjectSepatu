@@ -14,19 +14,19 @@ namespace ProjectSepatu.Core.ProductProperties.ProductMasterClass
         public decimal Harga_Setelah_Diskon { get; set; }
         public decimal Diskon_Rp { get; set; }
         public decimal Diskon_Persen { get; set; }
-        public decimal Berat { get; set; }
-        public long Dilihat { get; set; }
-        public long Terjual { get; set; }
-        public long Cart { get; set; }
-        public long Konfirmasi_Pembayaran { get; set; }
-        public long Check_Out { get; set; }
-        public long Cancel_Admin { get; set; }
+        public long? Dilihat { get; set; }
+        public long? Terjual { get; set; }
+        public long? Cart_Cancel { get; set; }
+        public long? Konfirmasi_Pembayaran_Cancel { get; set; }
+        public long? Check_Out_Cancel { get; set; }
+        public long? Cancel_Admin { get; set; }
+        public DateTime Last_Updated { get; set; }
         public bool IsHidden { get; set; }
         public string Remarks { get; set; }
 
 
         public long BrandId { get; set; }
-        public long GenderMasterId { get; set; }
+        public long CategoryId { get; set; }
         public long TypeMasterId { get; set; }
         //public virtual Brand Brand { get; set; }
 

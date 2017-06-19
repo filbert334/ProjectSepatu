@@ -280,7 +280,7 @@ namespace ProjectSepatu.Controllers.Admin
 
                 if (ItemIsi != null)
                 {
-                    ItemIsi.Gender = model.CategoryItem.Gender;
+                    ItemIsi.Category = model.CategoryItem.Category;
                     ItemIsi.UpdatedDate = DateTime.Now;
 
                     CategoryRepo.Save(ItemIsi);
@@ -291,7 +291,7 @@ namespace ProjectSepatu.Controllers.Admin
                 else
                 {
                     var NewItem = new CategoryMaster();
-                    NewItem.Gender = model.CategoryItem.Gender;
+                    NewItem.Category = model.CategoryItem.Category;
                     NewItem.CreatedDate = DateTime.Now;
                     NewItem.UpdatedDate = DateTime.Now;
                     NewItem.IsHidden = false;

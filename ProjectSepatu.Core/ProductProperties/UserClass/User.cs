@@ -7,6 +7,6 @@ namespace ProjectSepatu.Core.ProductProperties.UserClass
 {
     public class User : IdentityUser
     {
-
+        public long? CustomerId { get; set; }
     }
 }

@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProjectSepatu.Core.ProductProperties.GenderMasterClass
+namespace ProjectSepatu.Core.ProductProperties.BankMasterClass
 {
-    public class GenderMaster : ProductParent
+    public class BankMaster : ProductParent
     {
-        public string Gender { get; set; }
+        public string Nama_Bank { get; set; }
         public bool IsHidden { get; set; }
     }
 }

@@ -7,7 +7,7 @@ namespace ProjectSepatu.Core.ProductProperties.CategoryMasterClass
 {
     public class CategoryMaster : ProductParent
     {
-        public string Gender { get; set; }
+        public string Category { get; set; }
         public bool IsHidden { get; set; }
     }
 }

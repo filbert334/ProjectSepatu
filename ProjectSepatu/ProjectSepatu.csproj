@@ -219,6 +219,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\Admin\" />
+    <Folder Include="Data\Migrations\" />
     <Folder Include="Views\PopUp\" />
   </ItemGroup>
 
