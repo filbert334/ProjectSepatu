@@ -9,9 +9,7 @@ using ProjectSepatu.DAL.ProductProperties.ProductMasterClass;
 using ProjectSepatu.Models.HomeViewModels;
 using ProjectSepatu.Core.ProductProperties.ProductMasterClass;
 using ProjectSepatu.DAL.ProductProperties.ProductTypeMasterClass;
-using ProjectSepatu.DAL.ProductProperties.GenderMasterClass;
 using ProjectSepatu.Core.ProductProperties.BrandClass;
-using ProjectSepatu.Core.ProductProperties.GenderMasterClass;
 using ProjectSepatu.Core.ProductProperties.ProductTypeMasterClass;
 using ProjectSepatu.Core.ProductProperties.TransaksiListClass;
 using ProjectSepatu.DAL.ProductProperties.TransaksiListClass;
@@ -44,7 +42,7 @@ namespace ProjectSepatu.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Beranda", "Home");
         }
 
         public List<Brand> FilterBrand()
@@ -69,7 +67,7 @@ namespace ProjectSepatu.Controllers
 
         public List<CategoryMaster> FilterCategory()
         {
-            var CategoryList = _CategoryMasterRepo.GetAll().OrderBy(i=>i.Gender).Where(i => i.IsHidden == false).ToList();
+            var CategoryList = _CategoryMasterRepo.GetAll().OrderBy(i=>i.Category).Where(i => i.IsHidden == false).ToList();
             if (CategoryList == null)
             {
                 CategoryList = new List<CategoryMaster>();
@@ -174,7 +172,7 @@ namespace ProjectSepatu.Controllers
             }
             if (idCategory != 0)
             {
-                ProductTypeList = ProductTypeList.Where(i => i.GenderMasterId == idCategory).ToList();
+                ProductTypeList = ProductTypeList.Where(i => i.CategoryId == idCategory).ToList();
                 viewModel.CategoryId = idCategory ;
             }
             if (idBrand != 0)
@@ -279,7 +277,6 @@ namespace ProjectSepatu.Controllers
             {
                 transaksiList_.CreatedBy = "Admin";
                 transaksiList_.CreatedDate = DateTime.Today;
-                transaksiList_.Harga_Diskon = product.Harga_Setelah_Diskon;
                 transaksiList_.Harga_Jual_Per_Barang = product.Harga_Jual;
                 transaksiList_.Harga_Modal_Per_Barang = product.Harga_Modal;
                 transaksiList_.Jumlah_Barang = qty;

@@ -1,6 +1,5 @@
 ﻿using ProjectSepatu.Core.ProductProperties.BrandClass;
 using ProjectSepatu.Core.ProductProperties.CategoryMasterClass;
-using ProjectSepatu.Core.ProductProperties.GenderMasterClass;
 using ProjectSepatu.Core.ProductProperties.ProductMasterClass;
 using ProjectSepatu.Core.ProductProperties.ProductPictureClass;
 using ProjectSepatu.Core.ProductProperties.ProductTypeMasterClass;

@@ -7,9 +7,18 @@ namespace ProjectSepatu.Core.ProductProperties.CustomerClass
 {
     public class Customer : ProductParent
     {
-        public string Username { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public decimal Saldo { get; set; }
+        public string Nomor_Telepon { get; set; }
+        public string Alamat { get; set; }
+        public string Nomor_Rekening { get; set; }
+        public string Atas_Nama { get; set; }
         public bool IsHidden { get; set; }
+
+
+
+        public long KecamatanMasterId { get; set; }
+        public long KabupatenMasterId { get; set; }
+        public long ProvinsiMasterId { get; set; }
+        public long BankId { get; set; }
     }
 }

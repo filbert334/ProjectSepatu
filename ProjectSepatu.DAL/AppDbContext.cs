@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using ProjectSepatu.Core.ProductProperties.BankMasterClass;
 using ProjectSepatu.Core.ProductProperties.BrandClass;
 using ProjectSepatu.Core.ProductProperties.CabangMasterClass;
 using ProjectSepatu.Core.ProductProperties.CategoryMasterClass;
 using ProjectSepatu.Core.ProductProperties.CustomerClass;
-using ProjectSepatu.Core.ProductProperties.GenderMasterClass;
 using ProjectSepatu.Core.ProductProperties.JenisPembayaranMasterClass;
 using ProjectSepatu.Core.ProductProperties.KabupatenMasterClass;
 using ProjectSepatu.Core.ProductProperties.KecamatanMasterClass;
@@ -41,7 +41,6 @@ namespace ProjectSepatu.DAL
         public DbSet<ProductMaster> ProductMaster { get; set; }
         public DbSet<ProductPicture> ProductPicture { get; set; }
         public DbSet<Brand> Brand { get; set; }
-        public DbSet<GenderMaster> GenderMaster { get; set; }
         public DbSet<ProductTypeMaster> TypeMaster { get; set; }
         public DbSet<CabangMaster> CabangMaster { get; set; }
         public DbSet<Customer> Customer { get; set; }
@@ -56,6 +55,8 @@ namespace ProjectSepatu.DAL
         public DbSet<SaranaPengirimanMaster> SaranaPengirimanMaster { get; set; }
         public DbSet<PerhitunganPengiriman> PerhitunganPengiriman { get; set; }
         public DbSet<CategoryMaster> CategoryMaster { get; set; }
+        public DbSet<BankMaster> BankMaster { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

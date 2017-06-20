@@ -31,6 +31,7 @@ using ProjectSepatu.DAL.ProductProperties.MetodePembayaranMasterClass;
 using ProjectSepatu.DAL.ProductProperties.CategoryMasterClass;
 using ProjectSepatu.Core.ProductProperties.UserClass;
 using Microsoft.AspNetCore.Identity;
+using ProjectSepatu.DAL.ProductProperties.BankMasterClass;
 
 namespace ProjectSepatu
 {
@@ -59,8 +60,6 @@ namespace ProjectSepatu
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DbToti")));
@@ -113,6 +112,8 @@ namespace ProjectSepatu
             services.AddTransient<TransaksiListRepo, TransaksiListRepo>();
             services.AddTransient<MetodePembayaranMasterRepo, MetodePembayaranMasterRepo>();
             services.AddTransient<CategoryMasterRepo, CategoryMasterRepo>();
+            services.AddTransient<BankMasterRepo, BankMasterRepo>();
+
 
             services.AddScoped<SignInManager<User>, SignInManager<User>>();
             services.AddScoped<UserManager<User>, UserManager<User>>();
