@@ -52,7 +52,7 @@
                         <div class="panel-body">
                             <div class="form-group">
                                 <label>Category</label>
-                                @Html.TextBoxFor(model => model.CategoryItem.Gender, new { @class = "form-control", style = "width:300px" })
+                                @Html.TextBoxFor(model => model.CategoryItem.Category, new { @class = "form-control", style = "width:300px" })
                                 @Html.HiddenFor(model => model.CategoryItem.Id)
                             </div>
                             <button type="submit" class="btn btn-outline-warning">Save</button>
@@ -81,7 +81,7 @@
                                         <td>
                                             <input type="button" name="name" value="Delete" class="btn btn-danger btn-sm" onclick="DeleteCategory(@item.Id)" />
                                         </td>
-                                        <td>@item.Gender.ToString()</td>
+                                        <td>@item.Category.ToString()</td>
                                     </tr>
                                 }
                             }
