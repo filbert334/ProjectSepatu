@@ -20,16 +20,17 @@
                     <div class="panel-heading">
                         Filter
                         <div class="btn-group pull-right">
-                            <a href="#">
-                                <span class="glyphicon glyphicon-search" onclick=""></span>
-                            </a>
+                          
+                                <span class="glyphicon glyphicon-search" onclick="FilterMetodePembayaran()"></span>
+                          
                         </div>
                     </div>
                     <div class="panel-body">
                         <form role="form" id="filterBrandList">
                             <div class="form-group">
                                 <label>Metode Pembayaran</label>
-                                @Html.TextBox("BrandName", "", new { @class = "form-control", style = "width:300px" })
+                                @Html.TextBoxFor(model => model.MetodePembayaran.Metode_Pembayaran, new { @class = "form-control", style = "width:300px" ,id="FilterMetodePembayaran" })
+                           
                             </div>
                         </form>
                     </div>
@@ -105,6 +106,12 @@
     }
     function SelectRowMetode(id) {
         window.location.replace("http://localhost:53293/Operational/SelectMetodePembayaran/" + id);
+    }
+    function FilterMetodePembayaran()
+    {
+        var FilterMetodePembayaran = $('#FilterMetodePembayaran').val();
+        alert(FilterMetodePembayaran)
+        window.location.replace("http://localhost:53293/Operational/TabMetodePembayaran?filterName= " + FilterMetodePembayaran);
     }
     function SearchBrandList(id) {
         $.get('/Operational/TabMetodePembayaran/' + id, function (data) {
