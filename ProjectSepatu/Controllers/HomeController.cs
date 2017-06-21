@@ -16,6 +16,8 @@ using ProjectSepatu.DAL.ProductProperties.TransaksiListClass;
 using ProjectSepatu.DAL.ProductProperties.ProductPictureClass;
 using ProjectSepatu.DAL.ProductProperties.CategoryMasterClass;
 using ProjectSepatu.Core.ProductProperties.CategoryMasterClass;
+using ProjectSepatu.DAL.ProductProperties.TransaksiHeaderClass;
+using ProjectSepatu.Core.ProductProperties.TransaksiHeaderClass;
 //using ProjectSepatu.DAL.ProductProperties.CategoryMasterClass;
 //using ProjectSepatu.Core.ProductProperties.CategoryMasterClass;
 
@@ -28,16 +30,17 @@ namespace ProjectSepatu.Controllers
         private ProductTypeMasterRepo _ProductTypeMasterRepo;
         private TransaksiListRepo _TransaksiListRepo;
         private CategoryMasterRepo _CategoryMasterRepo;
-        
+        private TransaksiHeaderRepo _TransaksiHeaderRepo;
 
 
-        public HomeController(BrandRepo BrandRepo, ProductMasterRepo ProductMasterRepo, ProductTypeMasterRepo ProductTypeMasterRepo, TransaksiListRepo TransaksiListRepo, CategoryMasterRepo CategoryMasterRepo)
+        public HomeController(BrandRepo BrandRepo, ProductMasterRepo ProductMasterRepo, ProductTypeMasterRepo ProductTypeMasterRepo, TransaksiListRepo TransaksiListRepo, CategoryMasterRepo CategoryMasterRepo, TransaksiHeaderRepo TransaksiHeaderRepo)
         {
             _BrandRepo = BrandRepo;
             _ProductMasterRepo = ProductMasterRepo;
             _ProductTypeMasterRepo = ProductTypeMasterRepo;
             _TransaksiListRepo = TransaksiListRepo;
            _CategoryMasterRepo = CategoryMasterRepo;
+            _TransaksiHeaderRepo = TransaksiHeaderRepo;
         }
 
         public IActionResult Index()
@@ -268,12 +271,28 @@ namespace ProjectSepatu.Controllers
 
         public ActionResult AddToCrt(int id = 0, int qty = 0, string remarks = "")
         {
-            var transListRepo = _TransaksiListRepo;
-            var transaksiListRepo = _TransaksiListRepo.GetAll().Where(i => i.ProductId == id).FirstOrDefault();
             var product = _ProductMasterRepo.GetById(id);
-            var transaksiList_ = new TransaksiList();
 
-            if (transaksiListRepo == null)
+            var transaksiheaderRepo = _TransaksiHeaderRepo.GetAll().Where(i => i.IsCart == true && i.CustomerId == 1).FirstOrDefault();
+            var transaksiHeader = new TransaksiHeader();
+
+            var transaksiListRepo = _TransaksiListRepo.GetAll().Where(i => i.ProductId == id && i.TransaksiHeaderId == transaksiheaderRepo.Id).FirstOrDefault(); // apabila sudah ada, cuma di update
+            var transaksiList_ = new TransaksiList(); // untuk add baru
+
+            if (transaksiheaderRepo == null) // if belum ada transaksi
+            {
+
+            }
+            else //if sudah ada barang dicart, tapi mau nambah lagi
+            {
+                transaksiHeader = transaksiheaderRepo;
+                transaksiHeader.Jumlah_Barang += qty;
+                transaksiHeader.Jumlah_Harga_Barang += Convert.ToDecimal(product.Harga_Setelah_Diskon) * qty;
+                transaksiHeader.Batas_Waktu = DateTime.Today.AddDays(7); // batas waktu cart ke checkout 7 hari
+            }
+            _TransaksiHeaderRepo.Save(transaksiHeader);
+
+            if (transaksiListRepo == null) // if barang nya belum ada di cart
             {
                 transaksiList_.CreatedBy = "Admin";
                 transaksiList_.CreatedDate = DateTime.Today;
@@ -282,20 +301,24 @@ namespace ProjectSepatu.Controllers
                 transaksiList_.Jumlah_Barang = qty;
                 transaksiList_.ProductId = id;
                 transaksiList_.Remarks = remarks;
-                // to do
-                transaksiList_.TransaksiHeaderId = 1;
-                // to do
-
                 transaksiList_.UpdatedBy = "Admin";
                 transaksiList_.UpdatedDate = DateTime.Today;
 
+
+                // to do
+                // seharusnya nempel ke customer
+                // yang is cart true
+                //transaksiList_.TransaksiHeaderId = 1; // ini masih temmbak lgsg
+                transaksiList_.TransaksiHeaderId = transaksiHeader.Id;
+                // to do
             }
             else
             {
                 transaksiList_ = transaksiListRepo;
                 transaksiList_.Jumlah_Barang += qty;
+                transaksiList_.UpdatedDate = DateTime.Today;
             }
-            transListRepo.Save(transaksiList_);
+            _TransaksiListRepo.Save(transaksiList_);
             return RedirectToAction("ProductDetails",new { id = id });
         }
 

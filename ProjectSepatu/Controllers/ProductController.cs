@@ -85,8 +85,10 @@ namespace ProjectSepatu.Controllers
             var TransHeaderRepo = _TransaksiHeaderRepo.GetById(id);
             var TransHeader_ = new TransaksiHeader();
             TransHeader_ = TransHeaderRepo;
-            TransHeader_.IsCart = true;
+            TransHeader_.IsCart = false;
             TransHeader_.IsCheckOut = true;
+            // batas 1 hari untuk checkout ke konfirmasi pembayaran
+            TransHeader_.Batas_Waktu = DateTime.Today.AddDays(1);
             _TransaksiHeaderRepo.Save(TransHeader_);
             return RedirectToAction("Checkout", new { idTransHeader = TransHeaderRepo.Id });
         }
