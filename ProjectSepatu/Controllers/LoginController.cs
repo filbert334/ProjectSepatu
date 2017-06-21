@@ -36,6 +36,8 @@ namespace ProjectSepatu.Controllers
                 var user = new User { UserName = model.Username };
                 var result = await _userManager.CreateAsync(user, model.Password);
 
+
+
                 if (result.Succeeded)
                 {
                     await _signManager.SignInAsync(user, false);
@@ -89,7 +91,7 @@ namespace ProjectSepatu.Controllers
             ModelState.AddModelError("", "Invalid login attempt");
             return View(model);
         }
-
-
+        
+        
     }
 }

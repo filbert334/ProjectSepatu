@@ -47,22 +47,20 @@
 
                         <div>
                             <label asp-for="Username"></label>
-                            <input asp-for="Username" />
+                            <input asp-for="Username" class = "form-control" />
                             <span asp-validation-for="Username"></span>
                         </div>
 
                         <div>
                             <label asp-for="Password"></label>
-                            <input asp-for="Password" />
+                            <input asp-for="Password" class = "form-control" />
                             <span asp-validation-for="Password"></span>
                         </div>
-
                         <div>
-                            <label asp-for="ConfirmPassword"></label>
-                            <input asp-for="ConfirmPassword" />
+                            <label asp-for="ConfirmPassword">Confirm Password</label>
+                            <input asp-for="ConfirmPassword" class = "form-control" />
                             <span asp-validation-for="ConfirmPassword"></span>
                         </div>
-
                         <div>
                             <input type="submit" value="Register" />
                         </div>
