@@ -175,6 +175,7 @@
     <Content Include="wwwroot\Assets\Front\image\logo\reebok.png" />
     <Content Include="wwwroot\Assets\Front\image\logo\umbro.png" />
     <Content Include="wwwroot\Assets\Front\Js\nouislider.min.js" />
+    <Content Include="wwwroot\Assets\Front\Js\ProductPageJS.js" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FontAwesome" Version="4.7.0" />

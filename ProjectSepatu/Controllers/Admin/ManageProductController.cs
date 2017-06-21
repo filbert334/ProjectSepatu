@@ -67,6 +67,7 @@ namespace ProjectSepatu.Controllers.Admin
                 {
                     //kalo null bikin baru
                     //ProductMaster newproductmaster = new ProductMaster();
+                    InputProductIsi = InputProductIsi_;
                     InputProductIsi.Nama_Product = model.Productitem.Nama_Product;
                     InputProductIsi.Harga_Modal = model.Productitem.Harga_Modal;
                     InputProductIsi.Harga_Jual = model.Productitem.Harga_Jual;
