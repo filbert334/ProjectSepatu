@@ -44,6 +44,7 @@ namespace ProjectSepatu.Controllers
                 {
                     viewModel.TransList = new List<TransaksiList>();
                 }
+                viewModel.TransHeaderId = idTransHeader;
                 viewModel.TransList = TransLists;
                 viewModel.TotalHarga = TransHeader.Jumlah_Harga_Barang;
                 foreach(var item in TransLists)
@@ -64,18 +65,30 @@ namespace ProjectSepatu.Controllers
 
         public ActionResult CancelCartProduct(int id = 0)
         {
-            var TransList = _TransaksiListRepo.GetById(id);
+            var TransListRepo = _TransaksiListRepo.GetById(id);
             var TransList_ = new TransaksiList();
-            TransList_ = TransList;
+            TransList_ = TransListRepo;
             TransList_.IsCancel = true;
             _TransaksiListRepo.Save(TransList_);
-            return RedirectToAction("Cart", new { idTransHeader = TransList.TransaksiHeaderId  };
+            return RedirectToAction("Cart", new { idTransHeader = TransListRepo.TransaksiHeaderId  });
             
         }
 
-        public IActionResult Checkout()
+        public IActionResult Checkout(int idTransHeader = 0)
         {
             return View();
+        }
+
+
+        public ActionResult CartCheckout(int id= 0)
+        {
+            var TransHeaderRepo = _TransaksiHeaderRepo.GetById(id);
+            var TransHeader_ = new TransaksiHeader();
+            TransHeader_ = TransHeaderRepo;
+            TransHeader_.IsCart = true;
+            TransHeader_.IsCheckOut = true;
+            _TransaksiHeaderRepo.Save(TransHeader_);
+            return RedirectToAction("Checkout", new { idTransHeader = TransHeaderRepo.Id });
         }
     }
 }

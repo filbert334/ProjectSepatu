@@ -19,6 +19,7 @@ namespace ProjectSepatu.Models.ProductViewModels
     {
         public List<TransaksiList> TransList { get; set; } = new List<TransaksiList>();
         public decimal TotalHarga { get; set; }
+        public int TransHeaderId { get; set; }
         public List<ProductCartsViewModel> ProductsCarts { get; set; } = new List<ProductCartsViewModel>();
     }
     public class ProductCartsViewModel
