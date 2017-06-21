@@ -1,4 +1,8 @@
-﻿using System;
+﻿using ProjectSepatu.Core.ProductProperties.CustomerClass;
+using ProjectSepatu.Core.ProductProperties.KabupatenMasterClass;
+using ProjectSepatu.Core.ProductProperties.KecamatanMasterClass;
+using ProjectSepatu.Core.ProductProperties.ProvinsiMasterClass;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -20,6 +24,9 @@ namespace ProjectSepatu.Models.LoginViewModel
 
         [DataType(DataType.Password), Compare(nameof(Password))]
         public string ConfirmPassword { get; set; }
+
+
+
     }
     public class LoginViewModelNew
     {

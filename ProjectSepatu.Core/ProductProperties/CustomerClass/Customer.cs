@@ -15,7 +15,7 @@ namespace ProjectSepatu.Core.ProductProperties.CustomerClass
         public bool IsHidden { get; set; }
 
 
-
+        public long UserId { get; set; }
         public long KecamatanMasterId { get; set; }
         public long KabupatenMasterId { get; set; }
         public long ProvinsiMasterId { get; set; }

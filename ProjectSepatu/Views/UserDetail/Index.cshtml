@@ -1,0 +1,101 @@
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@model ProjectSepatu.Models.UserViewModels.UserDetailViewModel
+
+<div id="customer_details" class="row">
+    <div class="col-md-6">
+
+        <div class="woocommerce-billing-fields">
+            <h3>User Detail</h3>
+            <form method="post" asp-controller="UserDetail" asp-action="SaveUser">
+                <div>
+                    <label>Username</label>
+                    <input disabled="disabled" class="form-control" />
+                </div>
+                <div>
+                    <label>Nomor Telepon</label>
+                    <input class="form-control" />
+                </div>
+                <div>
+                    <label>Alamat</label>
+                    <input class="form-control" />
+                </div>
+                <div>
+                    <label>Provinsi</label>
+                    @{
+                        var list = new List<SelectListItem>();
+                        foreach (var item in Model.ProvinsiList)
+                        {
+                            list.Add(new SelectListItem
+                            {
+                                Value = item.Id.ToString(),
+                                Text = item.Nama_Provinsi
+                            });
+                        }
+                    }
+                    @Html.DropDownListFor(j => Model.Customeritem.ProvinsiMasterId, list, new { @class = "form-control", style = "width:300px;" })
+                </div>
+                <div>
+                    <label>Kabupaten</label>
+                    @{
+                        var listKabupaten = new List<SelectListItem>();
+                        foreach (var item in Model.KabupatenList)
+                        {
+                            listKabupaten.Add(new SelectListItem
+                            {
+                                Value = item.Id.ToString(),
+                                Text = item.Nama_Kabupaten
+                            });
+                        }
+                    }
+                    @Html.DropDownListFor(j => Model.Customeritem.KabupatenMasterId, listKabupaten, new { @class = "form-control", style = "width:300px;" })
+                </div>
+                <div>
+                    <label>Kecamatan</label>
+                    @{
+                        var listKecamatan = new List<SelectListItem>();
+                        foreach (var item in Model.KecamatanList)
+                        {
+                            listKecamatan.Add(new SelectListItem
+                            {
+                                Value = item.Id.ToString(),
+                                Text = item.Nama_Kecamatan
+                            });
+                        }
+                    }
+                    @Html.DropDownListFor(j => Model.Customeritem.KecamatanMasterId, listKecamatan, new { @class = "form-control", style = "width:300px;" })
+                </div>
+                <div>
+                    <label>Bank</label>
+                    @{
+                        var ListBank = new List<SelectListItem>();
+                        foreach (var item in Model.BankList)
+                        {
+                            ListBank.Add(new SelectListItem
+                            {
+                                Value = item.Id.ToString(),
+                                Text = item.Nama_Bank
+                            });
+                        }
+                    }
+                    @Html.DropDownListFor(j => Model.Customeritem.BankId, ListBank, new { @class = "form-control", style = "width:300px;" })
+                </div>
+                <div>
+                    <label>Nomor Rekening</label>
+                    <input class="form-control" />
+                </div>
+                <div>
+                    <label>Atas Nama</label>
+                    <input class="form-control" />
+                </div>
+                <div>
+                    <input type="submit" value="Register" />
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
