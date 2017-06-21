@@ -69,7 +69,8 @@ namespace ProjectSepatu.Controllers
             TransList_ = TransList;
             TransList_.IsCancel = true;
             _TransaksiListRepo.Save(TransList_);
-            return RedirectToAction("Cart?idTransHeader="+ TransList.TransaksiHeaderId +"");
+            return RedirectToAction("Cart", new { idTransHeader = TransList.TransaksiHeaderId  };
+            
         }
 
         public IActionResult Checkout()

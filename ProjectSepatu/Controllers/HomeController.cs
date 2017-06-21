@@ -296,7 +296,7 @@ namespace ProjectSepatu.Controllers
                 transaksiList_.Jumlah_Barang += qty;
             }
             transListRepo.Save(transaksiList_);
-            return RedirectToAction("ProductDetails(id=" + id+")");
+            return RedirectToAction("ProductDetails",new { id = id });
         }
 
         public IActionResult About()
