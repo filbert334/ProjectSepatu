@@ -268,7 +268,7 @@ namespace ProjectSepatu.Controllers
 
         public ActionResult AddToCrt(int id = 0, int qty = 0, string remarks = "")
         {
-            var transListRepo =_TransaksiListRepo;
+            var transListRepo = _TransaksiListRepo;
             var transaksiListRepo = _TransaksiListRepo.GetAll().Where(i => i.ProductId == id).FirstOrDefault();
             var product = _ProductMasterRepo.GetById(id);
             var transaksiList_ = new TransaksiList();
@@ -296,7 +296,7 @@ namespace ProjectSepatu.Controllers
                 transaksiList_.Jumlah_Barang += qty;
             }
             transListRepo.Save(transaksiList_);
-            return RedirectToAction("ProductDetails(id=" + id+")");
+            return RedirectToAction("ProductDetails",new { id = id });
         }
 
         public IActionResult About()
