@@ -44,11 +44,12 @@ namespace ProjectSepatu.Controllers.Admin
         [HttpPost]
         public ActionResult SaveInputProduct(InputProductViewModel model)
         {
-            var InputProductIsi = ProductMasterRepo.GetById(model.Productitem.Id);
+            var InputProductIsi_ = ProductMasterRepo.GetById(model.Productitem.Id);
+            var InputProductIsi = new ProductMaster();
             try
             {
 
-                if (InputProductIsi != null)
+                if (InputProductIsi_ != null)
                 {
                     //update kalo tidak null
                     //radiobutton diskon belom
@@ -59,22 +60,23 @@ namespace ProjectSepatu.Controllers.Admin
                     InputProductIsi.Diskon_Rp = model.Productitem.Diskon_Rp;
                     ProductMasterRepo.Save(InputProductIsi);
 
-                    return RedirectToAction("TabInputProduct");
+                   
                 }
 
                 else
                 {
                     //kalo null bikin baru
-                    ProductMaster newproductmaster = new ProductMaster();
-                    newproductmaster.Nama_Product = model.Productitem.Nama_Product;
-                    newproductmaster.Harga_Modal = model.Productitem.Harga_Modal;
-                    newproductmaster.Harga_Jual = model.Productitem.Harga_Jual;
-                    newproductmaster.Remarks = model.Productitem.Remarks;
-                    newproductmaster.Diskon_Rp = model.Productitem.Diskon_Rp;
+                    //ProductMaster newproductmaster = new ProductMaster();
+                    InputProductIsi.Nama_Product = model.Productitem.Nama_Product;
+                    InputProductIsi.Harga_Modal = model.Productitem.Harga_Modal;
+                    InputProductIsi.Harga_Jual = model.Productitem.Harga_Jual;
+                    InputProductIsi.Remarks = model.Productitem.Remarks;
+                    InputProductIsi.Diskon_Rp = model.Productitem.Diskon_Rp;
                     ProductMasterRepo.Save(InputProductIsi);
 
-                    return RedirectToAction("TabInputProduct");
+                   
                 }
+                return RedirectToAction("TabInputProduct");
             }
             catch (Exception ex)
             {
