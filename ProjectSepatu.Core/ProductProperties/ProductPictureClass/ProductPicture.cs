@@ -7,9 +7,8 @@ namespace ProjectSepatu.Core.ProductProperties.ProductPictureClass
 {
     public class ProductPicture : ProductParent
     {
-        public byte[] Picture { get; set; }
+        public string Picture { get; set; }
         public bool IsGambarUtama { get; set; }
-
         public long ProductMasterId { get; set; }
     }
 }

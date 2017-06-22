@@ -34,5 +34,7 @@ namespace ProjectSepatu.Models.ProductViewModels
         public List<Brand> BrandList { get; set; }
         public List<CategoryMaster> CategoryList { get; set; }
         public List<ProductTypeMaster> ProductTypeList { get; set; }
+
     }
+
 }
