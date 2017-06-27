@@ -15,6 +15,10 @@ namespace ProjectSepatu.Models.ProductViewModels
     {
        
     }
+    public class DaftarProdukViewModel
+    {
+        public List<ProductMaster> ProductMasterList { get; set; }
+    }
     public class ProductCartViewModel
     {
         public List<TransaksiList> TransList { get; set; } = new List<TransaksiList>();

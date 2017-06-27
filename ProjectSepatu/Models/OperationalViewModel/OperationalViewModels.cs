@@ -2,6 +2,7 @@
 using ProjectSepatu.Core.ProductProperties.CategoryMasterClass;
 using ProjectSepatu.Core.ProductProperties.JenisPembayaranMasterClass;
 using ProjectSepatu.Core.ProductProperties.MetodePembayaranMasterClass;
+using ProjectSepatu.Core.ProductProperties.ProductMasterClass;
 using ProjectSepatu.Core.ProductProperties.ProductTypeMasterClass;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,10 @@ namespace ProjectSepatu.Models.OperationalViewModel
 {
     public class OperationalViewModels
     {
+    }
+    public class AdminIndexModel
+    {
+        public List<ProductMaster> ProductMasterList { get; set; }
     }
 
     public class TabMetodePembayaranModel

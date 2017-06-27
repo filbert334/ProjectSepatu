@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using ProjectSepatu.Core.ProductProperties.ProductPictureClass;
 using ProjectSepatu.DAL.ProductProperties.ProductPictureClass;
+using ProjectSepatu.Models.OperationalViewModel;
 
 namespace ProjectSepatu.Controllers.Admin
 {
@@ -135,7 +136,9 @@ namespace ProjectSepatu.Controllers.Admin
 
         public IActionResult TabProductList()
         {
-            return View();
+            DaftarProdukViewModel model = new DaftarProdukViewModel();
+            model.ProductMasterList = ProductMasterRepo.GetAll();
+            return View(model);
         }
 
     }
