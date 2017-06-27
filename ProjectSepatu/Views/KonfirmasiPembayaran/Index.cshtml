@@ -3,12 +3,16 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+@using ProjectSepatu.Models.KonfirmasiPembayaranViewModels
 
+@model KonfirmasiPembayaranViewModel
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Konfirmasi Pembayaran</h1>
     </div>
 </div>
+
+
 
 <div class="row">
     <div class="col-lg-12">
@@ -34,31 +38,15 @@
                                 <label>Metode Pembayaran</label>
                                 @{
                                     var listsort = new List<SelectListItem>();
-                                    listsort.Add(new SelectListItem
+                                    foreach (var item in Model.MetodePembayaranList)
                                     {
-                                        Value = "Produk Terpopuler",
-                                        Text = "Produk Terpopuler"
-                                    });
-                                    listsort.Add(new SelectListItem
-                                    {
-                                        Value = "Harga Beli Termurah",
-                                        Text = "Harga Beli Termurah"
-                                    });
-                                    listsort.Add(new SelectListItem
-                                    {
-                                        Value = "Harga Beli Termahal",
-                                        Text = "Harga Beli Termahal"
-                                    });
-                                    listsort.Add(new SelectListItem
-                                    {
-                                        Value = "Harga Jual Termurah",
-                                        Text = "Harga Jual Termurah"
-                                    });
-                                    listsort.Add(new SelectListItem
-                                    {
-                                        Value = "Harga Jual Termahal",
-                                        Text = "Harga Jual Termahal"
-                                    });
+                                        listsort.Add(new SelectListItem
+                                        {
+                                            Value = ""+item.Id+"",
+                                            Text = ""+item.Metode_Pembayaran+""
+                                        });
+                                    }
+
                                 }
                                 @Html.DropDownList("SortBy", listsort, new { @class = "form-control", @onchange = "CallChangefunc(this.value)", style = "width:300px" })
                             </div>
@@ -82,19 +70,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @for (int i = 0; i < 2; i++)
-                        {
+                       @foreach (var item in Model.GridViewList)
+                       {
                             <tr class="odd gradeX">
                                 <td>
-                                    <input type="button" name="name" value="Confirm" class="btn btn-primary btn-sm" onclick=")" />
+                                    <input type="button" name="name" value="Confirm" class="btn btn-primary btn-sm" onclick="KonfirmasiPenerimaan(@item.TransaksiHeaders.Id)" />
                                 </td>
                                 <td>
-                                    <input type="button" name="name" value="Cancel" class="btn btn-danger btn-sm" onclick=")" />
+                                    <input type="button" name="name" value="Cancel" class="btn btn-danger btn-sm" onclick="RefundPenerimaan(@item.TransaksiHeaders.Id)" />
                                 </td>
-                                <td>CP0001</td>
-                                <td>Cash</td>
-                                <td>BCA</td>
-                                <td>Rp. 1.500.000</td>
+                                <td>@item.TransaksiHeaders.Kode_Transaksi</td>
+                                <td>@item.MetodePembayaran</td>
+                                <td>@item.JenisMetodePembayaran</td>
+                                <td>Rp @item.TotalHarga</td>
                             </tr>
                         }
                     </tbody>
@@ -103,4 +91,14 @@
         </div>
     </div>
 </div>
+
+<script>
+
+    function KonfirmasiPenerimaan(id) {
+        window.location.replace("http://localhost:53293/KonfirmasiPembayaran/KonfirmasiProcess/" + id);
+    }
+    function RefundPenerimaan(id) {
+        window.location.replace("http://localhost:53293/KonfirmasiPembayaran/RefundProcess/" + id);
+    }
+</script>
 
