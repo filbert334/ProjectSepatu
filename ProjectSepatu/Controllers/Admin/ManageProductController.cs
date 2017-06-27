@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Http;
 using ProjectSepatu.Core.ProductProperties.ProductPictureClass;
 using ProjectSepatu.DAL.ProductProperties.ProductPictureClass;
 using ProjectSepatu.Models.OperationalViewModel;
+using ProjectSepatu.Models.ManageProductViewModels;
 
 namespace ProjectSepatu.Controllers.Admin
 {
@@ -38,7 +39,14 @@ namespace ProjectSepatu.Controllers.Admin
         }
         public IActionResult Index()
         {
-            return View();
+            TabProductListViewModel model = new TabProductListViewModel();
+
+            model.ProductMasterList = ProductMasterRepo.GetAll().OrderByDescending(i => i.CreatedDate).ToList();
+            model.BrandList = BrandRepo.GetAll().Where(i => i.IsHidden == false).ToList();
+            model.CategoryList = CategoryRepo.GetAll().Where(i => i.IsHidden == false).ToList();
+            model.ProductTypeList = ProductTypeRepo.GetAll().Where(i => i.IsHidden == false).ToList();
+
+            return View(model);
         }
 
         public IActionResult TabInputProduct(int id=0)
@@ -61,7 +69,6 @@ namespace ProjectSepatu.Controllers.Admin
 
             try
             {
-
                 if (InputProductIsi_ != null)
                 {
                     //update kalo tidak null
@@ -136,10 +143,32 @@ namespace ProjectSepatu.Controllers.Admin
 
         public IActionResult TabProductList()
         {
-            DaftarProdukViewModel model = new DaftarProdukViewModel();
-            model.ProductMasterList = ProductMasterRepo.GetAll();
+            TabProductListViewModel model = new TabProductListViewModel();
+            
+            model.ProductMasterList = ProductMasterRepo.GetAll().OrderByDescending(i=>i.CreatedDate).ToList();
+            model.BrandList = BrandRepo.GetAll().Where(i => i.IsHidden == false).ToList();
+            model.CategoryList = CategoryRepo.GetAll().Where(i => i.IsHidden == false).ToList();
+            model.ProductTypeList = ProductTypeRepo.GetAll().Where(i => i.IsHidden == false).ToList();
+
             return View(model);
         }
 
+        [HttpGet]
+        public IActionResult DeleteProducts(int id)
+        {
+            var ItemIsi = ProductMasterRepo.GetById(id);
+            ItemIsi.IsHidden = true;
+
+            ProductMasterRepo.Save(ItemIsi);
+
+            TabProductListViewModel model = new TabProductListViewModel();
+
+            model.ProductMasterList = ProductMasterRepo.GetAll().OrderByDescending(i => i.CreatedDate).ToList();
+            model.BrandList = BrandRepo.GetAll().Where(i => i.IsHidden == false).ToList();
+            model.CategoryList = CategoryRepo.GetAll().Where(i => i.IsHidden == false).ToList();
+            model.ProductTypeList = ProductTypeRepo.GetAll().Where(i => i.IsHidden == false).ToList();
+
+            return View(model);
+        }
     }
 }

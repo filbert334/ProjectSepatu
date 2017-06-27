@@ -1,5 +1,8 @@
 
+@using ProjectSepatu.Models.ManageProductViewModels
 
+
+@model TabProductListViewModel
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -25,56 +28,50 @@
                                 @Html.TextBox("JenisPembayaran", "", new { @class = "form-control", style = "width:300px", disabled = "disabled" })
                             </div>
                             <div class="form-group">
-                                <label>Size</label>
+                                <label>Brand</label>
                                 @{
                                     var listsortSize = new List<SelectListItem>();
-                                    listsortSize.Add(new SelectListItem
+                                    foreach( var item in Model.BrandList)
                                     {
-                                        Value = "A",
-                                        Text = "A"
-                                    });
-                                    listsortSize.Add(new SelectListItem
-                                    {
-                                        Value = "B",
-                                        Text = "B"
-                                    });
-                                    listsortSize.Add(new SelectListItem
-                                    {
-                                        Value = "B",
-                                        Text = "B"
-                                    });
-                                    listsortSize.Add(new SelectListItem
-                                    {
-                                        Value = "C",
-                                        Text = "C"
-                                    });
+                                        listsortSize.Add(new SelectListItem
+                                        {
+                                            Value = ""+item.Id+"",
+                                            Text = ""+item.Nama_Brand+""
+                                        });
+
+                                    }
                                 }
                                 @Html.DropDownList("SortBy", listsortSize, new { @class = "form-control", @onchange = "CallChangefunc(this.value)", style = "width:300px" })
                             </div>
                             <div class="form-group">
-                                <label>Color</label>
+                                <label>Type Product</label>
+                                @{
+                                    var listsortType = new List<SelectListItem>();
+                                    foreach (var item in Model.ProductTypeList)
+                                    {
+                                        listsortSize.Add(new SelectListItem
+                                        {
+                                            Value = "" + item.Id + "",
+                                            Text = "" + item.Type + ""
+                                        });
+                                    }
+
+
+                                }
+                                @Html.DropDownList("SortBy", listsortType, new { @class = "form-control", @onchange = "CallChangefunc(this.value)", style = "width:300px" })
+                            </div>
+                            <div class="form-group">
+                                <label>Category</label>
                                 @{
                                     var listsortColor = new List<SelectListItem>();
-                                    listsortColor.Add(new SelectListItem
+                                    foreach (var item in Model.CategoryList)
                                     {
-                                        Value = "A",
-                                        Text = "A"
-                                    });
-                                    listsortColor.Add(new SelectListItem
-                                    {
-                                        Value = "B",
-                                        Text = "B"
-                                    });
-                                    listsortColor.Add(new SelectListItem
-                                    {
-                                        Value = "B",
-                                        Text = "B"
-                                    });
-                                    listsortColor.Add(new SelectListItem
-                                    {
-                                        Value = "C",
-                                        Text = "C"
-                                    });
+                                        listsortColor.Add(new SelectListItem
+                                        {
+                                            Value = "" + item.Id + "",
+                                            Text = "" + item.Category + ""
+                                        });
+                                    }
                                 }
                                 @Html.DropDownList("SortBy", listsortColor, new { @class = "form-control", @onchange = "CallChangefunc(this.value)", style = "width:300px" })
                             </div>
@@ -87,29 +84,60 @@
                         <tr>
                             <th style="width:50px"></th>
                             <th style="width:50px"></th>
-                            <th>Size</th>
-                            <th>Color</th>
-                            <th>Stock</th>
+                            <th>Nama Produk</th>
+                            <th>Harga Jual</th>
+                            <th>Harga Modal</th>
+                            <th>Diskon</th>
+                            <th>Dilihat</th>
+                            <th>Terjual</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @for (int i = 0; i < 2; i++)
+                      @foreach (var item in Model.ProductMasterList)
+                      {
+                        @if (item.IsHidden == false)
                         {
                             <tr class="odd gradeX">
                                 <td>
-                                    <input type="button" name="name" value="Edit" class="btn btn-primary btn-sm" onclick=")" />
+                                    <input type="button" name="name" value="Edit" class="btn btn-primary btn-sm" onclick="EditProduct(@item.Id)" />
                                 </td>
                                 <td>
-                                    <input type="button" name="name" value="Delete" class="btn btn-danger btn-sm" onclick=")" />
+                                    <input type="button" name="name" value="Delete" class="btn btn-danger btn-sm" onclick="DeleteProduct(@item.Id)" />
                                 </td>
-                                <td>43</td>
-                                <td>Red</td>
-                                <td>3</td>
+                                <td>@item.Nama_Product</td>
+                                <td>@item.Harga_Jual</td>
+                                <td>@item.Harga_Modal</td>
+                                <td>@item.Diskon_Persen %</td>
+                                <td>@item.Dilihat</td>
+                                <td>@item.Terjual</td>
+
                             </tr>
-                        }
+                          }
+                      }
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    function EditProduct(id) {
+        $.get('/ManageProduct/TabInputProduct/' + id, function (data) {
+            if (data) {
+                $("#view1").html(data);
+                $("#tabs").tabs({ active: 1 });
+            }
+        })
+    }
+    function DeleteProduct(id) {
+        $.get('/ManageProduct/DeleteProducts/' + id, function (data) {
+            if (data) {
+                $("#view2").html(data);
+                $("#tabs").tabs({ active: 1 });
+            }
+        })
+      
+    }
+
+</script>
