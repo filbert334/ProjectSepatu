@@ -1,4 +1,156 @@
+<form id="formBrandData">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Input Product
+                    <div class="btn-group pull-right">
+                        <a href="#">
+                            <span class="glyphicon glyphicon-file" onclick=""></span>
+                        </a>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-floppy-disk" onclick=""></span>
+                        </a>
+                    </div>
+                </div>
+                @*@using (Html.BeginForm("SaveInputProduct", "ManageProduct", FormMethod.Post, htmlAttributes: new { enctype = "multipart/form-data" })){*@
+                <div class="panel-body">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div role="form">
+                                <div class="form-group">
+                                    <label>Provinsi Asal</label>
+                                    @{
+                                        var listsortProvinsi = new List<SelectListItem>();
+                                        for(int i=0;i<2;i++)
+                                        {
+                                            listsortProvinsi.Add(new SelectListItem
+                                            {
+                                                Value = "A",
+                                                Text = "A"
+                                            });
+                                        }
+                                    }
+                                    @Html.DropDownList("SortBy", listsortProvinsi, new { @class = "form-control", @onchange = "CallChangefunc(this.value)", style = "width:300px" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Kabupaten Asal</label>
+                                    @{
+                                        var listsortKabupaten = new List<SelectListItem>();
+                                        for (int i = 0; i < 2; i++)
+                                        {
+                                            listsortKabupaten.Add(new SelectListItem
+                                            {
+                                                Value = "A",
+                                                Text = "A"
+                                            });
+                                        }
+                                    }
+                                    @Html.DropDownList("SortBy", listsortKabupaten, new { @class = "form-control", @onchange = "CallChangefunc(this.value)", style = "width:300px" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Kecamatan Asal</label>
+                                    @{
+                                        var listsortKecamatan = new List<SelectListItem>();
+                                        for (int i = 0; i < 2; i++)
+                                        {
+                                            listsortKecamatan.Add(new SelectListItem
+                                            {
+                                                Value = "A",
+                                                Text = "A"
+                                            });
+                                        }
+                                    }
+                                    @Html.DropDownList("SortBy", listsortKecamatan, new { @class = "form-control", @onchange = "CallChangefunc(this.value)", style = "width:300px" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Provinsi Tujuan</label>
+                                    @{
+                                        var listsortProvinsiTujuan = new List<SelectListItem>();
+                                        for (int i = 0; i < 2; i++)
+                                        {
+                                            listsortProvinsiTujuan.Add(new SelectListItem
+                                            {
+                                                Value = "A",
+                                                Text = "A"
+                                            });
+                                        }
+                                    }
+                                    @Html.DropDownList("SortBy", listsortProvinsiTujuan, new { @class = "form-control", @onchange = "CallChangefunc(this.value)", style = "width:300px" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Kabupaten Tujuan</label>
+                                    @{
+                                        var listsortKabupatenTujuan = new List<SelectListItem>();
+                                        for (int i = 0; i < 2; i++)
+                                        {
+                                            listsortKabupatenTujuan.Add(new SelectListItem
+                                            {
+                                                Value = "A",
+                                                Text = "A"
+                                            });
+                                        }
+                                    }
+                                    @Html.DropDownList("SortBy", listsortKabupatenTujuan, new { @class = "form-control", @onchange = "CallChangefunc(this.value)", style = "width:300px" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Kecamatan Tujuan</label>
+                                    @{
+                                        var listsortKecamatanTujuan = new List<SelectListItem>();
+                                        for (int i = 0; i < 2; i++)
+                                        {
+                                            listsortKecamatanTujuan.Add(new SelectListItem
+                                            {
+                                                Value = "A",
+                                                Text = "A"
+                                            });
+                                        }
+                                    }
+                                    @Html.DropDownList("SortBy", listsortKecamatanTujuan, new { @class = "form-control", @onchange = "CallChangefunc(this.value)", style = "width:300px" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Pengirim</label>
+                                    @{
+                                        var listsortPengirim = new List<SelectListItem>();
+                                        for (int i = 0; i < 2; i++)
+                                        {
+                                            listsortPengirim.Add(new SelectListItem
+                                            {
+                                                Value = "A",
+                                                Text = "A"
+                                            });
+                                        }
+                                    }
+                                    @Html.DropDownList("SortBy", listsortPengirim, new { @class = "form-control", @onchange = "CallChangefunc(this.value)", style = "width:300px" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Paket</label>
+                                    @{
+                                        var listsortPaket = new List<SelectListItem>();
+                                        for (int i = 0; i < 2; i++)
+                                        {
+                                            listsortPaket.Add(new SelectListItem
+                                            {
+                                                Value = "A",
+                                                Text = "A"
+                                            });
+                                        }
+                                    }
+                                    @Html.DropDownList("SortBy", listsortPaket, new { @class = "form-control", @onchange = "CallChangefunc(this.value)", style = "width:300px" })
+                                </div>
+                                <div class="form-group">
+                                    <label>Harga</label>
+                                    @Html.TextBox("JenisPembayaran", "", new { @class = "form-control", style = "width:300px" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <input type="submit" name="name" value="Save" class="btn btn-primary btn-group-lg" onclick="" />
+                        </div>
+                    </div>
+                </div> @*}*@
 
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+            </div>
+        </div>
+    </div>
+</form>
