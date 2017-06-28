@@ -2,6 +2,7 @@
 using ProjectSepatu.Core.ProductProperties.BrandClass;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace ProjectSepatu.Core.ProductProperties.ProductMasterClass
@@ -11,6 +12,7 @@ namespace ProjectSepatu.Core.ProductProperties.ProductMasterClass
         public string Nama_Product { get; set; }
         public decimal Harga_Modal { get; set; }
         public decimal Harga_Jual { get; set; }
+        [DisplayFormat(DataFormatString = "{0:N2}")]
         public decimal? Harga_Setelah_Diskon { get; set; } 
         public decimal? Diskon_Rp { get; set; }
         public decimal? Diskon_Persen { get; set; }

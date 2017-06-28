@@ -16,55 +16,14 @@
 
                     <div class="shopping_cart">
                         <form class="form-horizontal" role="form" action="" method="post" id="payment-form">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" href="#collapseTwo">
-                                            Rincian Harga Ongkir
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseTwo" class="panel-collapse">
-                                    <div class="panel-body">
-                                        <table class="table table-striped" style="font-weight: bold;">
-                                            <tr>
-                                                <td style="width: 175px;">
-                                                    <label for="id_email">Rincian harga ongkir</label>
-                                                </td>
-                                                <td>
-                                                    <input class="form-control" id="id_email" name="email"
-                                                           required="required" type="text" />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 175px;">
-                                                    <label for="id_first_name">Total harga barang</label>
-                                                </td>
-                                                <td>
-                                                    <input class="form-control" id="id_first_name" name="first_name"
-                                                           required="required" type="text" />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="width: 175px;">
-                                                    <label for="id_last_name">Total pembelian</label>
-                                                </td>
-                                                <td>
-                                                    <input class="form-control" id="id_last_name" name="last_name"
-                                                           required="required" type="text" />
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
+                            
+                            
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h4 class="panel-title">
                                             <a data-toggle="collapse" href="#collapseOne">
-                                                Review
-                                                Your Order
+                                                <strong>Review
+                                                Your Order</strong>
                                             </a>
                                         </h4>
                                     </div>
@@ -123,27 +82,17 @@
                                             </div>
                                         </div>
                                     </div>
+                            </div>
 
-                                </div>
-                            </div>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a data-toggle="collapse" href="#collapseThree">
-                                            <b>Metode Pembayaran</b>
+                                        <a data-toggle="collapse" href="#identitas">
+                                            <strong>Identitas dan Kontak</strong>
                                         </a>
                                     </h4>
                                 </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                            Identitas dan Kontak
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseTwo" class="panel-collapse collapse">
+                                <div id="identitas" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <b>
                                             Harap memberikan alamat dan identitas yang jelas dan lengkap.
@@ -159,13 +108,13 @@
                                                            required="required" type="text" />
                                                 </td>
                                             </tr>
-                                           
+
                                             <tr>
                                                 <td style="width: 175px;">
                                                     <label for="id_address_line_1">Alamat:</label>
                                                 </td>
                                                 <td>
-                                                    <textarea class="form-control"  required="required" type="text"placeholder="Contoh: Jalan Jambu No.5 RT 03/13"></textarea>
+                                                    <textarea class="form-control" required="required" type="text" placeholder="Contoh: Jalan Jambu No.5 RT 03/13"></textarea>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -270,22 +219,56 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <div style="text-align: center;">
-                                            <a data-toggle="collapse"
-                                               data-parent="#accordion"
-                                               href="#collapseThree"
-                                               class=" btn   btn-success" id="payInfo"
-                                               style="width:100%;display: none;" onclick="$(this).fadeOut();
-                   document.getElementById('collapseThree').scrollIntoView()">Enter Payment Information »</a>
-                                        </div>
+                                        <a data-toggle="collapse" href="#Kurir">
+                                            <strong>Kurir Pengiriman</strong>
+                                        </a>
                                     </h4>
+                                </div>
+                                <div id="Kurir" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <b>
+                                            Pilih kurir pengiriman Anda.
+                                        </b>
+                                        <br /><br />
+                                        <table class="table table-striped" style="font-weight: bold;">
+                                            
+                                            <tr>
+                                                <td style="width: 175px;">
+                                                    <label for="id_state">Kurir:</label>
+                                                </td>
+                                                <td>
+                                                    <select class="selectpicker form-control" id="id_state" name="state">
+                                                        <option value="WV">JNE</option>
+                                                        <option value="WI">Sicepat</option>
+                                                        <option value="WY">POS Indonesia</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 175px;">
+                                                    <label for="id_postalcode">Biaya Ongkir:</label>
+                                                </td>
+                                                <td>
+                                                    <label >Rp. 10.000</label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="width: 175px;">
+                                                    <label for="id_phone">Total Biaya:</label>
+                                                </td>
+                                                <td>
+                                                    <label>Rp. 100.000</label>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                                            <b>Payment Information</b>
+                                            <b>Metode Pembayaran</b>
                                         </a>
                                     </h4>
                                 </div>
@@ -293,13 +276,13 @@
                                     <div class="panel-body">
                                         <span class='payment-errors'></span>
                                         <fieldset>
-                                            <legend>What method would you like to pay with today?</legend>
+                                            <legend>Pilih Metode Pembayaran</legend>
                                             <div class="form-group">
                                                 <label class="col-sm-3 control-label" for="expiry-month">
                                                     Metode Pembayaran
                                                 </label>
                                                 <div class="col-sm-9">
-                                                    <select class="form-control col-sm-2"
+                                                    <select class="selectpicker form-control col-sm-2"
                                                             data-stripe="exp-month" id="card-exp-month"
                                                             style="margin-left:5px;">
                                                         <option>Month</option>
@@ -323,7 +306,7 @@
                                                     Pembayaran
                                                 </label>
                                                 <div class="col-sm-9">
-                                                    <select class="form-control col-sm-2"
+                                                    <select class="selectpicker form-control col-sm-2"
                                                             data-stripe="exp-month" id="card-exp-month"
                                                             style="margin-left:5px;">
                                                         <option>Month</option>

@@ -87,6 +87,7 @@ namespace ProjectSepatu.Controllers
             viewModel.BrandList = FilterBrand();
             viewModel.ProductTypeList = FilterType();
           //  viewModel.CategoryList = FilterCategory();
+
             var counter = 0;
             if (ProductList != null)
             {

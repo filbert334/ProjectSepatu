@@ -46,7 +46,7 @@
                     <h1 class="product_title">@Model.ProductDetails.Nama_Product</h1>
                     
                     <div class="rate-price">
-                        <p class="price"><span>Rp @Model.ProductDetails.Harga_Setelah_Diskon</span></p>
+                        <p class="price"><span>Rp @Html.DisplayFor(modelItem => Model.ProductDetails.Harga_Setelah_Diskon)</span></p>
                     </div>
                     <div class="woocommerce-product-rating" style="margin-top:-20px;">
                         <i class="fa fa-eye" aria-hidden="true">&nbsp;@Model.ProductDetails.Dilihat</i></div>
