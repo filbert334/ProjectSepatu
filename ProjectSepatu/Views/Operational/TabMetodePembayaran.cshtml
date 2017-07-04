@@ -20,24 +20,22 @@
                     <div class="panel-heading">
                         Filter
                         <div class="btn-group pull-right">
-                          
-                                <span class="glyphicon glyphicon-search" onclick="FilterMetodePembayaran()"></span>
-                          
+
+                            <span class="glyphicon glyphicon-search" onclick="FilterMetodePembayaran()"></span>
+
                         </div>
                     </div>
                     <div class="panel-body">
                         <form role="form" id="filterBrandList">
                             <div class="form-group">
                                 <label>Metode Pembayaran</label>
-                                @Html.TextBoxFor(model => model.MetodePembayaran.Metode_Pembayaran, new { @class = "form-control", style = "width:300px" ,id="FilterMetodePembayaran" })
-                           
+                                @Html.TextBoxFor(model => model.MetodePembayaran.Metode_Pembayaran, new { @class = "form-control", style = "width:300px", id = "FilterMetodePembayaran" })
+
                             </div>
                         </form>
                     </div>
                 </div>
-
-                @using (Html.BeginForm("SaveMetodePembayaran", "Operational", FormMethod.Post))
-                {
+                <form id="cobaForm" action="javascript:void(0)">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Input
@@ -45,9 +43,9 @@
                                 <a href="#">
                                     <span class="glyphicon glyphicon-file" onclick=""></span>
                                 </a>
-                                <a href="">
-                                    <span class="glyphicon glyphicon-floppy-disk" onclick=""></span>
-                                </a>
+                                <button onclick="SaveMetodePembayaran()">
+                                    <span class="glyphicon glyphicon-floppy-disk"></span>
+                                </button>
                             </div>
                         </div>
                         <div class="panel-body">
@@ -56,46 +54,45 @@
                                 @Html.TextBoxFor(model => model.MetodePembayaran.Metode_Pembayaran, new { @class = "form-control", style = "width:300px" })
                                 @Html.HiddenFor(model => model.MetodePembayaran.Id)
                             </div>
-                            <button type="submit" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal">Save</button>
+                            <button class="btn btn-outline-warning">Save</button>
                         </div>
                     </div>
-                }
-                <button type="submit" class="btn btn-outline-warning" data-toggle="modal" data-target="#myModal">Save</button>
-                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                    <thead>
-                        <tr>
-                            <th style="width:50px"></th>
-                            <th style="width:50px"></th>
-                            <th>Metode Pembayaran</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @try
-                        {
-                            @foreach (var item in Model.MetodePembayaranList)
+                </form>
+                <form id="tableForm" action="javascript:void(0)">
+                    <table width="100%" class="table table-striped table-bordered table-hover" id="MetodePembayaranList">
+                        <thead>
+                            <tr>
+                                <th style="width:50px"></th>
+                                <th style="width:50px"></th>
+                                <th>Metode Pembayaran</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @try
                             {
-                                @if (item.IsHidden == false)
+                            @foreach (var item in Model.MetodePembayaranList)
                                 {
-                                    <tr class="odd gradeX">
-                                        <td>
-                                            <input type="button" name="name" value="Edit" class="btn btn-primary btn-sm" onclick="SearchBrandList(@item.Id)" />
-                                        </td>
-                                        <td>
-                                            <input type="button" name="name" value="Delete" class="btn btn-danger btn-sm" onclick="DeleteRowMetode(@item.Id)" />
-                                        </td>
-
-                                        <td>@item.Metode_Pembayaran.ToString()</td>
-
-                                    </tr>
+                            @if (item.IsHidden == false)
+                                    {
+                            <tr>
+                                <td>
+                                    <input type="button" name="editbutton" value="Edit" class="btn btn-primary btn-sm modal-link" onclick="editMetodePembayaran(@item.Id)" />
+                                </td>
+                                <td>
+                                    <input type="button" name="name" value="Delete" class="btn btn-danger btn-sm" onclick="DeleteRowMetode(@item.Id)" />
+                                </td>
+                                <td>@item.Metode_Pembayaran.ToString()</td>
+                            </tr>
+                                    }
                                 }
                             }
-                        }
-                        catch
-                        {
+                            catch
+                            {
 
-                        }
-                    </tbody>
-                </table>
+                            }
+                        </tbody>
+                    </table>
+                </form>
             </div>
         </div>
     </div>
@@ -107,17 +104,42 @@
     function SelectRowMetode(id) {
         window.location.replace("http://localhost:53293/Operational/SelectMetodePembayaran/" + id);
     }
-    function FilterMetodePembayaran()
-    {
+    function FilterMetodePembayaran() {
         var FilterMetodePembayaran = $('#FilterMetodePembayaran').val();
         alert(FilterMetodePembayaran)
         window.location.replace("http://localhost:53293/Operational/TabMetodePembayaran?filterName= " + FilterMetodePembayaran);
     }
-    function SearchBrandList(id) {
-        $.get('/Operational/TabMetodePembayaran/' + id, function (data) {
-            if (data) {
-                $("#view1").html(data);
+
+    function SaveMetodePembayaran() {
+        $("#myModal").modal("show");
+        $.post('/Operational/SaveMetodePembayaran/', $("form#cobaForm").serialize(), function (data, status) {
+            if (status = "success") {
+                alert(data);
+                $("view1").html(data);
             }
         })
     }
+
+    function editMetodePembayaran(id) {
+        $("#myModal").modal("show");
+        $.get('/Operational/TabMetodePembayaran/' + id, function (data, status) {
+            if (data) {
+
+                $("#view1").html(data);
+                $("#myModal").modal("hide");
+            }
+        })
+    }
+
+
+    //function editMetodePembayaran(param) {
+    //    $("#myModal").modal("show");
+    //    var index = $(param).parents("tr").index() + 1;
+
+    //    var text = $("table#MetodePembayaranList tr:eq(" + index + ") :input").serialize();
+    //    alert(text);
+    //}
+    //$("#myBtn").click(function () {
+    //    $("#myModal").modal({ backdrop: true });
+    //});
 </script>
